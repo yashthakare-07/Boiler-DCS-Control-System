@@ -1,0 +1,303 @@
+"""Resilient educational boiler process-model bridge for OpenPLC Runtime v4.
+
+Reads the PLC heartbeat/feedwater valve, advances BoilerModel, and writes the
+three contiguous simulated measurement registers in one Modbus transaction.
+Runs until Ctrl+C by default, reconnects after transient Modbus socket errors,
+appends to the CSV trace, and prevents duplicate instances per Windows session.
+This is an educational digital-twin bridge, not a real boiler control system.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import os
+import sys
+import time
+from pathlib import Path
+from typing import Any
+
+from pymodbus.client import ModbusTcpClient
+from model.boiler import BoilerModel
+
+ROOT = Path(__file__).resolve().parent
+LOG_PATH = ROOT / "runs" / "openplc_bridge_trace.csv"
+
+REG_HEARTBEAT = 1124
+REG_LEVEL = 1125
+REG_FEEDWATER_FLOW = 1126
+REG_STEAM_FLOW = 1127
+REG_LEVEL_SP = 1128
+REG_FEEDWATER_VALVE = 1130
+
+CSV_FIELDS = [
+    "time_s", "plc_heartbeat", "level_pct", "feedwater_flow_pu",
+    "steam_flow_pu", "valve_pct", "feedwater_command_pu",
+    "level_setpoint_pct",
+]
+
+
+def acquire_single_instance_guard() -> Any:
+    """Create a named Windows mutex for this user session."""
+    if os.name == "nt":
+        import ctypes
+        from ctypes import wintypes
+
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.CreateMutexW.argtypes = (
+            wintypes.LPVOID, wintypes.BOOL, wintypes.LPCWSTR
+        )
+        kernel32.CreateMutexW.restype = wintypes.HANDLE
+        kernel32.CloseHandle.argtypes = (wintypes.HANDLE,)
+        kernel32.CloseHandle.restype = wintypes.BOOL
+
+        name = r"Local\BoilerDCS_OpenPLC_Bridge_SingleInstance"
+        ctypes.set_last_error(0)
+        handle = kernel32.CreateMutexW(None, False, name)
+        if not handle:
+            raise OSError(ctypes.get_last_error(), "CreateMutexW failed")
+        if ctypes.get_last_error() == 183:  # ERROR_ALREADY_EXISTS
+            kernel32.CloseHandle(handle)
+            raise RuntimeError(
+                "Another bridge instance is already running. Refusing duplicate."
+            )
+        return kernel32, handle
+
+    # POSIX fallback for development.
+    import fcntl
+    lock = open(ROOT / ".openplc_bridge.lock", "a+")
+    try:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        lock.close()
+        raise RuntimeError("Another bridge instance is already running.")
+    return lock
+
+
+def release_single_instance_guard(guard: Any) -> None:
+    if guard is None:
+        return
+    if os.name == "nt":
+        kernel32, handle = guard
+        kernel32.CloseHandle(handle)
+    else:
+        import fcntl
+        fcntl.flock(guard.fileno(), fcntl.LOCK_UN)
+        guard.close()
+
+
+def check_response(response: Any, operation: str) -> Any:
+    if response is None or response.isError():
+        raise RuntimeError(f"{operation} failed: {response}")
+    return response
+
+
+def read_plc_inputs(client: ModbusTcpClient) -> list[int]:
+    response = check_response(
+        client.read_holding_registers(
+            address=REG_HEARTBEAT, count=7, device_id=1
+        ),
+        "PLC holding-register read",
+    )
+    if len(response.registers) != 7:
+        raise RuntimeError(
+            f"Expected 7 registers starting at HR{REG_HEARTBEAT}; "
+            f"received {len(response.registers)}."
+        )
+    return response.registers
+
+
+def write_measurements(client: ModbusTcpClient, level: int,
+                       feedwater_flow: int, steam_flow: int) -> None:
+    values = [int(level), int(feedwater_flow), int(steam_flow)]
+    limits = [(0, 10000), (0, 2000), (0, 2000)]
+    for value, (low, high), name in zip(
+        values, limits, ("level x100", "feedwater flow x1000", "steam flow x1000")
+    ):
+        if not low <= value <= high:
+            raise ValueError(f"Calculated {name}={value} outside [{low}, {high}].")
+    # HR1125-HR1127 are contiguous; one grouped Modbus write reduces socket load.
+    response = client.write_registers(
+        address=REG_LEVEL, values=values, device_id=1
+    )
+    check_response(response, "PLC measurement block write HR1125-HR1127")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Resilient Python boiler simulator bridge for local OpenPLC Runtime."
+    )
+    parser.add_argument("--once", action="store_true", help="Run exactly one exchange cycle.")
+    parser.add_argument(
+        "--duration", type=float, default=0.0,
+        help="Optional duration in seconds; 0 means continue until Ctrl+C.",
+    )
+    parser.add_argument("--host", default="127.0.0.1", help="OpenPLC host; default 127.0.0.1.")
+    parser.add_argument("--port", type=int, default=502, help="Modbus TCP port; default 502.")
+    parser.add_argument(
+        "--retry-delay", type=float, default=2.0,
+        help="Seconds between connection retries after socket errors; default 2.",
+    )
+    args = parser.parse_args()
+    if args.duration < 0:
+        parser.error("--duration cannot be negative.")
+    if not 1 <= args.port <= 65535:
+        parser.error("--port must be between 1 and 65535.")
+    if args.retry_delay < 0.25:
+        parser.error("--retry-delay must be at least 0.25 seconds.")
+
+    guard = None
+    client = None
+    try:
+        guard = acquire_single_instance_guard()
+        boiler = BoilerModel()
+        client = ModbusTcpClient(args.host, port=args.port, timeout=3, retries=1)
+        LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+        needs_header = not LOG_PATH.exists() or LOG_PATH.stat().st_size == 0
+        start = time.monotonic()
+        next_cycle = start
+        last_print = 0.0
+        cycles = 0
+        reconnects = 0
+        dt = float(getattr(boiler, "dt", 0.1))
+        if dt <= 0:
+            raise RuntimeError(f"BoilerModel.dt must be positive; got {dt}.")
+
+        print(
+            f"OpenPLC bridge starting for {args.host}:{args.port}; "
+            "simulation measurements HR1125-HR1127 use one grouped write. "
+            + ("One cycle only." if args.once else "Continuous until Ctrl+C." if args.duration == 0 else f"Duration: {args.duration:g} seconds."),
+            flush=True,
+        )
+        print(f"Trace CSV (append mode): {LOG_PATH}", flush=True)
+
+        with LOG_PATH.open("a", newline="", encoding="utf-8") as trace_file:
+            writer = csv.DictWriter(trace_file, fieldnames=CSV_FIELDS)
+            if needs_header:
+                writer.writeheader()
+                trace_file.flush()
+
+            try:
+                while True:
+                    elapsed = time.monotonic() - start
+                    if not args.once and args.duration > 0 and elapsed >= args.duration:
+                        break
+
+                    # Explicitly recover closed sockets. Do not exit on a transient disconnect.
+                    try:
+                        if not client.is_socket_open():
+                            if not client.connect():
+                                raise ConnectionError(
+                                    f"Cannot connect to {args.host}:{args.port}"
+                                )
+                            reconnects += 1
+                            print(
+                                f"Modbus reconnected (count={reconnects}).", flush=True
+                            )
+
+                        values = read_plc_inputs(client)
+                        heartbeat = int(values[0])
+                        level_sp_pct = values[4] / 100.0
+                        valve_pct = values[6] / 10.0
+                    except Exception as exc:
+                        print(
+                            f"MODBUS READ/CONNECT WARNING: {type(exc).__name__}: {exc}. "
+                            f"Closing socket and retrying in {args.retry_delay:g}s.",
+                            file=sys.stderr, flush=True,
+                        )
+                        try:
+                            client.close()
+                        except Exception:
+                            pass
+                        if args.once:
+                            return 2
+                        time.sleep(args.retry_delay)
+                        next_cycle = time.monotonic()
+                        continue
+
+                    # Provisional characteristic retained from the existing bridge:
+                    # 50% feedwater-valve position maps to 1.0 pu command.
+                    feedwater_command_pu = max(0.0, min(1.5, valve_pct / 50.0))
+                    state = boiler.step(
+                        feedwater_command_pu=feedwater_command_pu,
+                        steam_demand_pu=1.0,
+                        fuel_command_pu=1.0,
+                    )
+                    level_x100 = round(state.drum_level_pct * 100)
+                    feedwater_x1000 = round(state.feedwater_flow_pu * 1000)
+                    steam_x1000 = round(state.steam_flow_pu * 1000)
+
+                    try:
+                        write_measurements(
+                            client, level_x100, feedwater_x1000, steam_x1000
+                        )
+                    except Exception as exc:
+                        print(
+                            f"MODBUS WRITE WARNING: {type(exc).__name__}: {exc}. "
+                            f"Closing socket and retrying in {args.retry_delay:g}s.",
+                            file=sys.stderr, flush=True,
+                        )
+                        try:
+                            client.close()
+                        except Exception:
+                            pass
+                        if args.once:
+                            return 2
+                        time.sleep(args.retry_delay)
+                        next_cycle = time.monotonic()
+                        continue
+
+                    elapsed = time.monotonic() - start
+                    writer.writerow({
+                        "time_s": round(elapsed, 3),
+                        "plc_heartbeat": heartbeat,
+                        "level_pct": round(state.drum_level_pct, 3),
+                        "feedwater_flow_pu": round(state.feedwater_flow_pu, 4),
+                        "steam_flow_pu": round(state.steam_flow_pu, 4),
+                        "valve_pct": round(valve_pct, 2),
+                        "feedwater_command_pu": round(feedwater_command_pu, 4),
+                        "level_setpoint_pct": round(level_sp_pct, 2),
+                    })
+                    trace_file.flush()
+                    cycles += 1
+
+                    if cycles == 1 or elapsed - last_print >= 1.0:
+                        print(
+                            f"t={elapsed:7.1f}s | heartbeat={heartbeat:5d} | "
+                            f"level={state.drum_level_pct:6.2f}% | "
+                            f"valve={valve_pct:5.1f}% | "
+                            f"feedwater={state.feedwater_flow_pu:.3f} pu | "
+                            f"cycles={cycles} | reconnects={reconnects}",
+                            flush=True,
+                        )
+                        last_print = elapsed
+
+                    if args.once:
+                        break
+                    next_cycle += dt
+                    sleep_for = next_cycle - time.monotonic()
+                    if sleep_for > 0:
+                        time.sleep(sleep_for)
+                    elif abs(sleep_for) > 5 * dt:
+                        # Prevent rapid catch-up loops after a slow response.
+                        next_cycle = time.monotonic()
+
+            except KeyboardInterrupt:
+                print("\nCtrl+C received; closing bridge cleanly.", flush=True)
+
+        print(
+            f"Bridge stopped. Cycles={cycles}; reconnects={reconnects}; "
+            f"elapsed={time.monotonic() - start:.1f}s.",
+            flush=True,
+        )
+        return 0
+    except RuntimeError as exc:
+        print(f"BRIDGE ERROR: {exc}", file=sys.stderr, flush=True)
+        return 2
+    finally:
+        if client is not None:
+            client.close()
+        release_single_instance_guard(guard)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

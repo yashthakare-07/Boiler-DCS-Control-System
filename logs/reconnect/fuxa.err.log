@@ -1,0 +1,43 @@
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:15:30.009Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:15:30.508Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:15:30.513Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:15:31.023Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:15:31.535Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:15:32.044Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:15:32.551Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+^C^C

@@ -1,0 +1,13 @@
+BOILER DIGITAL TWIN — BUILD 01 SUMMARY
+
+Nominal final level: 50.000 %
+Nominal final pressure: 1.0000 pu
+Nominal final inventory: 1.0000 pu
+
+Steam demand step: 1.0 -> 1.2 pu at t=10 s
+Level at t=15 s: 50.938 %
+Disturbed final level: 46.571 %
+Disturbed final pressure: 0.9702 pu
+Disturbed final inventory: 0.9018 pu
+
+Synthetic educational model only; not for real equipment control.

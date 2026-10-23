@@ -1,0 +1,8 @@
+metric,single_element,three_element
+post_disturbance_IAE_pct_s,51.08288436341837,43.852637035380305
+max_absolute_level_error_pct,1.6052718453191588,1.3975228913716435
+final_level_pct,48.454089120851215,50.29382972044578
+final_level_error_pct,1.545910879148785,-0.29382972044577826
+max_feedwater_command_pu,1.2366991309661968,1.241961055522598
+min_feedwater_command_pu,0.9222292013268522,1.0
+settling_time_after_disturbance_s,,24.000000000000213

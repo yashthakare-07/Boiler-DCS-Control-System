@@ -1,0 +1,41 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261023071734
+Username: DESKTOP-U2MVFO4\thebe
+RunAs User: DESKTOP-U2MVFO4\thebe
+Configuration Name: 
+Machine: DESKTOP-U2MVFO4 (Microsoft Windows NT 10.0.19045.0)
+Host Application: C:\WINDOWS\system32\WindowsPowerShell\v1.0\PowerShell.exe
+Process ID: 16644
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+--- Python boiler bridge ---
+
+--- FUXA server and port 1881 listener ---
+
+--- OpenPLC Runtime processes ---
+Stopping python3, PID 12384
+Stopping plc_main.exe, PID 19392
+
+--- OpenPLC Runtime launcher shells ---
+Stopping cmd.exe, PID 17944
+
+========== VERIFY SHUTDOWN ==========
+PASS: port 502 is closed.
+PASS: port 8443 is closed.
+PASS: port 1881 is closed.
+PASS: no project bridge process remains.
+
+Shutdown report: C:\Users\thebe\Downloads\BOILER DCS\logs\reconnect\disconnect_20261023_071734.txt
+**********************
+Windows PowerShell transcript end
+End time: 20261023071742
+**********************

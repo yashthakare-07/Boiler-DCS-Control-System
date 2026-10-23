@@ -1,0 +1,161 @@
+﻿import argparse
+import csv
+import time
+from pathlib import Path
+
+from pymodbus.client import ModbusTcpClient
+from model.boiler import BoilerModel
+
+ROOT = Path(__file__).resolve().parent
+LOG_PATH = ROOT / "runs" / "openplc_bridge_trace.csv"
+
+# Verified OpenPLC holding-register addresses.
+REG_HEARTBEAT = 1124
+REG_LEVEL = 1125
+REG_FEEDWATER_FLOW = 1126
+REG_STEAM_FLOW = 1127
+REG_LEVEL_SP = 1128
+REG_MANUAL_VALVE = 1129
+REG_FEEDWATER_VALVE = 1130
+
+
+def check_response(response, operation):
+    if response.isError():
+        raise RuntimeError(f"{operation} failed: {response}")
+    return response
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Educational Python boiler to OpenPLC bridge."
+    )
+    parser.add_argument(
+        "--once",
+        action="store_true",
+        help="Perform one exchange cycle, then exit.",
+    )
+    parser.add_argument(
+        "--duration",
+        type=float,
+        default=10.0,
+        help="Continuous run duration in seconds; default 10.",
+    )
+    args = parser.parse_args()
+
+    if args.duration <= 0:
+        parser.error("--duration must be positive.")
+
+    boiler = BoilerModel()
+    client = ModbusTcpClient("127.0.0.1", port=502, timeout=3)
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    if not client.connect():
+        raise SystemExit("Cannot connect to OpenPLC at 127.0.0.1:502.")
+
+    fields = [
+        "time_s",
+        "plc_heartbeat",
+        "level_pct",
+        "feedwater_flow_pu",
+        "steam_flow_pu",
+        "valve_pct",
+        "feedwater_command_pu",
+        "level_setpoint_pct",
+    ]
+
+    start = time.monotonic()
+    next_cycle = start
+    count = 0
+
+    try:
+        with LOG_PATH.open("w", newline="", encoding="utf-8") as file:
+            writer = csv.DictWriter(file, fieldnames=fields)
+            writer.writeheader()
+
+            while True:
+                cycle_start = time.monotonic()
+
+                # Read the seven verified PLC registers.
+                response = check_response(
+                    client.read_holding_registers(
+                        address=REG_HEARTBEAT,
+                        count=7,
+                        device_id=1,
+                    ),
+                    "PLC register read",
+                )
+                values = response.registers
+
+                heartbeat = values[0]
+                level_sp_pct = values[4] / 100.0
+                valve_pct = values[6] / 10.0
+
+                # Provisional valve/flow characteristic:
+                # 50% valve position -> 1.0 pu feedwater command.
+                feedwater_command_pu = max(
+                    0.0, min(1.5, valve_pct / 50.0)
+                )
+
+                state = boiler.step(
+                    feedwater_command_pu=feedwater_command_pu,
+                    steam_demand_pu=1.0,
+                    fuel_command_pu=1.0,
+                )
+
+                # Write simulated measurements into mapped PLC inputs.
+                measurements = [
+                    (REG_LEVEL, round(state.drum_level_pct * 100)),
+                    (REG_FEEDWATER_FLOW, round(state.feedwater_flow_pu * 1000)),
+                    (REG_STEAM_FLOW, round(state.steam_flow_pu * 1000)),
+                ]
+
+                for address, value in measurements:
+                    check_response(
+                        client.write_register(
+                            address=address,
+                            value=value,
+                            device_id=1,
+                        ),
+                        f"Write register {address}",
+                    )
+
+                writer.writerow({
+                    "time_s": round(state.time_s, 3),
+                    "plc_heartbeat": heartbeat,
+                    "level_pct": round(state.drum_level_pct, 3),
+                    "feedwater_flow_pu": round(state.feedwater_flow_pu, 4),
+                    "steam_flow_pu": round(state.steam_flow_pu, 4),
+                    "valve_pct": round(valve_pct, 2),
+                    "feedwater_command_pu": round(feedwater_command_pu, 4),
+                    "level_setpoint_pct": round(level_sp_pct, 2),
+                })
+                file.flush()
+
+                print(
+                    f"t={state.time_s:6.2f}s | "
+                    f"heartbeat={heartbeat:5d} | "
+                    f"level={state.drum_level_pct:6.2f}% | "
+                    f"valve={valve_pct:5.1f}% | "
+                    f"feedwater={state.feedwater_flow_pu:.3f} pu"
+                )
+
+                count += 1
+
+                if args.once:
+                    break
+
+                if time.monotonic() - start >= args.duration:
+                    break
+
+                next_cycle += boiler.dt
+                time.sleep(max(0.0, next_cycle - time.monotonic()))
+
+    finally:
+        client.close()
+
+    print(f"\nCycles completed: {count}")
+    print(f"Trace saved to: {LOG_PATH}")
+
+
+if __name__ == "__main__":
+    main()

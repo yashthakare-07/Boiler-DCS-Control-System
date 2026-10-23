@@ -1,0 +1,78 @@
+PROGRAM main
+  VAR
+    DrumLevel_x100 : INT AT %MW101 := 5000;
+    FeedwaterFlow_x1000 : INT AT %MW102 := 1000;
+    SteamFlow_x1000 : INT AT %MW103 := 1000;
+    LevelSP_x100 : INT AT %MW104 := 5000;
+    AutoMode : BOOL := False;
+    ManualValve_x10 : INT AT %MW105 := 500;
+    FeedwaterValve_x10 : INT AT %MW106 := 500;
+    LevelError : REAL := 0.0;
+    Kp : REAL := 1.5;
+    Ki : REAL := 0.2;
+    CycleTime_s : REAL := 0.02;
+    IntegralTerm : REAL := 0.0;
+    ValvePercent : REAL := 50.0;
+    PLCHeartbeat : INT AT %MW100 := 0;
+  END_VAR
+
+(* Calculate drum-level error in percentage points *)
+LevelError :=
+    INT_TO_REAL(LevelSP_x100 - DrumLevel_x100) / 100.0;
+
+IF AutoMode THEN
+
+    (* PI integral update for a 20 ms cyclic task *)
+    IntegralTerm :=
+        IntegralTerm + Ki * LevelError * CycleTime_s;
+
+    (* Limit the integral contribution *)
+    IF IntegralTerm > 50.0 THEN
+        IntegralTerm := 50.0;
+    END_IF;
+
+    IF IntegralTerm < -50.0 THEN
+        IntegralTerm := -50.0;
+    END_IF;
+
+    (* Calculate and limit the valve command *)
+    ValvePercent := 50.0 + Kp * LevelError + IntegralTerm;
+
+    IF ValvePercent > 100.0 THEN
+        ValvePercent := 100.0;
+    END_IF;
+
+    IF ValvePercent < 0.0 THEN
+        ValvePercent := 0.0;
+    END_IF;
+
+    FeedwaterValve_x10 := REAL_TO_INT(ValvePercent * 10.0);
+
+ELSE
+
+    (* Manual mode: track the integral for a smoother mode transfer *)
+    IF ManualValve_x10 > 1000 THEN
+        ManualValve_x10 := 1000;
+    END_IF;
+
+    IF ManualValve_x10 < 0 THEN
+        ManualValve_x10 := 0;
+    END_IF;
+
+    FeedwaterValve_x10 := ManualValve_x10;
+
+    IntegralTerm :=
+        INT_TO_REAL(ManualValve_x10) / 10.0
+        - 50.0
+        - Kp * LevelError;
+
+END_IF;
+
+(* Increment a diagnostic heartbeat *)
+IF PLCHeartbeat >= 30000 THEN
+    PLCHeartbeat := 0;
+ELSE
+    PLCHeartbeat := PLCHeartbeat + 1;
+END_IF;
+
+END_PROGRAM

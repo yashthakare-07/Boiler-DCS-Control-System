@@ -1,0 +1,819 @@
+t=  0.10s | heartbeat= 6473 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  0.20s | heartbeat= 6477 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  0.30s | heartbeat= 6482 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  0.40s | heartbeat= 6487 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  0.50s | heartbeat= 6492 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  0.60s | heartbeat= 6497 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  0.70s | heartbeat= 6502 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  0.80s | heartbeat= 6508 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  0.90s | heartbeat= 6512 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.00s | heartbeat= 6517 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.10s | heartbeat= 6522 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.20s | heartbeat= 6527 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.30s | heartbeat= 6533 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.40s | heartbeat= 6537 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.50s | heartbeat= 6542 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.60s | heartbeat= 6548 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.70s | heartbeat= 6551 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.80s | heartbeat= 6556 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  1.90s | heartbeat= 6561 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.00s | heartbeat= 6565 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.10s | heartbeat= 6570 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.20s | heartbeat= 6575 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.30s | heartbeat= 6581 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.40s | heartbeat= 6584 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.50s | heartbeat= 6589 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.60s | heartbeat= 6594 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.70s | heartbeat= 6598 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.80s | heartbeat= 6604 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  2.90s | heartbeat= 6607 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.00s | heartbeat= 6613 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.10s | heartbeat= 6617 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.20s | heartbeat= 6622 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.30s | heartbeat= 6628 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.40s | heartbeat= 6631 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.50s | heartbeat= 6637 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.60s | heartbeat= 6641 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.70s | heartbeat= 6646 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.80s | heartbeat= 6651 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  3.90s | heartbeat= 6655 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.00s | heartbeat= 6661 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.10s | heartbeat= 6664 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.20s | heartbeat= 6669 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.30s | heartbeat= 6674 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.40s | heartbeat= 6678 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.50s | heartbeat= 6684 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.60s | heartbeat= 6687 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.70s | heartbeat= 6693 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.80s | heartbeat= 6696 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  4.90s | heartbeat= 6701 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.00s | heartbeat= 6706 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.10s | heartbeat= 6711 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.20s | heartbeat= 6717 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.30s | heartbeat= 6720 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.40s | heartbeat= 6725 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.50s | heartbeat= 6730 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.60s | heartbeat= 6735 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.70s | heartbeat= 6741 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.80s | heartbeat= 6745 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  5.90s | heartbeat= 6751 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.00s | heartbeat= 6754 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.10s | heartbeat= 6759 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.20s | heartbeat= 6764 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.30s | heartbeat= 6768 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.40s | heartbeat= 6774 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.50s | heartbeat= 6777 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.60s | heartbeat= 6782 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.70s | heartbeat= 6787 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.80s | heartbeat= 6791 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  6.90s | heartbeat= 6797 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.00s | heartbeat= 6800 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.10s | heartbeat= 6805 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.20s | heartbeat= 6809 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.30s | heartbeat= 6814 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.40s | heartbeat= 6819 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.50s | heartbeat= 6823 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.60s | heartbeat= 6829 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.70s | heartbeat= 6832 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.80s | heartbeat= 6838 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  7.90s | heartbeat= 6842 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.00s | heartbeat= 6847 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.10s | heartbeat= 6852 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.20s | heartbeat= 6857 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.30s | heartbeat= 6863 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.40s | heartbeat= 6868 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.50s | heartbeat= 6868 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.60s | heartbeat= 6877 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.70s | heartbeat= 6880 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.80s | heartbeat= 6886 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  8.90s | heartbeat= 6890 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.00s | heartbeat= 6895 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.10s | heartbeat= 6899 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.20s | heartbeat= 6904 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.30s | heartbeat= 6909 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.40s | heartbeat= 6915 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.50s | heartbeat= 6919 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.60s | heartbeat= 6924 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.70s | heartbeat= 6929 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.80s | heartbeat= 6934 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t=  9.90s | heartbeat= 6940 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.00s | heartbeat= 6945 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.10s | heartbeat= 6949 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.20s | heartbeat= 6955 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.30s | heartbeat= 6959 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.40s | heartbeat= 6964 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.50s | heartbeat= 6969 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.60s | heartbeat= 6974 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.70s | heartbeat= 6980 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.80s | heartbeat= 6985 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 10.90s | heartbeat= 6990 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.00s | heartbeat= 6995 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.10s | heartbeat= 6999 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.20s | heartbeat= 7004 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.30s | heartbeat= 7009 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.40s | heartbeat= 7014 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.50s | heartbeat= 7019 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.60s | heartbeat= 7025 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.70s | heartbeat= 7029 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.80s | heartbeat= 7035 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 11.90s | heartbeat= 7039 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.00s | heartbeat= 7044 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.10s | heartbeat= 7049 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.20s | heartbeat= 7052 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.30s | heartbeat= 7057 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.40s | heartbeat= 7063 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.50s | heartbeat= 7067 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.60s | heartbeat= 7072 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.70s | heartbeat= 7077 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.80s | heartbeat= 7082 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 12.90s | heartbeat= 7087 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.00s | heartbeat= 7093 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.10s | heartbeat= 7097 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.20s | heartbeat= 7103 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.30s | heartbeat= 7107 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.40s | heartbeat= 7112 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.50s | heartbeat= 7118 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.60s | heartbeat= 7123 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.70s | heartbeat= 7127 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.80s | heartbeat= 7132 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 13.90s | heartbeat= 7137 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.00s | heartbeat= 7142 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.10s | heartbeat= 7147 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.20s | heartbeat= 7147 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.30s | heartbeat= 7156 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.40s | heartbeat= 7161 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.50s | heartbeat= 7166 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.60s | heartbeat= 7171 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.70s | heartbeat= 7177 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.80s | heartbeat= 7182 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 14.90s | heartbeat= 7186 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.00s | heartbeat= 7186 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.10s | heartbeat= 7195 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.20s | heartbeat= 7199 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.30s | heartbeat= 7203 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.40s | heartbeat= 7204 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.50s | heartbeat= 7210 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.60s | heartbeat= 7214 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.70s | heartbeat= 7219 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.80s | heartbeat= 7224 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 15.90s | heartbeat= 7229 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.00s | heartbeat= 7234 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.10s | heartbeat= 7239 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.20s | heartbeat= 7245 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.30s | heartbeat= 7249 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.40s | heartbeat= 7254 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.50s | heartbeat= 7259 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.60s | heartbeat= 7264 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.70s | heartbeat= 7269 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.80s | heartbeat= 7274 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 16.90s | heartbeat= 7280 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.00s | heartbeat= 7284 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.10s | heartbeat= 7289 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.20s | heartbeat= 7294 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.30s | heartbeat= 7299 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.40s | heartbeat= 7304 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.50s | heartbeat= 7309 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.60s | heartbeat= 7314 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.70s | heartbeat= 7319 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.80s | heartbeat= 7325 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 17.90s | heartbeat= 7329 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.00s | heartbeat= 7333 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.10s | heartbeat= 7336 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.20s | heartbeat= 7340 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.30s | heartbeat= 7345 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.40s | heartbeat= 7350 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.50s | heartbeat= 7355 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.60s | heartbeat= 7360 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.70s | heartbeat= 7366 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.80s | heartbeat= 7370 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 18.90s | heartbeat= 7376 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.00s | heartbeat= 7381 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.10s | heartbeat= 7385 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.20s | heartbeat= 7390 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.30s | heartbeat= 7395 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.40s | heartbeat= 7400 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.50s | heartbeat= 7405 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.60s | heartbeat= 7411 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.70s | heartbeat= 7416 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.80s | heartbeat= 7420 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 19.90s | heartbeat= 7426 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.00s | heartbeat= 7431 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.10s | heartbeat= 7435 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.20s | heartbeat= 7441 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.30s | heartbeat= 7445 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.40s | heartbeat= 7451 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.50s | heartbeat= 7455 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.60s | heartbeat= 7460 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.70s | heartbeat= 7466 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.80s | heartbeat= 7470 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 20.90s | heartbeat= 7475 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.00s | heartbeat= 7480 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.10s | heartbeat= 7485 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.20s | heartbeat= 7491 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.30s | heartbeat= 7496 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.40s | heartbeat= 7500 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.50s | heartbeat= 7505 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.60s | heartbeat= 7510 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.70s | heartbeat= 7516 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.80s | heartbeat= 7520 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 21.90s | heartbeat= 7526 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.00s | heartbeat= 7531 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.10s | heartbeat= 7535 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.20s | heartbeat= 7540 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.30s | heartbeat= 7545 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.40s | heartbeat= 7550 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.50s | heartbeat= 7555 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.60s | heartbeat= 7560 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.70s | heartbeat= 7565 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.80s | heartbeat= 7571 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 22.90s | heartbeat= 7576 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.00s | heartbeat= 7580 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.10s | heartbeat= 7585 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.20s | heartbeat= 7590 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.30s | heartbeat= 7595 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.40s | heartbeat= 7600 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.50s | heartbeat= 7606 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.60s | heartbeat= 7611 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.70s | heartbeat= 7615 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.80s | heartbeat= 7620 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 23.90s | heartbeat= 7625 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.00s | heartbeat= 7630 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.10s | heartbeat= 7635 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.20s | heartbeat= 7640 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.30s | heartbeat= 7645 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.40s | heartbeat= 7650 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.50s | heartbeat= 7655 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.60s | heartbeat= 7660 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.70s | heartbeat= 7666 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.80s | heartbeat= 7670 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 24.90s | heartbeat= 7675 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.00s | heartbeat= 7681 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.10s | heartbeat= 7686 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.20s | heartbeat= 7690 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.30s | heartbeat= 7696 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.40s | heartbeat= 7700 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.50s | heartbeat= 7705 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.60s | heartbeat= 7710 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.70s | heartbeat= 7715 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.80s | heartbeat= 7720 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 25.90s | heartbeat= 7726 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.00s | heartbeat= 7730 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.10s | heartbeat= 7735 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.20s | heartbeat= 7741 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.30s | heartbeat= 7745 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.40s | heartbeat= 7749 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.50s | heartbeat= 7754 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.60s | heartbeat= 7759 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.70s | heartbeat= 7764 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.80s | heartbeat= 7769 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 26.90s | heartbeat= 7775 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.00s | heartbeat= 7781 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.10s | heartbeat= 7784 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.20s | heartbeat= 7789 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.30s | heartbeat= 7794 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.40s | heartbeat= 7799 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.50s | heartbeat= 7804 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.60s | heartbeat= 7810 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.70s | heartbeat= 7814 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.80s | heartbeat= 7819 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 27.90s | heartbeat= 7824 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.00s | heartbeat= 7829 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.10s | heartbeat= 7834 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.20s | heartbeat= 7839 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.30s | heartbeat= 7844 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.40s | heartbeat= 7849 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.50s | heartbeat= 7854 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.60s | heartbeat= 7859 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.70s | heartbeat= 7865 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.80s | heartbeat= 7870 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 28.90s | heartbeat= 7875 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.00s | heartbeat= 7879 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.10s | heartbeat= 7884 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.20s | heartbeat= 7889 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.30s | heartbeat= 7895 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.40s | heartbeat= 7899 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.50s | heartbeat= 7905 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.60s | heartbeat= 7909 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.70s | heartbeat= 7914 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.80s | heartbeat= 7919 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 29.90s | heartbeat= 7924 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.00s | heartbeat= 7929 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.10s | heartbeat= 7934 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.20s | heartbeat= 7940 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.30s | heartbeat= 7945 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.40s | heartbeat= 7949 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.50s | heartbeat= 7955 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.60s | heartbeat= 7959 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.70s | heartbeat= 7964 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.80s | heartbeat= 7970 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 30.90s | heartbeat= 7974 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.00s | heartbeat= 7979 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.10s | heartbeat= 7983 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.20s | heartbeat= 7987 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.30s | heartbeat= 7993 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.40s | heartbeat= 7997 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.50s | heartbeat= 8002 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.60s | heartbeat= 8007 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.70s | heartbeat= 8012 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.80s | heartbeat= 8017 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 31.90s | heartbeat= 8022 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.00s | heartbeat= 8028 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.10s | heartbeat= 8032 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.20s | heartbeat= 8037 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.30s | heartbeat= 8042 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.40s | heartbeat= 8048 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.50s | heartbeat= 8052 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.60s | heartbeat= 8058 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.70s | heartbeat= 8062 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.80s | heartbeat= 8067 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 32.90s | heartbeat= 8072 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.00s | heartbeat= 8077 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.10s | heartbeat= 8083 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.20s | heartbeat= 8087 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.30s | heartbeat= 8092 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.40s | heartbeat= 8097 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.50s | heartbeat= 8103 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.60s | heartbeat= 8107 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.70s | heartbeat= 8113 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.80s | heartbeat= 8117 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 33.90s | heartbeat= 8123 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.00s | heartbeat= 8128 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.10s | heartbeat= 8132 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.20s | heartbeat= 8138 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.30s | heartbeat= 8143 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.40s | heartbeat= 8147 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.50s | heartbeat= 8152 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.60s | heartbeat= 8158 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.70s | heartbeat= 8163 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.80s | heartbeat= 8167 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 34.90s | heartbeat= 8173 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.00s | heartbeat= 8178 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.10s | heartbeat= 8182 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.20s | heartbeat= 8187 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.30s | heartbeat= 8189 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.40s | heartbeat= 8197 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.50s | heartbeat= 8203 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.60s | heartbeat= 8207 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.70s | heartbeat= 8213 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.80s | heartbeat= 8218 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 35.90s | heartbeat= 8223 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.00s | heartbeat= 8227 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.10s | heartbeat= 8232 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.20s | heartbeat= 8238 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.30s | heartbeat= 8243 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.40s | heartbeat= 8245 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.50s | heartbeat= 8252 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.60s | heartbeat= 8258 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.70s | heartbeat= 8263 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.80s | heartbeat= 8267 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 36.90s | heartbeat= 8272 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.00s | heartbeat= 8278 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.10s | heartbeat= 8282 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.20s | heartbeat= 8288 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.30s | heartbeat= 8293 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.40s | heartbeat= 8298 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.50s | heartbeat= 8302 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.60s | heartbeat= 8309 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.70s | heartbeat= 8313 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.80s | heartbeat= 8317 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 37.90s | heartbeat= 8322 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.00s | heartbeat= 8328 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.10s | heartbeat= 8333 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.20s | heartbeat= 8337 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.30s | heartbeat= 8342 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.40s | heartbeat= 8348 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.50s | heartbeat= 8353 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.60s | heartbeat= 8357 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.70s | heartbeat= 8363 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.80s | heartbeat= 8368 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 38.90s | heartbeat= 8372 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.00s | heartbeat= 8378 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.10s | heartbeat= 8382 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.20s | heartbeat= 8387 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.30s | heartbeat= 8393 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.40s | heartbeat= 8397 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.50s | heartbeat= 8400 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.60s | heartbeat= 8408 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.70s | heartbeat= 8412 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.80s | heartbeat= 8417 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 39.90s | heartbeat= 8422 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.00s | heartbeat= 8427 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.10s | heartbeat= 8433 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.20s | heartbeat= 8438 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.30s | heartbeat= 8442 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.40s | heartbeat= 8448 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.50s | heartbeat= 8453 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.60s | heartbeat= 8457 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.70s | heartbeat= 8463 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.80s | heartbeat= 8467 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 40.90s | heartbeat= 8473 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.00s | heartbeat= 8477 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.10s | heartbeat= 8482 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.20s | heartbeat= 8488 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.30s | heartbeat= 8492 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.40s | heartbeat= 8497 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.50s | heartbeat= 8503 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.60s | heartbeat= 8508 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.70s | heartbeat= 8512 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.80s | heartbeat= 8518 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 41.90s | heartbeat= 8522 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.00s | heartbeat= 8528 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.10s | heartbeat= 8532 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.20s | heartbeat= 8537 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.30s | heartbeat= 8543 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.40s | heartbeat= 8548 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.50s | heartbeat= 8553 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.60s | heartbeat= 8558 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.70s | heartbeat= 8562 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.80s | heartbeat= 8567 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 42.90s | heartbeat= 8572 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.00s | heartbeat= 8577 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.10s | heartbeat= 8583 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.20s | heartbeat= 8587 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.30s | heartbeat= 8592 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.40s | heartbeat= 8598 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.50s | heartbeat= 8602 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.60s | heartbeat= 8607 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.70s | heartbeat= 8612 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.80s | heartbeat= 8615 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 43.90s | heartbeat= 8619 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.00s | heartbeat= 8624 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.10s | heartbeat= 8629 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.20s | heartbeat= 8634 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.30s | heartbeat= 8640 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.40s | heartbeat= 8645 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.50s | heartbeat= 8650 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.60s | heartbeat= 8655 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.70s | heartbeat= 8660 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.80s | heartbeat= 8665 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 44.90s | heartbeat= 8669 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.00s | heartbeat= 8675 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.10s | heartbeat= 8680 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.20s | heartbeat= 8685 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.30s | heartbeat= 8690 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.40s | heartbeat= 8694 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.50s | heartbeat= 8700 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.60s | heartbeat= 8705 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.70s | heartbeat= 8709 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.80s | heartbeat= 8715 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 45.90s | heartbeat= 8719 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.00s | heartbeat= 8725 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.10s | heartbeat= 8730 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.20s | heartbeat= 8735 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.30s | heartbeat= 8740 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.40s | heartbeat= 8743 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.50s | heartbeat= 8749 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.60s | heartbeat= 8754 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.70s | heartbeat= 8758 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.80s | heartbeat= 8764 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 46.90s | heartbeat= 8768 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.00s | heartbeat= 8774 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.10s | heartbeat= 8779 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.20s | heartbeat= 8784 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.30s | heartbeat= 8788 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.40s | heartbeat= 8793 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.50s | heartbeat= 8799 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.60s | heartbeat= 8803 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.70s | heartbeat= 8809 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.80s | heartbeat= 8813 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 47.90s | heartbeat= 8819 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.00s | heartbeat= 8823 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.10s | heartbeat= 8829 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.20s | heartbeat= 8834 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.30s | heartbeat= 8838 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.40s | heartbeat= 8844 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.50s | heartbeat= 8849 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.60s | heartbeat= 8854 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.70s | heartbeat= 8859 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.80s | heartbeat= 8863 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 48.90s | heartbeat= 8868 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.00s | heartbeat= 8873 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.10s | heartbeat= 8879 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.20s | heartbeat= 8884 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.30s | heartbeat= 8888 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.40s | heartbeat= 8894 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.50s | heartbeat= 8899 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.60s | heartbeat= 8903 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.70s | heartbeat= 8909 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.80s | heartbeat= 8914 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 49.90s | heartbeat= 8918 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.00s | heartbeat= 8923 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.10s | heartbeat= 8927 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.20s | heartbeat= 8933 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.30s | heartbeat= 8937 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.40s | heartbeat= 8942 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.50s | heartbeat= 8948 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.60s | heartbeat= 8953 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.70s | heartbeat= 8958 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.80s | heartbeat= 8962 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 50.90s | heartbeat= 8968 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.00s | heartbeat= 8972 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.10s | heartbeat= 8977 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.20s | heartbeat= 8982 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.30s | heartbeat= 8987 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.40s | heartbeat= 8991 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.50s | heartbeat= 8996 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.60s | heartbeat= 9001 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.70s | heartbeat= 9007 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.80s | heartbeat= 9011 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 51.90s | heartbeat= 9017 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.00s | heartbeat= 9022 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.10s | heartbeat= 9027 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.20s | heartbeat= 9031 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.30s | heartbeat= 9037 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.40s | heartbeat= 9042 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.50s | heartbeat= 9047 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.60s | heartbeat= 9051 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.70s | heartbeat= 9057 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.80s | heartbeat= 9062 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 52.90s | heartbeat= 9066 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.00s | heartbeat= 9072 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.10s | heartbeat= 9077 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.20s | heartbeat= 9082 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.30s | heartbeat= 9086 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.40s | heartbeat= 9092 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.50s | heartbeat= 9097 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.60s | heartbeat= 9101 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.70s | heartbeat= 9107 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.80s | heartbeat= 9112 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 53.90s | heartbeat= 9116 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.00s | heartbeat= 9122 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.10s | heartbeat= 9127 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.20s | heartbeat= 9132 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.30s | heartbeat= 9135 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.40s | heartbeat= 9141 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.50s | heartbeat= 9146 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.60s | heartbeat= 9151 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.70s | heartbeat= 9156 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.80s | heartbeat= 9160 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 54.90s | heartbeat= 9166 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.00s | heartbeat= 9171 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.10s | heartbeat= 9175 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.20s | heartbeat= 9180 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.30s | heartbeat= 9185 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.40s | heartbeat= 9191 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.50s | heartbeat= 9196 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.60s | heartbeat= 9201 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.70s | heartbeat= 9206 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.80s | heartbeat= 9211 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 55.90s | heartbeat= 9216 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.00s | heartbeat= 9221 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.10s | heartbeat= 9226 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.20s | heartbeat= 9230 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.30s | heartbeat= 9236 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.40s | heartbeat= 9241 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.50s | heartbeat= 9246 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.60s | heartbeat= 9251 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.70s | heartbeat= 9256 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.80s | heartbeat= 9260 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 56.90s | heartbeat= 9265 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.00s | heartbeat= 9270 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.10s | heartbeat= 9275 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.20s | heartbeat= 9280 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.30s | heartbeat= 9285 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.40s | heartbeat= 9289 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.50s | heartbeat= 9295 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.60s | heartbeat= 9300 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.70s | heartbeat= 9305 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.80s | heartbeat= 9310 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 57.90s | heartbeat= 9315 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.00s | heartbeat= 9319 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.10s | heartbeat= 9324 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.20s | heartbeat= 9329 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.30s | heartbeat= 9333 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.40s | heartbeat= 9339 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.50s | heartbeat= 9344 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.60s | heartbeat= 9349 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.70s | heartbeat= 9354 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.80s | heartbeat= 9359 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 58.90s | heartbeat= 9363 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.00s | heartbeat= 9369 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.10s | heartbeat= 9373 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.20s | heartbeat= 9376 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.30s | heartbeat= 9381 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.40s | heartbeat= 9386 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.50s | heartbeat= 9391 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.60s | heartbeat= 9397 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.70s | heartbeat= 9401 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.80s | heartbeat= 9407 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 59.90s | heartbeat= 9411 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.00s | heartbeat= 9416 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.10s | heartbeat= 9421 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.20s | heartbeat= 9427 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.30s | heartbeat= 9432 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.40s | heartbeat= 9437 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.50s | heartbeat= 9442 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.60s | heartbeat= 9447 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.70s | heartbeat= 9452 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.80s | heartbeat= 9457 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 60.90s | heartbeat= 9462 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.00s | heartbeat= 9466 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.10s | heartbeat= 9472 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.20s | heartbeat= 9477 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.30s | heartbeat= 9482 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.40s | heartbeat= 9487 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.50s | heartbeat= 9492 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.60s | heartbeat= 9497 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.70s | heartbeat= 9502 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.80s | heartbeat= 9506 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 61.90s | heartbeat= 9512 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.00s | heartbeat= 9516 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.10s | heartbeat= 9521 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.20s | heartbeat= 9526 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.30s | heartbeat= 9531 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.40s | heartbeat= 9537 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.50s | heartbeat= 9542 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.60s | heartbeat= 9545 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.70s | heartbeat= 9551 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.80s | heartbeat= 9556 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 62.90s | heartbeat= 9561 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.00s | heartbeat= 9566 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.10s | heartbeat= 9571 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.20s | heartbeat= 9575 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.30s | heartbeat= 9581 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.40s | heartbeat= 9586 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.50s | heartbeat= 9590 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.60s | heartbeat= 9596 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.70s | heartbeat= 9601 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.80s | heartbeat= 9606 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 63.90s | heartbeat= 9611 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.00s | heartbeat= 9616 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.10s | heartbeat= 9621 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.20s | heartbeat= 9625 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.30s | heartbeat= 9630 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.40s | heartbeat= 9636 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.50s | heartbeat= 9641 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.60s | heartbeat= 9646 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.70s | heartbeat= 9651 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.80s | heartbeat= 9655 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 64.90s | heartbeat= 9661 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.00s | heartbeat= 9665 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.10s | heartbeat= 9671 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.20s | heartbeat= 9675 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.30s | heartbeat= 9681 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.40s | heartbeat= 9685 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.50s | heartbeat= 9690 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.60s | heartbeat= 9695 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.70s | heartbeat= 9700 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.80s | heartbeat= 9705 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 65.90s | heartbeat= 9711 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.00s | heartbeat= 9715 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.10s | heartbeat= 9721 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.20s | heartbeat= 9725 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.30s | heartbeat= 9728 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.40s | heartbeat= 9734 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.50s | heartbeat= 9738 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.60s | heartbeat= 9743 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.70s | heartbeat= 9749 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.80s | heartbeat= 9753 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 66.90s | heartbeat= 9758 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.00s | heartbeat= 9763 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.10s | heartbeat= 9768 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.20s | heartbeat= 9773 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.30s | heartbeat= 9778 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.40s | heartbeat= 9783 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.50s | heartbeat= 9789 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.60s | heartbeat= 9794 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.70s | heartbeat= 9799 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.80s | heartbeat= 9803 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 67.90s | heartbeat= 9809 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.00s | heartbeat= 9813 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.10s | heartbeat= 9818 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.20s | heartbeat= 9822 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.30s | heartbeat= 9822 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.40s | heartbeat= 9832 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.50s | heartbeat= 9837 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.60s | heartbeat= 9842 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.70s | heartbeat= 9848 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.80s | heartbeat= 9852 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 68.90s | heartbeat= 9855 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.00s | heartbeat= 9860 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.10s | heartbeat= 9866 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.20s | heartbeat= 9870 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.30s | heartbeat= 9876 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.40s | heartbeat= 9881 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.50s | heartbeat= 9886 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.60s | heartbeat= 9891 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.70s | heartbeat= 9896 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.80s | heartbeat= 9901 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 69.90s | heartbeat= 9906 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.00s | heartbeat= 9911 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.10s | heartbeat= 9916 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.20s | heartbeat= 9920 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.30s | heartbeat= 9925 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.40s | heartbeat= 9930 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.50s | heartbeat= 9936 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.60s | heartbeat= 9941 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.70s | heartbeat= 9946 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.80s | heartbeat= 9951 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 70.90s | heartbeat= 9956 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.00s | heartbeat= 9960 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.10s | heartbeat= 9966 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.20s | heartbeat= 9970 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.30s | heartbeat= 9976 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.40s | heartbeat= 9980 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.50s | heartbeat= 9986 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.60s | heartbeat= 9990 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.70s | heartbeat= 9995 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.80s | heartbeat=10000 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 71.90s | heartbeat=10006 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.00s | heartbeat=10010 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.10s | heartbeat=10016 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.20s | heartbeat=10020 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.30s | heartbeat=10025 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.40s | heartbeat=10030 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.50s | heartbeat=10035 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.60s | heartbeat=10040 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.70s | heartbeat=10046 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.80s | heartbeat=10048 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 72.90s | heartbeat=10056 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.00s | heartbeat=10060 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.10s | heartbeat=10066 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.20s | heartbeat=10071 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.30s | heartbeat=10075 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.40s | heartbeat=10081 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.50s | heartbeat=10086 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.60s | heartbeat=10090 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.70s | heartbeat=10095 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.80s | heartbeat=10101 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 73.90s | heartbeat=10105 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.00s | heartbeat=10110 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.10s | heartbeat=10115 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.20s | heartbeat=10120 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.30s | heartbeat=10125 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.40s | heartbeat=10130 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.50s | heartbeat=10136 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.60s | heartbeat=10136 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.70s | heartbeat=10141 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.80s | heartbeat=10147 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 74.90s | heartbeat=10151 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.00s | heartbeat=10156 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.10s | heartbeat=10161 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.20s | heartbeat=10166 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.30s | heartbeat=10171 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.40s | heartbeat=10176 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.50s | heartbeat=10181 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.60s | heartbeat=10186 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.70s | heartbeat=10191 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.80s | heartbeat=10197 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 75.90s | heartbeat=10202 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.00s | heartbeat=10206 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.10s | heartbeat=10212 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.20s | heartbeat=10217 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.30s | heartbeat=10222 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.40s | heartbeat=10226 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.50s | heartbeat=10231 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.60s | heartbeat=10236 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.70s | heartbeat=10242 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.80s | heartbeat=10247 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 76.90s | heartbeat=10252 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.00s | heartbeat=10257 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.10s | heartbeat=10261 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.20s | heartbeat=10266 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.30s | heartbeat=10270 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.40s | heartbeat=10276 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.50s | heartbeat=10280 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.60s | heartbeat=10285 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.70s | heartbeat=10290 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.80s | heartbeat=10296 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 77.90s | heartbeat=10301 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.00s | heartbeat=10305 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.10s | heartbeat=10311 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.20s | heartbeat=10316 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.30s | heartbeat=10321 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.40s | heartbeat=10325 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.50s | heartbeat=10330 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.60s | heartbeat=10335 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.70s | heartbeat=10340 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.80s | heartbeat=10345 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 78.90s | heartbeat=10350 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.00s | heartbeat=10355 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.10s | heartbeat=10360 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.20s | heartbeat=10366 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.30s | heartbeat=10371 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.40s | heartbeat=10376 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.50s | heartbeat=10381 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.60s | heartbeat=10386 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.70s | heartbeat=10389 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.80s | heartbeat=10396 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 79.90s | heartbeat=10397 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.00s | heartbeat=10405 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.10s | heartbeat=10410 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.20s | heartbeat=10416 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.30s | heartbeat=10420 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.40s | heartbeat=10425 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.50s | heartbeat=10430 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.60s | heartbeat=10435 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.70s | heartbeat=10440 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.80s | heartbeat=10445 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 80.90s | heartbeat=10451 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.00s | heartbeat=10455 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.10s | heartbeat=10460 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.20s | heartbeat=10465 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.30s | heartbeat=10470 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.40s | heartbeat=10475 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.50s | heartbeat=10480 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.60s | heartbeat=10484 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.70s | heartbeat=10489 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.80s | heartbeat=10494 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu
+t= 81.90s | heartbeat=10500 | level= 50.00% | valve= 50.0% | feedwater=1.000 pu

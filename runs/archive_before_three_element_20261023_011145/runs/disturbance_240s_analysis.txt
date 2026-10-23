@@ -1,0 +1,29 @@
+BOILER DCS - DISTURBANCE RESPONSE ANALYSIS
+================================================
+Trace records: 2400
+Recorded time: 0.10 to 240.00 s
+Disturbance time: 5.00 s
+Setpoint: 50.00%
+
+Pre-disturbance mean level: 50.0000%
+Maximum level: 51.1380% at 11.70 s
+Minimum level: 49.4380% at 124.70 s
+Peak-to-peak variation: 1.7000 pp
+Final recorded level: 50.2170%
+Final level error: +0.2170 pp
+
+SETTLING (sample-based; measured from disturbance at 5 s)
+Within +/-0.5 percentage points: 147.0
+Within +/-1.0 percentage point: 17.8
+
+Last 10 s mean level: 50.1941%
+Last 10 s population standard deviation: 0.01437 percentage points
+IAE: 87.4657 percentage-point seconds
+ISE: 48.3291 percentage-point squared seconds
+
+FINAL RECORDED PROCESS VALUES
+Feedwater: 1.2082 pu
+Steam flow: 1.2000 pu
+Valve position: 60.40%
+
+Settling results are based on recorded samples, not continuous-time proof.

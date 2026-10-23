@@ -1,0 +1,596 @@
+﻿BOILER DCS - SOURCE AUDIT
+Audit time: 2026-10-23 00.47.23
+Project: C:\Users\thebe\Downloads\BOILER DCS
+OpenPLC project path checked: D:\PLC\Project 3
+
+========== PROJECT FILE INVENTORY ==========
+     8156 bytes | 2026-10-23 00.45.31 | C:\Users\thebe\Downloads\BOILER DCS\analyze_disturbance_trace.py
+     3061 bytes | 2026-10-20 14.59.00 | C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\boiler.py
+     2198 bytes | 2026-10-20 14.59.00 | C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\run_simulation.py
+     1171 bytes | 2026-10-20 14.59.00 | C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\test_boiler.py
+     5410 bytes | 2026-10-20 21.37.51 | C:\Users\thebe\Downloads\BOILER DCS\compare_controllers.py
+      294 bytes | 2026-10-21 02.25.24 | C:\Users\thebe\Downloads\BOILER DCS\control\__init__.py
+     1620 bytes | 2026-10-20 22.26.51 | C:\Users\thebe\Downloads\BOILER DCS\control\cascade_pressure.py
+     3037 bytes | 2026-10-21 02.25.23 | C:\Users\thebe\Downloads\BOILER DCS\control\pid.py
+     1573 bytes | 2026-10-21 02.25.25 | C:\Users\thebe\Downloads\BOILER DCS\control\single_element.py
+     2585 bytes | 2026-10-21 02.25.25 | C:\Users\thebe\Downloads\BOILER DCS\control\three_element.py
+      827 bytes | 2026-10-20 14.59.00 | C:\Users\thebe\Downloads\BOILER DCS\docs\BUILD_PLAN.md
+     1447 bytes | 2026-10-21 01.08.06 | C:\Users\thebe\Downloads\BOILER DCS\docs\MODBUS_REGISTER_MAP.md
+     6190 bytes | 2026-10-20 21.52.52 | C:\Users\thebe\Downloads\BOILER DCS\evaluate_controllers.py
+     3705 bytes | 2026-10-20 22.28.33 | C:\Users\thebe\Downloads\BOILER DCS\evaluate_pressure_control.py
+     3173 bytes | 2026-10-20 22.30.25 | C:\Users\thebe\Downloads\BOILER DCS\integrate_cascade_safety.py
+     2954 bytes | 2026-10-20 22.20.40 | C:\Users\thebe\Downloads\BOILER DCS\integrate_safety.py
+        0 bytes | 2026-10-20 14.59.00 | C:\Users\thebe\Downloads\BOILER DCS\model\__init__.py
+     3061 bytes | 2026-10-20 14.59.00 | C:\Users\thebe\Downloads\BOILER DCS\model\boiler.py
+     1000 bytes | 2026-10-21 01.08.24 | C:\Users\thebe\Downloads\BOILER DCS\plc\BoilerDCS.st
+        0 bytes | 2026-10-20 22.32.09 | C:\Users\thebe\Downloads\BOILER DCS\plc_interface\__init__.py
+     1314 bytes | 2026-10-20 22.33.22 | C:\Users\thebe\Downloads\BOILER DCS\plc_interface\adapter.py
+     3433 bytes | 2026-10-20 22.32.09 | C:\Users\thebe\Downloads\BOILER DCS\plc_interface\register_map.py
+     2467 bytes | 2026-10-20 20.54.55 | C:\Users\thebe\Downloads\BOILER DCS\plot_stage1.py
+      553 bytes | 2026-10-20 14.59.00 | C:\Users\thebe\Downloads\BOILER DCS\README.md
+     9696 bytes | 2026-10-21 19.41.43 | C:\Users\thebe\Downloads\BOILER DCS\run_closed_loop_test.py
+     4945 bytes | 2026-10-21 19.04.53 | C:\Users\thebe\Downloads\BOILER DCS\run_openplc_bridge.py
+     7061 bytes | 2026-10-21 22.07.59 | C:\Users\thebe\Downloads\BOILER DCS\run_openplc_disturbance.py
+     2198 bytes | 2026-10-20 14.59.00 | C:\Users\thebe\Downloads\BOILER DCS\run_simulation.py
+        0 bytes | 2026-10-20 22.16.13 | C:\Users\thebe\Downloads\BOILER DCS\safety\__init__.py
+     3798 bytes | 2026-10-20 22.20.10 | C:\Users\thebe\Downloads\BOILER DCS\safety\interlocks.py
+     1083 bytes | 2026-10-21 02.03.12 | C:\Users\thebe\Downloads\BOILER DCS\scan_modbus_registers.py
+      740 bytes | 2026-10-21 19.20.12 | C:\Users\thebe\Downloads\BOILER DCS\scan_plc_registers.py
+      745 bytes | 2026-10-21 01.52.10 | C:\Users\thebe\Downloads\BOILER DCS\test_heartbeat.py
+      577 bytes | 2026-10-20 23.14.53 | C:\Users\thebe\Downloads\BOILER DCS\test_modbus.py
+     1540 bytes | 2026-10-21 01.07.48 | C:\Users\thebe\Downloads\BOILER DCS\test_modbus_rw.py
+      999 bytes | 2026-10-21 02.08.38 | C:\Users\thebe\Downloads\BOILER DCS\test_mw_block.py
+     2842 bytes | 2026-10-21 19.29.52 | C:\Users\thebe\Downloads\BOILER DCS\test_plc_auto_response.py
+     2490 bytes | 2026-10-21 19.30.31 | C:\Users\thebe\Downloads\BOILER DCS\test_plc_auto_response_long.py
+     1685 bytes | 2026-10-21 19.28.53 | C:\Users\thebe\Downloads\BOILER DCS\test_plc_manual_response.py
+     1308 bytes | 2026-10-21 19.28.21 | C:\Users\thebe\Downloads\BOILER DCS\test_plc_memory_init.py
+      706 bytes | 2026-10-21 19.19.10 | C:\Users\thebe\Downloads\BOILER DCS\test_plc_register_map.py
+      985 bytes | 2026-10-21 02.17.18 | C:\Users\thebe\Downloads\BOILER DCS\test_plc_registers.py
+      611 bytes | 2026-10-21 02.15.19 | C:\Users\thebe\Downloads\BOILER DCS\test_process_persistence.py
+     1170 bytes | 2026-10-21 02.15.00 | C:\Users\thebe\Downloads\BOILER DCS\test_process_registers.py
+     7173 bytes | 2026-10-21 02.25.22 | C:\Users\thebe\Downloads\BOILER DCS\tests\compare_controllers.py
+     1171 bytes | 2026-10-20 14.59.00 | C:\Users\thebe\Downloads\BOILER DCS\tests\test_boiler.py
+     2283 bytes | 2026-10-20 22.26.56 | C:\Users\thebe\Downloads\BOILER DCS\tests\test_cascade_pressure.py
+     3547 bytes | 2026-10-20 21.45.38 | C:\Users\thebe\Downloads\BOILER DCS\tests\test_closed_loop.py
+     1500 bytes | 2026-10-20 21.42.50 | C:\Users\thebe\Downloads\BOILER DCS\tests\test_controllers.py
+     4010 bytes | 2026-10-20 21.51.00 | C:\Users\thebe\Downloads\BOILER DCS\tests\test_disturbance_metrics.py
+     2365 bytes | 2026-10-20 22.33.26 | C:\Users\thebe\Downloads\BOILER DCS\tests\test_register_adapter.py
+     3150 bytes | 2026-10-20 22.32.35 | C:\Users\thebe\Downloads\BOILER DCS\tests\test_register_map.py
+     3289 bytes | 2026-10-20 22.16.20 | C:\Users\thebe\Downloads\BOILER DCS\tests\test_safety.py
+     1281 bytes | 2026-10-20 22.20.16 | C:\Users\thebe\Downloads\BOILER DCS\tests\test_safety_edge_cases.py
+     5500 bytes | 2026-10-20 22.12.17 | C:\Users\thebe\Downloads\BOILER DCS\validate_scenarios.py
+      821 bytes | 2026-10-21 19.29.13 | C:\Users\thebe\Downloads\BOILER DCS\verify_plc_state.py
+     6892 bytes | 2026-10-22 15.34.03 | D:\PLC\Project 3\backup_before_recovery_20261022_154403\main.st
+     3758 bytes | 2026-10-21 19.51.45 | D:\PLC\Project 3\backup_before_recovery_20261022_154403\main_three_element_candidate.st
+      403 bytes | 2026-10-22 15.34.04 | D:\PLC\Project 3\backup_before_recovery_20261022_154403\modbus_slave.json
+     3893 bytes | 2026-10-22 15.34.04 | D:\PLC\Project 3\backup_before_recovery_20261022_154403\program.st
+      290 bytes | 2026-10-22 15.49.59 | D:\PLC\Project 3\devices\configuration.json
+        2 bytes | 2026-10-22 15.49.59 | D:\PLC\Project 3\devices\pin-mapping.json
+      190 bytes | 2026-10-22 15.49.59 | D:\PLC\Project 3\devices\servers\Kalki.json
+     4891 bytes | 2026-10-22 15.49.59 | D:\PLC\Project 3\pous\programs\main.st
+     1886 bytes | 2026-10-21 19.17.49 | D:\PLC\Project 3\pous\programs\main_single_element_backup.st
+     3758 bytes | 2026-10-21 19.51.45 | D:\PLC\Project 3\pous\programs\main_three_element_candidate.st
+      601 bytes | 2026-10-22 15.49.59 | D:\PLC\Project 3\project.json
+
+========== CONTROL LOGIC AND REGISTER REFERENCES ==========
+
+C:\Users\thebe\Downloads\BOILER DCS\analyze_disturbance_trace.py : line 17
+        "level_pct",
+ >> "feedwater_flow_pu",
+        "steam_flow_pu",
+
+C:\Users\thebe\Downloads\BOILER DCS\analyze_disturbance_trace.py : line 18
+        "feedwater_flow_pu",
+ >> "steam_flow_pu",
+        "valve_pct",
+
+C:\Users\thebe\Downloads\BOILER DCS\analyze_disturbance_trace.py : line 118
+        "final_level_error_percentage_points": final["level_pct"] - SETPOINT,
+ >> "final_feedwater_flow_pu": final["feedwater_flow_pu"],
+        "final_steam_flow_pu": final["steam_flow_pu"],
+
+C:\Users\thebe\Downloads\BOILER DCS\analyze_disturbance_trace.py : line 119
+        "final_feedwater_flow_pu": final["feedwater_flow_pu"],
+ >> "final_steam_flow_pu": final["steam_flow_pu"],
+        "final_valve_pct": final["valve_pct"],
+
+C:\Users\thebe\Downloads\BOILER DCS\analyze_disturbance_trace.py : line 178
+        "FINAL RECORDED PROCESS VALUES",
+ >> f"Feedwater: {final['feedwater_flow_pu']:.4f} pu",
+        f"Steam flow: {final['steam_flow_pu']:.4f} pu",
+
+C:\Users\thebe\Downloads\BOILER DCS\analyze_disturbance_trace.py : line 179
+        f"Feedwater: {final['feedwater_flow_pu']:.4f} pu",
+ >> f"Steam flow: {final['steam_flow_pu']:.4f} pu",
+        f"Valve position: {final['valve_pct']:.2f}%",
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\boiler.py : line 8
+        inventory_pu: float = 1.0
+ >> drum_level_pct: float = 50.0
+        pressure_pu: float = 1.0
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\boiler.py : line 11
+        heat_duty_pu: float = 1.0
+ >> feedwater_flow_pu: float = 1.0
+        steam_flow_pu: float = 1.0
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\boiler.py : line 12
+        feedwater_flow_pu: float = 1.0
+ >> steam_flow_pu: float = 1.0
+        fuel_flow_pu: float = 1.0
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\boiler.py : line 45
+    
+ >> def step(self, feedwater_command_pu=1.0, steam_demand_pu=1.0, fuel_command_pu=1.0):
+            c, s, dt = self.config, self.state, self.dt
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\boiler.py : line 47
+            c, s, dt = self.config, self.state, self.dt
+ >> fw = self._clip(float(feedwater_command_pu), 0.0, 1.5)
+            steam = self._clip(float(steam_demand_pu), 0.0, 1.5)
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\boiler.py : line 48
+            fw = self._clip(float(feedwater_command_pu), 0.0, 1.5)
+ >> steam = self._clip(float(steam_demand_pu), 0.0, 1.5)
+            fuel = self._clip(float(fuel_command_pu), 0.0, 1.5)
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\run_simulation.py : line 16
+            rows.append({
+ >> "time_s": round(s.time_s, 3), "drum_level_pct": s.drum_level_pct,
+                "inventory_pu": s.inventory_pu, "pressure_pu": s.pressure_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\run_simulation.py : line 18
+                "inventory_pu": s.inventory_pu, "pressure_pu": s.pressure_pu,
+ >> "feedwater_flow_pu": s.feedwater_flow_pu, "steam_flow_pu": s.steam_flow_pu,
+                "fuel_flow_pu": s.fuel_flow_pu, "heat_duty_pu": s.heat_duty_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\run_simulation.py : line 20
+                "fuel_flow_pu": s.fuel_flow_pu, "heat_duty_pu": s.heat_duty_pu,
+ >> "steam_demand_command_pu": demand, "indicated_swell_pct": s.indicated_swell_pct,
+            })
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\run_simulation.py : line 34
+        nominal = run_scenario("nominal", 60.0, lambda t: 1.0)
+ >> disturbed = run_scenario("steam_demand_step", 60.0, lambda t: 1.2 if t >= 10.0 else 1.0)
+        at15 = min(disturbed, key=lambda r: abs(r["time_s"]-15.0))
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\run_simulation.py : line 39
+            "BOILER DIGITAL TWIN — BUILD 01 SUMMARY\n\n"
+ >> f"Nominal final level: {nominal[-1]['drum_level_pct']:.3f} %\n"
+            f"Nominal final pressure: {nominal[-1]['pressure_pu']:.4f} pu\n"
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\run_simulation.py : line 43
+            "Steam demand step: 1.0 -> 1.2 pu at t=10 s\n"
+ >> f"Level at t=15 s: {at15['drum_level_pct']:.3f} %\n"
+            f"Disturbed final level: {end['drum_level_pct']:.3f} %\n"
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\test_boiler.py : line 10
+            self.assertAlmostEqual(b.state.inventory_pu, 1.0, places=8)
+ >> self.assertAlmostEqual(b.state.drum_level_pct, 50.0, places=6)
+            self.assertAlmostEqual(b.state.pressure_pu, 1.0, places=6)
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\test_boiler.py : line 25
+            self.assertLessEqual(b.state.inventory_pu, 1.5)
+ >> self.assertGreaterEqual(b.state.drum_level_pct, 0)
+            self.assertLessEqual(b.state.drum_level_pct, 100)
+
+C:\Users\thebe\Downloads\BOILER DCS\backups\baseline_20261021_190154\test_boiler.py : line 26
+            self.assertGreaterEqual(b.state.drum_level_pct, 0)
+ >> self.assertLessEqual(b.state.drum_level_pct, 100)
+            self.assertGreaterEqual(b.state.pressure_pu, 0)
+
+C:\Users\thebe\Downloads\BOILER DCS\compare_controllers.py : line 1
+ >> """Compare single-element and three-element boiler control."""
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\compare_controllers.py : line 11
+    from model.boiler import BoilerModel
+ >> from control import SingleElementController, ThreeElementController
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\compare_controllers.py : line 27
+        controller = (
+ >> SingleElementController(setpoint_pct=SETPOINT)
+            if kind == "single"
+
+C:\Users\thebe\Downloads\BOILER DCS\compare_controllers.py : line 29
+            if kind == "single"
+ >> else ThreeElementController(setpoint_pct=SETPOINT)
+        )
+
+C:\Users\thebe\Downloads\BOILER DCS\compare_controllers.py : line 39
+            if kind == "single":
+ >> command = controller.update(state.drum_level_pct, dt)
+            else:
+
+C:\Users\thebe\Downloads\BOILER DCS\compare_controllers.py : line 42
+                command = controller.update(
+ >> state.drum_level_pct,
+                    state.steam_flow_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\control\__init__.py : line 3
+    
+ >> from .pid import PIDController
+    from .single_element import SingleElementController
+
+C:\Users\thebe\Downloads\BOILER DCS\control\__init__.py : line 4
+    from .pid import PIDController
+ >> from .single_element import SingleElementController
+    from .three_element import ThreeElementController
+
+C:\Users\thebe\Downloads\BOILER DCS\control\__init__.py : line 5
+    from .single_element import SingleElementController
+ >> from .three_element import ThreeElementController
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\__init__.py : line 9
+        "PIDController",
+ >> "SingleElementController",
+        "ThreeElementController",
+
+C:\Users\thebe\Downloads\BOILER DCS\control\__init__.py : line 10
+        "SingleElementController",
+ >> "ThreeElementController",
+    ]
+
+C:\Users\thebe\Downloads\BOILER DCS\control\cascade_pressure.py : line 3
+    
+ >> from control.pid import PIDController
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\cascade_pressure.py : line 6
+    
+ >> class CascadePressureController:
+        """PI pressure controller that adjusts boiler fuel demand.
+
+C:\Users\thebe\Downloads\BOILER DCS\control\cascade_pressure.py : line 7
+    class CascadePressureController:
+ >> """PI pressure controller that adjusts boiler fuel demand.
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\pid.py : line 2
+    
+ >> """PID controller with output saturation and conditional anti-windup."""
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\pid.py : line 9
+    class PIDController:
+ >> """Discrete-time PID controller.
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\single_element.py : line 2
+    
+ >> """Single-element boiler drum-level controller."""
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\single_element.py : line 4
+    
+ >> from control.pid import PIDController
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\single_element.py : line 7
+    
+ >> class SingleElementController:
+        """Use drum-level feedback to regulate feedwater flow.
+
+C:\Users\thebe\Downloads\BOILER DCS\control\single_element.py : line 8
+    class SingleElementController:
+ >> """Use drum-level feedback to regulate feedwater flow.
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\single_element.py : line 10
+    
+ >> The PI controller generates a correction around the nominal
+        feedwater command of 1.0 pu.
+
+C:\Users\thebe\Downloads\BOILER DCS\control\single_element.py : line 11
+        The PI controller generates a correction around the nominal
+ >> feedwater command of 1.0 pu.
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\three_element.py : line 2
+    
+ >> """Three-element boiler drum-level controller.
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\three_element.py : line 5
+    Elements:
+ >> 1. Drum-level feedback: outer PI controller.
+    2. Steam-flow feedforward: anticipates changes in steam demand.
+
+C:\Users\thebe\Downloads\BOILER DCS\control\three_element.py : line 6
+    1. Drum-level feedback: outer PI controller.
+ >> 2. Steam-flow feedforward: anticipates changes in steam demand.
+    3. Feedwater-flow feedback: inner PI controller tracks required flow.
+
+C:\Users\thebe\Downloads\BOILER DCS\control\three_element.py : line 7
+    2. Steam-flow feedforward: anticipates changes in steam demand.
+ >> 3. Feedwater-flow feedback: inner PI controller tracks required flow.
+    """
+
+C:\Users\thebe\Downloads\BOILER DCS\control\three_element.py : line 10
+    
+ >> from control.pid import PIDController
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\control\three_element.py : line 13
+    
+ >> class ThreeElementController:
+        """Three-element drum-level controller.
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_controllers.py : line 10
+    from model.boiler import BoilerModel
+ >> from control import SingleElementController, ThreeElementController
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_controllers.py : line 34
+    
+ >> if controller_type is SingleElementController:
+                command = controller.update(state.drum_level_pct, dt)
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_controllers.py : line 35
+            if controller_type is SingleElementController:
+ >> command = controller.update(state.drum_level_pct, dt)
+            else:
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_controllers.py : line 38
+                command = controller.update(
+ >> state.drum_level_pct,
+                    state.steam_flow_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_controllers.py : line 39
+                    state.drum_level_pct,
+ >> state.steam_flow_pu,
+                    state.feedwater_flow_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_controllers.py : line 40
+                    state.steam_flow_pu,
+ >> state.feedwater_flow_pu,
+                    dt,
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_pressure_control.py : line 5
+    from model.boiler import BoilerModel
+ >> from control.cascade_pressure import CascadePressureController
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_pressure_control.py : line 21
+        boiler = BoilerModel()
+ >> controller = CascadePressureController(
+            setpoint_pu=PRESSURE_SETPOINT_PU
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_pressure_control.py : line 43
+            boiler.step(
+ >> feedwater_command_pu=1.0,
+                steam_demand_pu=demand,
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_pressure_control.py : line 44
+                feedwater_command_pu=1.0,
+ >> steam_demand_pu=demand,
+                fuel_command_pu=fuel_command,
+
+C:\Users\thebe\Downloads\BOILER DCS\evaluate_pressure_control.py : line 54
+                "pressure_error_pu": PRESSURE_SETPOINT_PU - state.pressure_pu,
+ >> "steam_demand_pu": demand,
+                "fuel_command_pu": fuel_command,
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_cascade_safety.py : line 5
+    from model.boiler import BoilerModel
+ >> from control import ThreeElementController
+    from control.cascade_pressure import CascadePressureController
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_cascade_safety.py : line 6
+    from control import ThreeElementController
+ >> from control.cascade_pressure import CascadePressureController
+    from safety.interlocks import SafetyInterlock
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_cascade_safety.py : line 7
+    from control.cascade_pressure import CascadePressureController
+ >> from safety.interlocks import SafetyInterlock
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_cascade_safety.py : line 20
+        boiler = BoilerModel()
+ >> level_controller = ThreeElementController(setpoint_pct=50.0)
+        pressure_controller = CascadePressureController(setpoint_pu=1.0)
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_cascade_safety.py : line 21
+        level_controller = ThreeElementController(setpoint_pct=50.0)
+ >> pressure_controller = CascadePressureController(setpoint_pu=1.0)
+        safety = SafetyInterlock()
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_cascade_safety.py : line 22
+        pressure_controller = CascadePressureController(setpoint_pu=1.0)
+ >> safety = SafetyInterlock()
+        rows = []
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_safety.py : line 5
+    from model.boiler import BoilerModel
+ >> from control import ThreeElementController
+    from safety.interlocks import SafetyInterlock
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_safety.py : line 6
+    from control import ThreeElementController
+ >> from safety.interlocks import SafetyInterlock
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_safety.py : line 20
+        boiler = BoilerModel()
+ >> controller = ThreeElementController(
+            setpoint_pct=LEVEL_SETPOINT_PCT
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_safety.py : line 23
+        )
+ >> safety = SafetyInterlock()
+        rows = []
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_safety.py : line 31
+            status = safety.evaluate(
+ >> level_pct=state.drum_level_pct,
+                pressure_pu=state.pressure_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\integrate_safety.py : line 38
+            command = controller.update(
+ >> measured_level_pct=state.drum_level_pct,
+                measured_steam_flow_pu=state.steam_flow_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\model\boiler.py : line 8
+        inventory_pu: float = 1.0
+ >> drum_level_pct: float = 50.0
+        pressure_pu: float = 1.0
+
+C:\Users\thebe\Downloads\BOILER DCS\model\boiler.py : line 11
+        heat_duty_pu: float = 1.0
+ >> feedwater_flow_pu: float = 1.0
+        steam_flow_pu: float = 1.0
+
+C:\Users\thebe\Downloads\BOILER DCS\model\boiler.py : line 12
+        feedwater_flow_pu: float = 1.0
+ >> steam_flow_pu: float = 1.0
+        fuel_flow_pu: float = 1.0
+
+C:\Users\thebe\Downloads\BOILER DCS\model\boiler.py : line 45
+    
+ >> def step(self, feedwater_command_pu=1.0, steam_demand_pu=1.0, fuel_command_pu=1.0):
+            c, s, dt = self.config, self.state, self.dt
+
+C:\Users\thebe\Downloads\BOILER DCS\model\boiler.py : line 47
+            c, s, dt = self.config, self.state, self.dt
+ >> fw = self._clip(float(feedwater_command_pu), 0.0, 1.5)
+            steam = self._clip(float(steam_demand_pu), 0.0, 1.5)
+
+C:\Users\thebe\Downloads\BOILER DCS\model\boiler.py : line 48
+            fw = self._clip(float(feedwater_command_pu), 0.0, 1.5)
+ >> steam = self._clip(float(steam_demand_pu), 0.0, 1.5)
+            fuel = self._clip(float(fuel_command_pu), 0.0, 1.5)
+
+C:\Users\thebe\Downloads\BOILER DCS\plc\BoilerDCS.st : line 6
+        These declarations must be incorporated into the OpenPLC
+ >> project and mapped to the verified Modbus server variables.
+    *)
+
+C:\Users\thebe\Downloads\BOILER DCS\plc\BoilerDCS.st : line 12
+        (* Process measurements: scaled integer values *)
+ >> DrumLevel_x100       : INT := 5000;
+        DrumPressure_x1000   : INT := 1000;
+
+C:\Users\thebe\Downloads\BOILER DCS\plc\BoilerDCS.st : line 14
+        DrumPressure_x1000   : INT := 1000;
+ >> FeedwaterFlow_x1000  : INT := 1000;
+        SteamFlow_x1000      : INT := 1000;
+
+C:\Users\thebe\Downloads\BOILER DCS\plc\BoilerDCS.st : line 15
+        FeedwaterFlow_x1000  : INT := 1000;
+ >> SteamFlow_x1000      : INT := 1000;
+        FuelFlow_x1000       : INT := 1000;
+
+C:\Users\thebe\Downloads\BOILER DCS\plc\BoilerDCS.st : line 20
+        (* Controller outputs: 0 to 1000 represents 0 to 100.0% *)
+ >> FeedwaterValve_x10   : INT := 500;
+        FuelValve_x10        : INT := 500;
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\adapter.py : line 1
+ >> """Convert boiler simulation values into the project's Modbus register image."""
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\adapter.py : line 5
+        build_register_image,
+ >> encode_trip_causes,
+    )
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\adapter.py : line 11
+        state,
+ >> feedwater_command_pu,
+        requested_fuel_command_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\adapter.py : line 20
+            safety_status.fuel_command_pu
+ >> if safety_status.trip_latched
+            else requested_fuel_command_pu
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\adapter.py : line 25
+        values = {
+ >> "drum_level_pct": state.drum_level_pct,
+            "pressure_pu": state.pressure_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\adapter.py : line 27
+            "pressure_pu": state.pressure_pu,
+ >> "steam_flow_pu": state.steam_flow_pu,
+            "feedwater_flow_pu": state.feedwater_flow_pu,
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\register_map.py : line 1
+ >> """Scaled 16-bit Modbus holding-register map for the boiler digital twin."""
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\register_map.py : line 7
+    REGISTER_MAP = {
+ >> "drum_level_pct": {"address": 0, "scale": 100.0},
+        "pressure_pu": {"address": 1, "scale": 10000.0},
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\register_map.py : line 9
+        "pressure_pu": {"address": 1, "scale": 10000.0},
+ >> "steam_flow_pu": {"address": 2, "scale": 1000.0},
+        "feedwater_flow_pu": {"address": 3, "scale": 1000.0},
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\register_map.py : line 10
+        "steam_flow_pu": {"address": 2, "scale": 1000.0},
+ >> "feedwater_flow_pu": {"address": 3, "scale": 1000.0},
+        "fuel_flow_pu": {"address": 4, "scale": 1000.0},
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\register_map.py : line 13
+        "heat_duty_pu": {"address": 5, "scale": 1000.0},
+ >> "feedwater_command_pu": {"address": 6, "scale": 1000.0},
+        "fuel_command_pu": {"address": 7, "scale": 1000.0},
+
+C:\Users\thebe\Downloads\BOILER DCS\plc_interface\register_map.py : line 15
+        "fuel_command_pu": {"address": 7, "scale": 1000.0},
+ >> "trip_latched": {"address": 8, "scale": 1.0},
+        "fuel_permissive": {"address": 9, "scale": 1.0},
+
+C:\Users\thebe\Downloads\BOILER DCS\plot_stage1.py : line 40
+        nominal = load_csv("nominal.csv")
+ >> disturbed = load_csv("steam_demand_step.csv")
+    
+
+C:\Users\thebe\Downloads\BOILER DCS\plot_stage1.py : line 43
+        plot_signal(
+ >> nominal, "nominal_level.png", "drum_level_pct",
+            "Drum level (%)", "Nominal Boiler Drum Level"
+
+C:\Users\thebe\Downloads\BOILER DCS\plot_stage1.py : line 44
+            nominal, "nominal_level.png", "drum_level_pct",
+ >> "Drum level (%)", "Nominal Boiler Drum Level"
+        )
+
+C:\Users\thebe\Downloads\BOILER DCS\plot_stage1.py : line 47
+        plot_signal(
+ >> disturbed, "disturbed_level.png", "drum_level_pct",
+            "Drum level (%)", "Drum Level Under Steam-Demand Disturbance", True
+
+C:\Users\thebe\Downloads\BOILER DCS\plot_stage1.py : line 48
+            disturbed, "disturbed_level.png", "drum_level_pct",
+ >> "Drum level (%)", "Drum Level Under Steam-Demand Disturbance", True
+        )
+
+Total source matches recorded: 100
+
+========== RECENT RUN ARTIFACTS ==========
+2026-10-23 00.45.33 |    160299 bytes | disturbance_240s_trends.png
+2026-10-23 00.45.31 |      1227 bytes | disturbance_240s_analysis.json
+2026-10-23 00.45.31 |       910 bytes | disturbance_240s_analysis.txt
+2026-10-23 00.42.47 |     35944 bytes | disturbance_240s_console.txt
+2026-10-23 00.42.46 |    123819 bytes | disturbance_240s_trace.csv
+2026-10-23 00.42.46 |    123819 bytes | openplc_disturbance_trace.csv
+2026-10-23 00.38.46 |     24680 bytes | manual_baseline_240s_console.txt
+2026-10-23 00.38.46 |      5904 bytes | manual_baseline_240s_trace.csv
+2026-10-23 00.38.46 |      5904 bytes | openplc_bridge_trace.csv
+2026-10-23 00.38.23 |     95722 bytes | disturbance_120s_reference.csv
+2026-10-23 00.27.01 |     18184 bytes | disturbance_120s_clean_baseline_console.txt
+2026-10-23 00.27.01 |     61812 bytes | disturbance_120s_clean_baseline_trace.csv
+2026-10-23 00.25.00 |     24680 bytes | manual_baseline_before_120s_console.txt
+2026-10-23 00.25.00 |      5904 bytes | manual_baseline_before_120s_trace.csv
+2026-10-23 00.22.32 |      4862 bytes | disturbance_retest_30s_valid_console.txt
+2026-10-23 00.22.32 |      4862 bytes | disturbance_retest_after_baseline_console.txt
+2026-10-23 00.22.32 |     15109 bytes | disturbance_retest_30s_valid_trace.csv
+2026-10-23 00.19.54 |     32780 bytes | manual_recovery_20s_console.txt
+2026-10-23 00.07.42 |      4856 bytes | disturbance_retest_30s_console.txt
+2026-10-22 23.55.22 |     48980 bytes | auto_nominal_30s_console.txt

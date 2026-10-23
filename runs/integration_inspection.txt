@@ -1,0 +1,1590 @@
+﻿BOILER DCS INTEGRATION INSPECTION
+Generated: 2026-10-21 19.02.36
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\control\__init__.py =====
+"""Control algorithms for the boiler digital twin."""
+
+from .pid import PIDController
+from .single_element import SingleElementController
+from .three_element import ThreeElementController
+
+__all__ = [
+    "PIDController",
+    "SingleElementController",
+    "ThreeElementController",
+]
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\control\cascade_pressure.py =====
+"""Pressure controller for the reduced-order boiler digital twin."""
+
+from control.pid import PIDController
+
+
+class CascadePressureController:
+    """PI pressure controller that adjusts boiler fuel demand.
+
+    Pressure is measured in per-unit (pu). The controller output is a
+    fuel command in pu, centered around the nominal fuel demand.
+
+    This is an educational simulation controller, not validated
+    industrial combustion-control logic.
+    """
+
+    def __init__(
+        self,
+        setpoint_pu=1.0,
+        nominal_fuel_command_pu=1.0,
+        pressure_kp=3.0,
+        pressure_ki=0.15,
+    ):
+        self.setpoint_pu = float(setpoint_pu)
+        self.nominal_fuel_command_pu = float(nominal_fuel_command_pu)
+
+        if not 0.0 <= self.nominal_fuel_command_pu <= 1.5:
+            raise ValueError(
+                "nominal_fuel_command_pu must be between 0.0 and 1.5"
+            )
+
+        self.pressure_pid = PIDController(
+            kp=pressure_kp,
+            ki=pressure_ki,
+            kd=0.0,
+            output_min=-1.0,
+            output_max=0.5,
+        )
+
+    def reset(self):
+        """Reset pressure-controller history."""
+        self.pressure_pid.reset()
+
+    def update(self, measured_pressure_pu, dt):
+        """Return a bounded fuel-demand command in per-unit."""
+        correction_pu = self.pressure_pid.update(
+            setpoint=self.setpoint_pu,
+            measurement=measured_pressure_pu,
+            dt=dt,
+        )
+
+        fuel_command_pu = (
+            self.nominal_fuel_command_pu + correction_pu
+        )
+
+        return max(0.0, min(1.5, fuel_command_pu))
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\control\pid.py =====
+
+"""PID controller with output saturation and conditional anti-windup."""
+
+from dataclasses import dataclass
+
+
+@dataclass
+class PIDController:
+    """Discrete-time PID controller.
+
+    The controller uses error = setpoint - measurement.
+    Output is constrained to [output_min, output_max].
+    Conditional integration limits integral windup.
+    """
+
+    kp: float
+    ki: float
+    kd: float = 0.0
+    output_min: float = 0.0
+    output_max: float = 1.5
+    derivative_tau: float = 0.0
+
+    def __post_init__(self):
+        if self.output_min >= self.output_max:
+            raise ValueError("output_min must be less than output_max")
+        if self.derivative_tau < 0:
+            raise ValueError("derivative_tau cannot be negative")
+
+        self.reset()
+
+    def reset(self, output: float = 0.0) -> None:
+        """Reset controller history."""
+        self.integral = 0.0
+        self.previous_error = None
+        self.filtered_derivative = 0.0
+        self.last_output = self._clamp(output)
+
+    def _clamp(self, value: float) -> float:
+        return max(self.output_min, min(self.output_max, value))
+
+    def update(self, setpoint: float, measurement: float, dt: float) -> float:
+        """Calculate a bounded controller output for one time step."""
+        if dt <= 0:
+            raise ValueError("dt must be greater than zero")
+
+        error = float(setpoint) - float(measurement)
+
+        if self.previous_error is None:
+            raw_derivative = 0.0
+        else:
+            raw_derivative = (error - self.previous_error) / dt
+
+        # Optional first-order filtering of the derivative term.
+        if self.derivative_tau > 0:
+            alpha = dt / (self.derivative_tau + dt)
+            self.filtered_derivative += alpha * (
+                raw_derivative - self.filtered_derivative
+            )
+        else:
+            self.filtered_derivative = raw_derivative
+
+        proportional = self.kp * error
+        derivative = self.kd * self.filtered_derivative
+
+        # Trial output before updating the integral term.
+        trial_integral = self.integral + error * dt
+        trial_unbounded = (
+            proportional + self.ki * trial_integral + derivative
+        )
+        trial_output = self._clamp(trial_unbounded)
+
+        # Integrate when unsaturated, or when the error pushes the
+        # saturated output back toward the permitted range.
+        pushing_further_high = (
+            trial_unbounded > self.output_max and error * self.ki > 0
+        )
+        pushing_further_low = (
+            trial_unbounded < self.output_min and error * self.ki < 0
+        )
+
+        if not (pushing_further_high or pushing_further_low):
+            self.integral = trial_integral
+
+        unbounded = (
+            proportional + self.ki * self.integral + derivative
+        )
+        output = self._clamp(unbounded)
+
+        self.previous_error = error
+        self.last_output = output
+        return output
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\control\single_element.py =====
+
+"""Single-element boiler drum-level controller."""
+
+from control.pid import PIDController
+
+
+class SingleElementController:
+    """Use drum-level feedback to regulate feedwater flow.
+
+    The PI controller generates a correction around the nominal
+    feedwater command of 1.0 pu.
+
+    Inputs:
+        setpoint_pct: Desired drum level (%)
+        measured_level_pct: Measured drum level (%)
+        dt: Simulation time step (s)
+
+    Output:
+        Feedwater command in per-unit, limited to 0.0â€“1.5 pu.
+    """
+
+    def __init__(
+        self,
+        setpoint_pct=50.0,
+        kp=0.08,
+        ki=0.003,
+        nominal_feedwater_pu=1.0,
+    ):
+        self.setpoint_pct = float(setpoint_pct)
+        self.nominal_feedwater_pu = float(nominal_feedwater_pu)
+
+        # PID output represents a correction to nominal feedwater.
+        self.pid = PIDController(
+            kp=kp,
+            ki=ki,
+            kd=0.0,
+            output_min=-self.nominal_feedwater_pu,
+            output_max=1.5 - self.nominal_feedwater_pu,
+        )
+
+    def reset(self):
+        """Reset controller history for a fresh simulation."""
+        self.pid.reset()
+
+    def update(self, measured_level_pct, dt):
+        """Calculate the feedwater command from measured drum level."""
+        correction = self.pid.update(
+            setpoint=self.setpoint_pct,
+            measurement=measured_level_pct,
+            dt=dt,
+        )
+
+        command = self.nominal_feedwater_pu + correction
+        return max(0.0, min(1.5, command))
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\control\three_element.py =====
+
+"""Three-element boiler drum-level controller.
+
+Elements:
+1. Drum-level feedback: outer PI controller.
+2. Steam-flow feedforward: anticipates changes in steam demand.
+3. Feedwater-flow feedback: inner PI controller tracks required flow.
+"""
+
+from control.pid import PIDController
+
+
+class ThreeElementController:
+    """Three-element drum-level controller.
+
+    All flows use per-unit (pu) values. Drum level uses percent.
+    The returned value is the feedwater valve command in pu.
+    """
+
+    def __init__(
+        self,
+        setpoint_pct=50.0,
+        level_kp=0.025,
+        level_ki=0.001,
+        flow_kp=1.5,
+        flow_ki=0.8,
+    ):
+        self.setpoint_pct = float(setpoint_pct)
+
+        # Outer loop: level error produces a flow trim.
+        self.level_pid = PIDController(
+            kp=level_kp,
+            ki=level_ki,
+            kd=0.0,
+            output_min=-0.5,
+            output_max=0.5,
+        )
+
+        # Inner loop: feedwater flow error adjusts the valve command.
+        self.flow_pid = PIDController(
+            kp=flow_kp,
+            ki=flow_ki,
+            kd=0.0,
+            output_min=-1.5,
+            output_max=1.5,
+        )
+
+    def reset(self):
+        """Reset both controller loops."""
+        self.level_pid.reset()
+        self.flow_pid.reset()
+
+    def update(
+        self,
+        measured_level_pct,
+        measured_steam_flow_pu,
+        measured_feedwater_flow_pu,
+        dt,
+    ):
+        """Calculate the feedwater valve command."""
+
+        # Element 1: level controller produces a trim in pu.
+        level_trim_pu = self.level_pid.update(
+            setpoint=self.setpoint_pct,
+            measurement=measured_level_pct,
+            dt=dt,
+        )
+
+        # Element 2: steam-flow feedforward plus level trim.
+        desired_feedwater_flow_pu = (
+            float(measured_steam_flow_pu) + level_trim_pu
+        )
+
+        # The desired flow must stay within the plant's flow range.
+        desired_feedwater_flow_pu = max(
+            0.0, min(1.5, desired_feedwater_flow_pu)
+        )
+
+        # Element 3: inner flow loop tracks the desired feedwater flow.
+        flow_correction = self.flow_pid.update(
+            setpoint=desired_feedwater_flow_pu,
+            measurement=measured_feedwater_flow_pu,
+            dt=dt,
+        )
+
+        # Use measured flow as the nominal valve-command estimate.
+        command = float(measured_feedwater_flow_pu) + flow_correction
+
+        return max(0.0, min(1.5, command))
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\plc\BoilerDCS.st =====
+(*
+    Boiler DCS Digital Twin
+    PLC interface variable declarations - draft
+
+    These declarations must be incorporated into the OpenPLC
+    project and mapped to the verified Modbus server variables.
+*)
+
+PROGRAM BoilerDCS
+VAR
+    (* Process measurements: scaled integer values *)
+    DrumLevel_x100       : INT := 5000;
+    DrumPressure_x1000   : INT := 1000;
+    FeedwaterFlow_x1000  : INT := 1000;
+    SteamFlow_x1000      : INT := 1000;
+    FuelFlow_x1000       : INT := 1000;
+    SteamDemand_x1000    : INT := 1000;
+
+    (* Controller outputs: 0 to 1000 represents 0 to 100.0% *)
+    FeedwaterValve_x10   : INT := 500;
+    FuelValve_x10        : INT := 500;
+    AirDamper_x10        : INT := 500;
+
+    (* Pump command: 0 = stop, 1 = pump A, 2 = pump B *)
+    PumpCommand          : INT := 0;
+
+    (* Communication diagnostics *)
+    PythonHeartbeat      : INT := 0;
+    PLCHeartbeat         : INT := 0;
+END_VAR
+
+(* Controller logic will be implemented in the next stage. *)
+
+END_PROGRAM
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\plc_interface\__init__.py =====
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\plc_interface\adapter.py =====
+"""Convert boiler simulation values into the project's Modbus register image."""
+
+from plc_interface.register_map import (
+    build_register_image,
+    encode_trip_causes,
+)
+
+
+def build_boiler_registers(
+    state,
+    feedwater_command_pu,
+    requested_fuel_command_pu,
+    safety_status,
+    simulation_running=True,
+):
+    """Build a complete register image from model and controller state."""
+
+    effective_fuel_command = (
+        safety_status.fuel_command_pu
+        if safety_status.trip_latched
+        else requested_fuel_command_pu
+    )
+
+    values = {
+        "drum_level_pct": state.drum_level_pct,
+        "pressure_pu": state.pressure_pu,
+        "steam_flow_pu": state.steam_flow_pu,
+        "feedwater_flow_pu": state.feedwater_flow_pu,
+        "fuel_flow_pu": state.fuel_flow_pu,
+        "heat_duty_pu": state.heat_duty_pu,
+        "feedwater_command_pu": feedwater_command_pu,
+        "fuel_command_pu": effective_fuel_command,
+        "trip_latched": safety_status.trip_latched,
+        "fuel_permissive": safety_status.fuel_permissive,
+        "alarm_active": safety_status.alarm_active,
+        "trip_cause_mask": encode_trip_causes(
+            safety_status.trip_causes
+        ),
+        "simulation_status": int(simulation_running),
+    }
+
+    return build_register_image(values)
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\plc_interface\register_map.py =====
+"""Scaled 16-bit Modbus holding-register map for the boiler digital twin."""
+
+from math import isfinite
+
+
+REGISTER_MAP = {
+    "drum_level_pct": {"address": 0, "scale": 100.0},
+    "pressure_pu": {"address": 1, "scale": 10000.0},
+    "steam_flow_pu": {"address": 2, "scale": 1000.0},
+    "feedwater_flow_pu": {"address": 3, "scale": 1000.0},
+    "fuel_flow_pu": {"address": 4, "scale": 1000.0},
+    "heat_duty_pu": {"address": 5, "scale": 1000.0},
+    "feedwater_command_pu": {"address": 6, "scale": 1000.0},
+    "fuel_command_pu": {"address": 7, "scale": 1000.0},
+    "trip_latched": {"address": 8, "scale": 1.0},
+    "fuel_permissive": {"address": 9, "scale": 1.0},
+    "alarm_active": {"address": 10, "scale": 1.0},
+    "trip_cause_mask": {"address": 11, "scale": 1.0},
+    "simulation_status": {"address": 12, "scale": 1.0},
+}
+
+REGISTER_COUNT = max(
+    item["address"] for item in REGISTER_MAP.values()
+) + 1
+
+TRIP_CAUSE_BITS = {
+    "LOW_LOW_DRUM_LEVEL": 0,
+    "HIGH_HIGH_DRUM_LEVEL": 1,
+    "LOW_LOW_PRESSURE": 2,
+    "HIGH_HIGH_PRESSURE": 3,
+    "LEVEL_SIGNAL_OUT_OF_RANGE": 4,
+    "PRESSURE_SIGNAL_OUT_OF_RANGE": 5,
+    "SENSOR_INVALID": 6,
+    "COMMUNICATION_LOSS": 7,
+}
+
+
+def encode_value(name, value):
+    """Convert one named value to an unsigned 16-bit register value."""
+    if name not in REGISTER_MAP:
+        raise KeyError(f"Unknown register name: {name}")
+
+    if isinstance(value, bool):
+        numeric_value = int(value)
+    else:
+        try:
+            numeric_value = float(value)
+        except (TypeError, ValueError, OverflowError) as exc:
+            raise ValueError(f"Invalid value for {name}") from exc
+
+    if not isfinite(numeric_value):
+        raise ValueError(f"Non-finite value for {name}")
+
+    scaled = round(numeric_value * REGISTER_MAP[name]["scale"])
+
+    if not 0 <= scaled <= 65535:
+        raise ValueError(
+            f"Encoded value for {name} is outside unsigned 16-bit range: "
+            f"{scaled}"
+        )
+
+    return int(scaled)
+
+
+def decode_value(name, register_value):
+    """Convert one unsigned 16-bit register value to engineering units."""
+    if name not in REGISTER_MAP:
+        raise KeyError(f"Unknown register name: {name}")
+
+    if isinstance(register_value, bool) or not isinstance(register_value, int):
+        raise ValueError("Register value must be an integer")
+
+    if not 0 <= register_value <= 65535:
+        raise ValueError("Register value must be between 0 and 65535")
+
+    return register_value / REGISTER_MAP[name]["scale"]
+
+
+def encode_trip_causes(causes):
+    """Encode recognized trip causes into a 16-bit bitmask."""
+    mask = 0
+    for cause in causes:
+        if cause not in TRIP_CAUSE_BITS:
+            raise ValueError(f"Unknown trip cause: {cause}")
+        mask |= 1 << TRIP_CAUSE_BITS[cause]
+    return mask
+
+
+def build_register_image(values):
+    """Build a complete address-indexed holding-register image.
+
+    Every defined register must be provided. Unknown names are rejected.
+    """
+    unknown = set(values) - set(REGISTER_MAP)
+    missing = set(REGISTER_MAP) - set(values)
+
+    if unknown:
+        raise KeyError(f"Unknown register names: {sorted(unknown)}")
+    if missing:
+        raise KeyError(f"Missing register names: {sorted(missing)}")
+
+    registers = [0] * REGISTER_COUNT
+
+    for name, value in values.items():
+        registers[REGISTER_MAP[name]["address"]] = encode_value(name, value)
+
+    return registers
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\safety\__init__.py =====
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\safety\interlocks.py =====
+"""Educational boiler safety interlocks; not a certified safety system."""
+
+from dataclasses import dataclass
+from math import isfinite
+
+
+@dataclass(frozen=True)
+class SafetyConfig:
+    low_low_level_pct: float = 20.0
+    high_high_level_pct: float = 80.0
+    low_low_pressure_pu: float = 0.5
+    high_high_pressure_pu: float = 1.5
+
+
+@dataclass(frozen=True)
+class SafetyStatus:
+    trip_latched: bool
+    fuel_permissive: bool
+    fuel_command_pu: float
+    alarm_active: bool
+    trip_causes: tuple[str, ...]
+    reset_accepted: bool
+
+
+class SafetyInterlock:
+    """Latched protective logic for an educational boiler simulation."""
+
+    def __init__(self, config=None):
+        self.config = config if config is not None else SafetyConfig()
+        self._validate_config()
+        self.trip_latched = False
+        self.trip_causes = ()
+
+    def _validate_config(self):
+        c = self.config
+        values = (
+            c.low_low_level_pct,
+            c.high_high_level_pct,
+            c.low_low_pressure_pu,
+            c.high_high_pressure_pu,
+        )
+
+        if not all(isfinite(value) for value in values):
+            raise ValueError("Safety thresholds must be finite numbers")
+
+        if not (
+            0.0 <= c.low_low_level_pct < c.high_high_level_pct <= 100.0
+        ):
+            raise ValueError("Invalid drum-level trip thresholds")
+
+        if not (
+            0.0 <= c.low_low_pressure_pu < c.high_high_pressure_pu
+        ):
+            raise ValueError("Invalid pressure trip thresholds")
+
+    def evaluate(
+        self,
+        level_pct,
+        pressure_pu,
+        *,
+        sensors_valid=True,
+        communication_ok=True,
+        manual_reset=False,
+    ):
+        causes = []
+
+        if not sensors_valid:
+            causes.append("SENSOR_INVALID")
+
+        if not communication_ok:
+            causes.append("COMMUNICATION_LOSS")
+
+        if sensors_valid:
+            try:
+                level = float(level_pct)
+                pressure = float(pressure_pu)
+            except (TypeError, ValueError, OverflowError):
+                causes.append("SENSOR_INVALID")
+            else:
+                if not isfinite(level) or not isfinite(pressure):
+                    causes.append("SENSOR_INVALID")
+                else:
+                    if not 0.0 <= level <= 100.0:
+                        causes.append("LEVEL_SIGNAL_OUT_OF_RANGE")
+
+                    if pressure < 0.0:
+                        causes.append("PRESSURE_SIGNAL_OUT_OF_RANGE")
+
+                    if level <= self.config.low_low_level_pct:
+                        causes.append("LOW_LOW_DRUM_LEVEL")
+
+                    if level >= self.config.high_high_level_pct:
+                        causes.append("HIGH_HIGH_DRUM_LEVEL")
+
+                    if pressure <= self.config.low_low_pressure_pu:
+                        causes.append("LOW_LOW_PRESSURE")
+
+                    if pressure >= self.config.high_high_pressure_pu:
+                        causes.append("HIGH_HIGH_PRESSURE")
+
+        causes = tuple(dict.fromkeys(causes))
+
+        if causes:
+            self.trip_latched = True
+            self.trip_causes = tuple(
+                dict.fromkeys(self.trip_causes + causes)
+            )
+
+        reset_accepted = False
+
+        if self.trip_latched and manual_reset and not causes:
+            self.trip_latched = False
+            self.trip_causes = ()
+            reset_accepted = True
+
+        fuel_permissive = not self.trip_latched
+
+        return SafetyStatus(
+            trip_latched=self.trip_latched,
+            fuel_permissive=fuel_permissive,
+            fuel_command_pu=1.0 if fuel_permissive else 0.0,
+            alarm_active=self.trip_latched,
+            trip_causes=self.trip_causes,
+            reset_accepted=reset_accepted,
+        )
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\compare_controllers.py =====
+
+"""Compare single-element and three-element boiler level control."""
+
+import csv
+from pathlib import Path
+
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+from model.boiler import BoilerModel
+from control import SingleElementController, ThreeElementController
+
+ROOT = Path(__file__).resolve().parent
+RUNS = ROOT / "runs"
+PLOTS = RUNS / "plots"
+PLOTS.mkdir(parents=True, exist_ok=True)
+
+DURATION_S = 60.0
+DISTURBANCE_TIME_S = 10.0
+LEVEL_SETPOINT_PCT = 50.0
+
+
+def run_scenario(controller_type):
+    """Run one controller with the same initial conditions and disturbance."""
+    boiler = BoilerModel()
+    dt = boiler.dt
+
+    if controller_type == "single":
+        controller = SingleElementController(
+            setpoint_pct=LEVEL_SETPOINT_PCT
+        )
+    elif controller_type == "three":
+        controller = ThreeElementController(
+            setpoint_pct=LEVEL_SETPOINT_PCT
+        )
+    else:
+        raise ValueError(f"Unknown controller: {controller_type}")
+
+    records = []
+    for _ in range(round(DURATION_S / dt)):
+        state = boiler.state
+        demand = (
+            1.0 if state.time_s < DISTURBANCE_TIME_S else 1.2
+        )
+
+        if controller_type == "single":
+            command = controller.update(
+                measured_level_pct=state.drum_level_pct,
+                dt=dt,
+            )
+        else:
+            command = controller.update(
+                measured_level_pct=state.drum_level_pct,
+                measured_steam_flow_pu=state.steam_flow_pu,
+                measured_feedwater_flow_pu=state.feedwater_flow_pu,
+                dt=dt,
+            )
+
+        boiler.step(
+            feedwater_command_pu=command,
+            steam_demand_pu=demand,
+            fuel_command_pu=1.0,
+        )
+
+        s = boiler.state
+        records.append({
+            "time_s": s.time_s,
+            "steam_demand_pu": demand,
+            "level_setpoint_pct": LEVEL_SETPOINT_PCT,
+            "drum_level_pct": s.drum_level_pct,
+            "level_error_pct": LEVEL_SETPOINT_PCT - s.drum_level_pct,
+            "inventory_pu": s.inventory_pu,
+            "pressure_pu": s.pressure_pu,
+            "steam_flow_pu": s.steam_flow_pu,
+            "feedwater_flow_pu": s.feedwater_flow_pu,
+            "feedwater_command_pu": command,
+            "indicated_swell_pct": s.indicated_swell_pct,
+        })
+
+    return records
+
+
+def calculate_metrics(records):
+    """Calculate level-control metrics over the complete run."""
+    dt = records[1]["time_s"] - records[0]["time_s"]
+    errors = [r["level_error_pct"] for r in records]
+    post_step = [
+        r for r in records if r["time_s"] >= DISTURBANCE_TIME_S
+    ]
+
+    # Settling time: first point after which all remaining errors
+    # stay within +/-1 percentage point.
+    settling_time = None
+    for i, row in enumerate(post_step):
+        if all(abs(r["level_error_pct"]) <= 1.0
+               for r in post_step[i:]):
+            settling_time = row["time_s"] - DISTURBANCE_TIME_S
+            break
+
+    post_errors = [r["level_error_pct"] for r in post_step]
+
+    return {
+        "IAE_pct_s": sum(abs(e) for e in errors) * dt,
+        "maximum_absolute_level_error_pct": max(
+            abs(e) for e in post_errors
+        ),
+        "positive_level_overshoot_pct": max(
+            0.0, max(-e for e in post_errors)
+        ),
+        "final_level_pct": records[-1]["drum_level_pct"],
+        "final_level_error_pct": records[-1]["level_error_pct"],
+        "final_inventory_pu": records[-1]["inventory_pu"],
+        "final_pressure_pu": records[-1]["pressure_pu"],
+        "settling_time_after_step_s": settling_time,
+    }
+
+
+def write_csv(path, records):
+    with path.open("w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=records[0].keys())
+        writer.writeheader()
+        writer.writerows(records)
+
+
+def plot_comparison(single, three, column, ylabel, title, filename):
+    plt.figure(figsize=(10, 5))
+
+    for records, label in (
+        (single, "Single-element"),
+        (three, "Three-element"),
+    ):
+        plt.plot(
+            [r["time_s"] for r in records],
+            [r[column] for r in records],
+            label=label,
+        )
+
+    plt.axvline(
+        DISTURBANCE_TIME_S,
+        linestyle="--",
+        label="Steam-demand step",
+    )
+
+    if column == "drum_level_pct":
+        plt.axhline(
+            LEVEL_SETPOINT_PCT,
+            linestyle=":",
+            label="Level setpoint",
+        )
+
+    plt.xlabel("Time (s)")
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.grid(True, alpha=0.3)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(PLOTS / filename, dpi=160)
+    plt.close()
+
+
+def main():
+    print("Running single-element simulation...")
+    single = run_scenario("single")
+
+    print("Running three-element simulation...")
+    three = run_scenario("three")
+
+    write_csv(RUNS / "single_element.csv", single)
+    write_csv(RUNS / "three_element.csv", three)
+
+    metrics = {
+        "single_element": calculate_metrics(single),
+        "three_element": calculate_metrics(three),
+    }
+
+    with (RUNS / "controller_comparison.csv").open(
+        "w", newline="", encoding="utf-8"
+    ) as file:
+        writer = csv.writer(file)
+        writer.writerow(["metric", "single_element", "three_element"])
+        for name in metrics["single_element"]:
+            writer.writerow([
+                name,
+                metrics["single_element"][name],
+                metrics["three_element"][name],
+            ])
+
+    plot_comparison(
+        single, three, "drum_level_pct", "Drum level (%)",
+        "Drum-Level Control Comparison", "controller_level.png"
+    )
+    plot_comparison(
+        single, three, "pressure_pu", "Pressure (pu)",
+        "Boiler Pressure Comparison", "controller_pressure.png"
+    )
+    plot_comparison(
+        single, three, "inventory_pu", "Inventory (pu)",
+        "Boiler Inventory Comparison", "controller_inventory.png"
+    )
+    plot_comparison(
+        single, three, "feedwater_flow_pu", "Feedwater flow (pu)",
+        "Feedwater Flow Comparison", "controller_feedwater.png"
+    )
+    plot_comparison(
+        single, three, "feedwater_command_pu", "Command (pu)",
+        "Feedwater Command Comparison", "controller_command.png"
+    )
+
+    print("\nCONTROLLER COMPARISON RESULTS")
+    print("=" * 55)
+
+    for controller_name, values in metrics.items():
+        print(f"\n{controller_name.replace('_', ' ').title()}")
+        for name, value in values.items():
+            display = (
+                "Not settled during simulation"
+                if value is None
+                else f"{value:.4f}"
+                if isinstance(value, float)
+                else str(value)
+            )
+            print(f"  {name}: {display}")
+
+    print("\nCSV files:", RUNS)
+    print("Plots:", PLOTS)
+    print("Comparison simulation completed.")
+
+
+if __name__ == "__main__":
+    main()
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\test_boiler.py =====
+import unittest
+from model.boiler import BoilerModel
+
+class BoilerTests(unittest.TestCase):
+    def test_nominal_equilibrium(self):
+        b = BoilerModel()
+        for _ in range(1000):
+            b.step(1, 1, 1)
+        self.assertAlmostEqual(b.state.inventory_pu, 1.0, places=8)
+        self.assertAlmostEqual(b.state.drum_level_pct, 50.0, places=6)
+        self.assertAlmostEqual(b.state.pressure_pu, 1.0, places=6)
+
+    def test_steam_step_reduces_inventory(self):
+        b = BoilerModel()
+        for _ in range(200):
+            b.step(1, 1.2, 1)
+        self.assertLess(b.state.inventory_pu, 1.0)
+
+    def test_bounds(self):
+        b = BoilerModel()
+        for _ in range(5000):
+            b.step(0, 1.5, 0)
+        self.assertGreaterEqual(b.state.inventory_pu, 0)
+        self.assertLessEqual(b.state.inventory_pu, 1.5)
+        self.assertGreaterEqual(b.state.drum_level_pct, 0)
+        self.assertLessEqual(b.state.drum_level_pct, 100)
+        self.assertGreaterEqual(b.state.pressure_pu, 0)
+
+    def test_bad_timestep(self):
+        with self.assertRaises(ValueError):
+            BoilerModel({"dt_s": 0})
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\test_cascade_pressure.py =====
+import unittest
+
+from control.cascade_pressure import CascadePressureController
+
+
+class CascadePressureControllerTests(unittest.TestCase):
+
+    def test_nominal_pressure_returns_nominal_fuel_command(self):
+        controller = CascadePressureController()
+
+        command = controller.update(
+            measured_pressure_pu=1.0,
+            dt=0.1,
+        )
+
+        self.assertAlmostEqual(command, 1.0)
+
+    def test_low_pressure_increases_fuel_command(self):
+        controller = CascadePressureController()
+
+        command = controller.update(
+            measured_pressure_pu=0.95,
+            dt=0.1,
+        )
+
+        self.assertGreater(command, 1.0)
+
+    def test_high_pressure_reduces_fuel_command(self):
+        controller = CascadePressureController()
+
+        command = controller.update(
+            measured_pressure_pu=1.05,
+            dt=0.1,
+        )
+
+        self.assertLess(command, 1.0)
+
+    def test_fuel_command_stays_within_limits(self):
+        controller = CascadePressureController()
+
+        low_pressure_command = controller.update(
+            measured_pressure_pu=-100.0,
+            dt=0.1,
+        )
+
+        controller.reset()
+
+        high_pressure_command = controller.update(
+            measured_pressure_pu=100.0,
+            dt=0.1,
+        )
+
+        self.assertGreaterEqual(low_pressure_command, 0.0)
+        self.assertLessEqual(low_pressure_command, 1.5)
+        self.assertGreaterEqual(high_pressure_command, 0.0)
+        self.assertLessEqual(high_pressure_command, 1.5)
+
+    def test_reset_clears_controller_history(self):
+        controller = CascadePressureController()
+
+        controller.update(measured_pressure_pu=0.9, dt=0.1)
+        controller.reset()
+
+        command = controller.update(
+            measured_pressure_pu=1.0,
+            dt=0.1,
+        )
+
+        self.assertAlmostEqual(command, 1.0)
+
+    def test_nonpositive_timestep_is_rejected(self):
+        controller = CascadePressureController()
+
+        for dt in (0.0, -0.1):
+            with self.subTest(dt=dt):
+                with self.assertRaises(ValueError):
+                    controller.update(
+                        measured_pressure_pu=1.0,
+                        dt=dt,
+                    )
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\test_closed_loop.py =====
+import unittest
+
+from model.boiler import BoilerModel
+from control import SingleElementController, ThreeElementController
+
+
+class ClosedLoopTests(unittest.TestCase):
+
+    def simulate(self, controller_type, duration_s=60.0, step_time_s=10.0):
+        boiler = BoilerModel()
+        controller = controller_type(setpoint_pct=50.0)
+        dt = boiler.dt
+        total_steps = round(duration_s / dt)
+        disturbance_step = round(step_time_s / dt)
+        samples = []
+
+        for step_index in range(total_steps):
+            state = boiler.state
+
+            # Use the integer step index to avoid floating-point time errors.
+            demand = 1.0 if step_index < disturbance_step else 1.2
+
+            if controller_type is SingleElementController:
+                command = controller.update(state.drum_level_pct, dt)
+            else:
+                command = controller.update(
+                    state.drum_level_pct,
+                    state.steam_flow_pu,
+                    state.feedwater_flow_pu,
+                    dt,
+                )
+
+            boiler.step(
+                feedwater_command_pu=command,
+                steam_demand_pu=demand,
+                fuel_command_pu=1.0,
+            )
+
+            samples.append({
+                "time_s": boiler.state.time_s,
+                "level_pct": boiler.state.drum_level_pct,
+                "inventory_pu": boiler.state.inventory_pu,
+                "command_pu": command,
+                "demand_pu": demand,
+            })
+
+        return samples, disturbance_step
+
+    def test_both_controllers_keep_level_within_physical_bounds(self):
+        for controller_type in (
+            SingleElementController,
+            ThreeElementController,
+        ):
+            with self.subTest(controller=controller_type.__name__):
+                samples, _ = self.simulate(controller_type)
+                for sample in samples:
+                    self.assertGreaterEqual(sample["level_pct"], 0.0)
+                    self.assertLessEqual(sample["level_pct"], 100.0)
+
+    def test_both_controllers_keep_feedwater_command_bounded(self):
+        for controller_type in (
+            SingleElementController,
+            ThreeElementController,
+        ):
+            with self.subTest(controller=controller_type.__name__):
+                samples, _ = self.simulate(controller_type)
+                for sample in samples:
+                    self.assertGreaterEqual(sample["command_pu"], 0.0)
+                    self.assertLessEqual(sample["command_pu"], 1.5)
+
+    def test_steam_demand_increases_at_ten_seconds(self):
+        for controller_type in (
+            SingleElementController,
+            ThreeElementController,
+        ):
+            with self.subTest(controller=controller_type.__name__):
+                samples, disturbance_step = self.simulate(controller_type)
+                before = samples[:disturbance_step]
+                after = samples[disturbance_step:]
+
+                self.assertTrue(before)
+                self.assertTrue(after)
+                self.assertTrue(
+                    all(s["demand_pu"] == 1.0 for s in before)
+                )
+                self.assertTrue(
+                    all(s["demand_pu"] == 1.2 for s in after)
+                )
+
+    def test_three_element_final_level_is_near_setpoint(self):
+        samples, _ = self.simulate(ThreeElementController)
+        final_level = samples[-1]["level_pct"]
+        self.assertLessEqual(abs(final_level - 50.0), 1.0)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\test_controllers.py =====
+import unittest
+
+from control import SingleElementController, ThreeElementController
+
+
+class ControllerValidationTests(unittest.TestCase):
+
+    def test_single_element_nominal_level(self):
+        controller = SingleElementController()
+        command = controller.update(50.0, 0.1)
+        self.assertAlmostEqual(command, 1.0, places=6)
+
+    def test_single_element_command_is_bounded(self):
+        controller = SingleElementController()
+
+        for level in (-100.0, 0.0, 50.0, 100.0, 200.0):
+            command = controller.update(level, 0.1)
+            self.assertGreaterEqual(command, 0.0)
+            self.assertLessEqual(command, 1.5)
+
+    def test_three_element_nominal_operation(self):
+        controller = ThreeElementController()
+        command = controller.update(50.0, 1.0, 1.0, 0.1)
+        self.assertAlmostEqual(command, 1.0, places=6)
+
+    def test_three_element_feedforward_response(self):
+        controller = ThreeElementController()
+        command = controller.update(50.0, 1.2, 1.0, 0.1)
+        self.assertGreater(command, 1.0)
+        self.assertLessEqual(command, 1.5)
+
+    def test_three_element_command_is_bounded(self):
+        controller = ThreeElementController()
+
+        for level in (-100.0, 0.0, 50.0, 100.0, 200.0):
+            controller.reset()
+            command = controller.update(level, 1.0, 1.0, 0.1)
+            self.assertGreaterEqual(command, 0.0)
+            self.assertLessEqual(command, 1.5)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\test_disturbance_metrics.py =====
+import math
+import unittest
+
+from model.boiler import BoilerModel
+from control import SingleElementController, ThreeElementController
+
+
+class DisturbanceMetricTests(unittest.TestCase):
+    DURATION_S = 60.0
+    DISTURBANCE_STEP = 100
+    SETPOINT = 50.0
+    TOLERANCE_PCT = 1.0
+
+    def simulate(self, controller_type):
+        boiler = BoilerModel()
+        controller = controller_type(setpoint_pct=self.SETPOINT)
+        dt = boiler.dt
+        total_steps = round(self.DURATION_S / dt)
+        rows = []
+
+        for step_index in range(total_steps):
+            state = boiler.state
+            demand = 1.0 if step_index < self.DISTURBANCE_STEP else 1.2
+
+            if controller_type is SingleElementController:
+                command = controller.update(state.drum_level_pct, dt)
+            else:
+                command = controller.update(
+                    state.drum_level_pct,
+                    state.steam_flow_pu,
+                    state.feedwater_flow_pu,
+                    dt,
+                )
+
+            boiler.step(
+                feedwater_command_pu=command,
+                steam_demand_pu=demand,
+                fuel_command_pu=1.0,
+            )
+
+            s = boiler.state
+            rows.append({
+                "time_s": s.time_s,
+                "level_pct": s.drum_level_pct,
+                "error_pct": self.SETPOINT - s.drum_level_pct,
+                "command_pu": command,
+                "demand_pu": demand,
+            })
+
+        post = rows[self.DISTURBANCE_STEP:]
+        errors = [r["error_pct"] for r in post]
+
+        settling_time = None
+        for i, row in enumerate(post):
+            remaining_errors = [
+                abs(r["error_pct"]) for r in post[i:]
+            ]
+            if all(error <= self.TOLERANCE_PCT for error in remaining_errors):
+                settling_time = row["time_s"] - 10.0
+                break
+
+        return {
+            "iae_pct_s": sum(abs(e) for e in errors) * dt,
+            "max_abs_error_pct": max(abs(e) for e in errors),
+            "final_level_error_pct": errors[-1],
+            "max_command_pu": max(r["command_pu"] for r in post),
+            "min_command_pu": min(r["command_pu"] for r in post),
+            "settling_time_s": settling_time,
+        }
+
+    def test_all_metrics_are_finite_except_unsettled_time(self):
+        for controller_type in (
+            SingleElementController,
+            ThreeElementController,
+        ):
+            with self.subTest(controller=controller_type.__name__):
+                result = self.simulate(controller_type)
+                for key, value in result.items():
+                    if key == "settling_time_s" and value is None:
+                        continue
+                    self.assertTrue(
+                        math.isfinite(value),
+                        f"{key} is not finite: {value}",
+                    )
+
+    def test_commands_remain_within_limits_after_disturbance(self):
+        for controller_type in (
+            SingleElementController,
+            ThreeElementController,
+        ):
+            with self.subTest(controller=controller_type.__name__):
+                result = self.simulate(controller_type)
+                self.assertGreaterEqual(result["min_command_pu"], 0.0)
+                self.assertLessEqual(result["max_command_pu"], 1.5)
+
+    def test_three_element_final_level_error_is_within_one_percent(self):
+        result = self.simulate(ThreeElementController)
+        self.assertLessEqual(
+            abs(result["final_level_error_pct"]),
+            self.TOLERANCE_PCT,
+        )
+
+    def test_print_comparison_metrics(self):
+        for controller_type in (
+            SingleElementController,
+            ThreeElementController,
+        ):
+            result = self.simulate(controller_type)
+            print(f"\n{controller_type.__name__}")
+            for key, value in result.items():
+                print(f"  {key}: {value}")
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\test_register_adapter.py =====
+import unittest
+
+from model.boiler import BoilerModel
+from safety.interlocks import SafetyInterlock
+from plc_interface.adapter import build_boiler_registers
+
+
+class BoilerRegisterAdapterTests(unittest.TestCase):
+
+    def test_normal_state_produces_thirteen_registers(self):
+        boiler = BoilerModel()
+        safety = SafetyInterlock()
+        status = safety.evaluate(
+            level_pct=boiler.state.drum_level_pct,
+            pressure_pu=boiler.state.pressure_pu,
+        )
+
+        registers = build_boiler_registers(
+            state=boiler.state,
+            feedwater_command_pu=1.0,
+            requested_fuel_command_pu=1.1,
+            safety_status=status,
+        )
+
+        self.assertEqual(len(registers), 13)
+        self.assertEqual(registers[0], 5000)
+        self.assertEqual(registers[1], 10000)
+        self.assertEqual(registers[7], 1100)
+        self.assertEqual(registers[8], 0)
+        self.assertEqual(registers[9], 1)
+        self.assertEqual(registers[10], 0)
+        self.assertEqual(registers[12], 1)
+
+    def test_safety_trip_overrides_requested_fuel_command(self):
+        boiler = BoilerModel()
+        safety = SafetyInterlock()
+
+        status = safety.evaluate(
+            level_pct=boiler.state.drum_level_pct,
+            pressure_pu=boiler.state.pressure_pu,
+            sensors_valid=False,
+        )
+
+        registers = build_boiler_registers(
+            state=boiler.state,
+            feedwater_command_pu=1.0,
+            requested_fuel_command_pu=1.2,
+            safety_status=status,
+        )
+
+        self.assertEqual(registers[7], 0)
+        self.assertEqual(registers[8], 1)
+        self.assertEqual(registers[9], 0)
+        self.assertEqual(registers[10], 1)
+        self.assertEqual(registers[11], 1 << 6)
+
+    def test_stopped_simulation_status(self):
+        boiler = BoilerModel()
+        safety = SafetyInterlock()
+        status = safety.evaluate(
+            level_pct=boiler.state.drum_level_pct,
+            pressure_pu=boiler.state.pressure_pu,
+        )
+
+        registers = build_boiler_registers(
+            state=boiler.state,
+            feedwater_command_pu=1.0,
+            requested_fuel_command_pu=1.0,
+            safety_status=status,
+            simulation_running=False,
+        )
+
+        self.assertEqual(registers[12], 0)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\test_register_map.py =====
+import unittest
+
+from plc_interface.register_map import (
+    REGISTER_MAP,
+    REGISTER_COUNT,
+    build_register_image,
+    decode_value,
+    encode_trip_causes,
+    encode_value,
+)
+
+
+class RegisterMapTests(unittest.TestCase):
+
+    def test_register_addresses_are_unique(self):
+        addresses = [
+            item["address"] for item in REGISTER_MAP.values()
+        ]
+        self.assertEqual(len(addresses), len(set(addresses)))
+
+    def test_register_count_is_thirteen(self):
+        self.assertEqual(REGISTER_COUNT, 13)
+
+    def test_pressure_round_trip(self):
+        encoded = encode_value("pressure_pu", 1.2345)
+        self.assertEqual(encoded, 12345)
+        self.assertAlmostEqual(
+            decode_value("pressure_pu", encoded), 1.2345
+        )
+
+    def test_level_round_trip(self):
+        encoded = encode_value("drum_level_pct", 50.25)
+        self.assertEqual(encoded, 5025)
+        self.assertAlmostEqual(
+            decode_value("drum_level_pct", encoded), 50.25
+        )
+
+    def test_boolean_register(self):
+        self.assertEqual(encode_value("trip_latched", True), 1)
+        self.assertEqual(encode_value("trip_latched", False), 0)
+
+    def test_invalid_numeric_values_are_rejected(self):
+        for value in (float("nan"), float("inf"), -1.0):
+            with self.subTest(value=value):
+                with self.assertRaises(ValueError):
+                    encode_value("pressure_pu", value)
+
+    def test_unsigned_register_overflow_is_rejected(self):
+        with self.assertRaises(ValueError):
+            encode_value("drum_level_pct", 700.0)
+
+    def test_unknown_register_is_rejected(self):
+        with self.assertRaises(KeyError):
+            encode_value("unknown_tag", 1.0)
+
+    def test_trip_cause_bitmask(self):
+        mask = encode_trip_causes(
+            ("SENSOR_INVALID", "COMMUNICATION_LOSS")
+        )
+        self.assertEqual(mask, (1 << 6) | (1 << 7))
+
+    def test_complete_register_image(self):
+        values = {
+            "drum_level_pct": 50.0,
+            "pressure_pu": 1.0,
+            "steam_flow_pu": 1.0,
+            "feedwater_flow_pu": 1.0,
+            "fuel_flow_pu": 1.0,
+            "heat_duty_pu": 1.0,
+            "feedwater_command_pu": 1.0,
+            "fuel_command_pu": 0.0,
+            "trip_latched": True,
+            "fuel_permissive": False,
+            "alarm_active": True,
+            "trip_cause_mask": 64,
+            "simulation_status": 1,
+        }
+        registers = build_register_image(values)
+
+        self.assertEqual(len(registers), 13)
+        self.assertEqual(registers[0], 5000)
+        self.assertEqual(registers[1], 10000)
+        self.assertEqual(registers[7], 0)
+        self.assertEqual(registers[8], 1)
+        self.assertEqual(registers[9], 0)
+        self.assertEqual(registers[11], 64)
+
+    def test_register_image_rejects_missing_values(self):
+        with self.assertRaises(KeyError):
+            build_register_image({})
+
+    def test_register_image_rejects_unknown_values(self):
+        with self.assertRaises(KeyError):
+            build_register_image({"unexpected_tag": 1})
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\test_safety.py =====
+import unittest
+
+from safety.interlocks import SafetyConfig, SafetyInterlock
+
+
+class SafetyInterlockTests(unittest.TestCase):
+    def setUp(self):
+        self.safety = SafetyInterlock()
+
+    def test_normal_conditions_allow_fuel(self):
+        status = self.safety.evaluate(50.0, 1.0)
+
+        self.assertFalse(status.trip_latched)
+        self.assertTrue(status.fuel_permissive)
+        self.assertEqual(status.fuel_command_pu, 1.0)
+        self.assertFalse(status.alarm_active)
+
+    def test_low_low_level_trips_fuel(self):
+        status = self.safety.evaluate(20.0, 1.0)
+
+        self.assertTrue(status.trip_latched)
+        self.assertFalse(status.fuel_permissive)
+        self.assertEqual(status.fuel_command_pu, 0.0)
+        self.assertIn("LOW_LOW_DRUM_LEVEL", status.trip_causes)
+
+    def test_high_high_level_trips_fuel(self):
+        status = self.safety.evaluate(80.0, 1.0)
+
+        self.assertTrue(status.trip_latched)
+        self.assertEqual(status.fuel_command_pu, 0.0)
+        self.assertIn("HIGH_HIGH_DRUM_LEVEL", status.trip_causes)
+
+    def test_low_pressure_trips_fuel(self):
+        status = self.safety.evaluate(50.0, 0.5)
+
+        self.assertTrue(status.trip_latched)
+        self.assertIn("LOW_LOW_PRESSURE", status.trip_causes)
+
+    def test_high_pressure_trips_fuel(self):
+        status = self.safety.evaluate(50.0, 1.5)
+
+        self.assertTrue(status.trip_latched)
+        self.assertIn("HIGH_HIGH_PRESSURE", status.trip_causes)
+
+    def test_invalid_sensor_trips_fuel(self):
+        status = self.safety.evaluate(
+            50.0, 1.0, sensors_valid=False
+        )
+
+        self.assertTrue(status.trip_latched)
+        self.assertIn("SENSOR_INVALID", status.trip_causes)
+
+    def test_communication_loss_trips_fuel(self):
+        status = self.safety.evaluate(
+            50.0, 1.0, communication_ok=False
+        )
+
+        self.assertTrue(status.trip_latched)
+        self.assertIn("COMMUNICATION_LOSS", status.trip_causes)
+
+    def test_trip_remains_latched_after_condition_clears(self):
+        self.safety.evaluate(10.0, 1.0)
+        status = self.safety.evaluate(50.0, 1.0)
+
+        self.assertTrue(status.trip_latched)
+        self.assertEqual(status.fuel_command_pu, 0.0)
+
+    def test_reset_requires_clear_conditions_and_manual_action(self):
+        self.safety.evaluate(10.0, 1.0)
+
+        blocked = self.safety.evaluate(
+            10.0, 1.0, manual_reset=True
+        )
+        self.assertTrue(blocked.trip_latched)
+        self.assertFalse(blocked.reset_accepted)
+
+        reset = self.safety.evaluate(
+            50.0, 1.0, manual_reset=True
+        )
+        self.assertFalse(reset.trip_latched)
+        self.assertTrue(reset.reset_accepted)
+        self.assertTrue(reset.fuel_permissive)
+
+    def test_out_of_range_level_trips(self):
+        status = self.safety.evaluate(101.0, 1.0)
+
+        self.assertTrue(status.trip_latched)
+        self.assertIn(
+            "LEVEL_SIGNAL_OUT_OF_RANGE", status.trip_causes
+        )
+
+    def test_invalid_threshold_configuration_is_rejected(self):
+        config = SafetyConfig(
+            low_low_level_pct=90.0,
+            high_high_level_pct=20.0,
+        )
+
+        with self.assertRaises(ValueError):
+            SafetyInterlock(config)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+===== C:\Users\thebe\Downloads\BOILER DCS\tests\test_safety_edge_cases.py =====
+import unittest
+
+from safety.interlocks import SafetyConfig, SafetyInterlock
+
+
+class SafetyEdgeCaseTests(unittest.TestCase):
+    def test_nan_pressure_trips(self):
+        status = SafetyInterlock().evaluate(50.0, float("nan"))
+        self.assertTrue(status.trip_latched)
+        self.assertIn("SENSOR_INVALID", status.trip_causes)
+        self.assertEqual(status.fuel_command_pu, 0.0)
+
+    def test_nan_level_trips(self):
+        status = SafetyInterlock().evaluate(float("nan"), 1.0)
+        self.assertTrue(status.trip_latched)
+        self.assertIn("SENSOR_INVALID", status.trip_causes)
+
+    def test_infinite_pressure_trips(self):
+        status = SafetyInterlock().evaluate(50.0, float("inf"))
+        self.assertTrue(status.trip_latched)
+        self.assertIn("SENSOR_INVALID", status.trip_causes)
+
+    def test_non_numeric_measurement_trips(self):
+        status = SafetyInterlock().evaluate(50.0, "bad-signal")
+        self.assertTrue(status.trip_latched)
+        self.assertIn("SENSOR_INVALID", status.trip_causes)
+
+    def test_non_finite_thresholds_are_rejected(self):
+        config = SafetyConfig(high_high_pressure_pu=float("nan"))
+        with self.assertRaises(ValueError):
+            SafetyInterlock(config)
+
+
+if __name__ == "__main__":
+    unittest.main()

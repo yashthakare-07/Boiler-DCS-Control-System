@@ -1,0 +1,54 @@
+﻿BOILER DCS - DEPLOYMENT DIAGNOSTICS
+Generated: 2026-10-23 00.54.12
+Source freeze: C:\Users\thebe\Downloads\BOILER DCS\runs\source_freeze_20261023_005412
+
+FILE: D:\PLC\Project 3\pous\programs\main.st
+Original SHA256: 376956D0F000DACD0F2E380577D725964FD812239A6BDE0226619930E6F11BDC
+Backup SHA256:   376956D0F000DACD0F2E380577D725964FD812239A6BDE0226619930E6F11BDC
+Backup verified: True
+
+FILE: D:\PLC\Project 3\pous\programs\main_three_element_candidate.st
+Original SHA256: C7F4014A45933F8A3D7C67D4287206581BB6CAFD8F54C35F506C1BB2C7FEF632
+Backup SHA256:   C7F4014A45933F8A3D7C67D4287206581BB6CAFD8F54C35F506C1BB2C7FEF632
+Backup verified: True
+
+FILE: D:\PLC\Project 3\pous\programs\main_single_element_backup.st
+Original SHA256: 0F3C650FE9E47BC8272DBC8E80AB20A4FE28365AF7AA832A4666FDB154F70C2C
+Backup SHA256:   0F3C650FE9E47BC8272DBC8E80AB20A4FE28365AF7AA832A4666FDB154F70C2C
+Backup verified: True
+
+FILE: D:\PLC\Project 3\project.json
+Original SHA256: 271688818742C4F6848491654BDAA3F624A88E35805039967C8037164F3938F6
+Backup SHA256:   271688818742C4F6848491654BDAA3F624A88E35805039967C8037164F3938F6
+Backup verified: True
+
+FILE: D:\PLC\Project 3\devices\configuration.json
+Original SHA256: 0DD0592CD7ADA31C4FBA8FAF8BB5BDFEFEA5E59E3276B2BBC9E43739C805169E
+Backup SHA256:   0DD0592CD7ADA31C4FBA8FAF8BB5BDFEFEA5E59E3276B2BBC9E43739C805169E
+Backup verified: True
+
+FILE: D:\PLC\Project 3\devices\servers\Kalki.json
+Original SHA256: 52CFA0FDA4AFF95AC879C0CE158CBD7B1990360BEAF8283B6EFCEE201D67BEAC
+Backup SHA256:   52CFA0FDA4AFF95AC879C0CE158CBD7B1990360BEAF8283B6EFCEE201D67BEAC
+Backup verified: True
+
+========== AVAILABLE TOOL COMMANDS ==========
+iec2c -> not found on PATH
+matiec -> not found on PATH
+openplc -> not found on PATH
+openplc-cli -> C:\Users\thebe\AppData\Local\Programs\openplc-cli\openplc-cli.cmd
+openplc_runtime -> not found on PATH
+
+========== RELEVANT RUNNING PROCESSES ==========
+PID=18008 | NAME=OpenPLC Editor.exe | CMD="C:\Users\thebe\AppData\Local\Programs\open-plc-editor\OpenPLC Editor.exe" 
+PID=7644 | NAME=OpenPLC Editor.exe | CMD="C:\Users\thebe\AppData\Local\Programs\open-plc-editor\OpenPLC Editor.exe" --type=gpu-process --user-data-dir="C:\Users\thebe\AppData\Roaming\open-plc-editor" --gpu-preferences=UAAAAAAAAADgAAAEAAAAAAAAAAAAAAAAAABgAAEAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAA --field-trial-handle=1816,i,16805210809726745844,6788770602193996027,262144 --enable-features=PdfUseShowSaveFilePicker --disable-features=SpareRendererForSitePerProcess,WinDelaySpellcheckServiceInit --variations-seed-version --mojo-platform-channel-handle=1796 /prefetch:2
+PID=13344 | NAME=OpenPLC Editor.exe | CMD="C:\Users\thebe\AppData\Local\Programs\open-plc-editor\OpenPLC Editor.exe" --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --user-data-dir="C:\Users\thebe\AppData\Roaming\open-plc-editor" --field-trial-handle=1816,i,16805210809726745844,6788770602193996027,262144 --enable-features=PdfUseShowSaveFilePicker --disable-features=SpareRendererForSitePerProcess,WinDelaySpellcheckServiceInit --variations-seed-version --mojo-platform-channel-handle=2168 /prefetch:3
+PID=10220 | NAME=OpenPLC Editor.exe | CMD="C:\Users\thebe\AppData\Local\Programs\open-plc-editor\OpenPLC Editor.exe" --type=renderer --user-data-dir="C:\Users\thebe\AppData\Roaming\open-plc-editor" --app-user-model-id=open-plc-editor --app-path="C:\Users\thebe\AppData\Local\Programs\open-plc-editor\resources\app.asar" --enable-sandbox --video-capture-use-gpu-memory-buffer --lang=en-US --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --time-ticks-at-unix-epoch=-1791628768063929 --launch-time-ticks=1061425169258 --field-trial-handle=1816,i,16805210809726745844,6788770602193996027,262144 --enable-features=PdfUseShowSaveFilePicker --disable-features=SpareRendererForSitePerProcess,WinDelaySpellcheckServiceInit --variations-seed-version --mojo-platform-channel-handle=2748 /prefetch:1
+PID=26184 | NAME=cmd.exe | CMD=C:\WINDOWS\system32\cmd.exe /c ""C:\Users\thebe\AppData\Local\OpenPLC Runtime\StartOpenPLC.bat" "
+PID=15392 | NAME=bash.exe | CMD="C:\Users\thebe\AppData\Local\OpenPLC Runtime\msys64\usr\bin\bash.exe"  -lc "cd '/c/Users/thebe/AppData/Local/OpenPLC Runtime/openplc-runtime' && exec ./venvs/runtime/bin/python3 -m webserver.app"
+PID=288 | NAME=python3 | CMD="C:\Users\thebe\AppData\Local\OpenPLC Runtime\openplc-runtime\venvs\runtime\bin\python3" -m webserver.app
+PID=26400 | NAME=plc_main.exe | CMD="C:\Users\thebe\AppData\Local\OpenPLC Runtime\openplc-runtime\build\plc_main.exe"
+
+========== LISTENING PORTS ==========
+Port=502 | Address=0.0.0.0 | PID=26400
+Port=1881 | Address=0.0.0.0 | PID=20320

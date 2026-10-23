@@ -1,0 +1,315 @@
+{
+  "version": 2,
+  "md5": "10a6886ffe5a6b55f9e151eda7b7c48b",
+  "typeTags": {
+    "BOOL": 0,
+    "SINT": 1,
+    "USINT": 2,
+    "INT": 3,
+    "UINT": 4,
+    "DINT": 5,
+    "UDINT": 6,
+    "LINT": 7,
+    "ULINT": 8,
+    "REAL": 9,
+    "LREAL": 10,
+    "BYTE": 11,
+    "WORD": 12,
+    "DWORD": 13,
+    "LWORD": 14,
+    "TIME": 15,
+    "DATE": 16,
+    "TOD": 17,
+    "DT": 18,
+    "STRING": 19,
+    "WSTRING": 20
+  },
+  "arrays": [
+    {
+      "index": 0,
+      "count": 40
+    }
+  ],
+  "leaves": [
+    {
+      "arrayIdx": 0,
+      "elemIdx": 0,
+      "path": "INSTANCE0.CYCLETIME_S",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 1,
+      "path": "INSTANCE0.LEVELKP",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 2,
+      "path": "INSTANCE0.LEVELKI",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 3,
+      "path": "INSTANCE0.FLOWKP",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 4,
+      "path": "INSTANCE0.FLOWKI",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 5,
+      "path": "INSTANCE0.TRIMLIMIT_PU",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 6,
+      "path": "INSTANCE0.DEMANDMAX_PU",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 7,
+      "path": "INSTANCE0.SPMIN_PCT",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 8,
+      "path": "INSTANCE0.SPMAX_PCT",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 9,
+      "path": "INSTANCE0.ALARMLOW_PCT",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 10,
+      "path": "INSTANCE0.ALARMHIGH_PCT",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 11,
+      "path": "INSTANCE0.DRUMLEVEL_PCT",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 12,
+      "path": "INSTANCE0.LEVELSETPOINT_PCT",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 13,
+      "path": "INSTANCE0.LEVELERROR",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 14,
+      "path": "INSTANCE0.FEEDWATERFLOW_PU",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 15,
+      "path": "INSTANCE0.STEAMFLOW_PU",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 16,
+      "path": "INSTANCE0.LEVELINTEGRAL",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 17,
+      "path": "INSTANCE0.LEVELTRIALINTEGRAL",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 18,
+      "path": "INSTANCE0.LEVELTRIM_PU",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 19,
+      "path": "INSTANCE0.FLOWDEMAND_PU",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 20,
+      "path": "INSTANCE0.FLOWERROR_PU",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 21,
+      "path": "INSTANCE0.FLOWINTEGRAL",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 22,
+      "path": "INSTANCE0.FLOWTRIALINTEGRAL",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 23,
+      "path": "INSTANCE0.VALVEUNSAT",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 24,
+      "path": "INSTANCE0.VALVEPERCENT",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 25,
+      "path": "INSTANCE0.MANUALPERCENT",
+      "type": "REAL",
+      "size": 4
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 26,
+      "path": "INSTANCE0.MANUALCMD_X10",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 27,
+      "path": "INSTANCE0.VALVESATHIGH",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 28,
+      "path": "INSTANCE0.VALVESATLOW",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 29,
+      "path": "INSTANCE0.INPUTSVALID",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 30,
+      "path": "INSTANCE0.AUTOACTIVE",
+      "type": "BOOL",
+      "size": 1
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 31,
+      "path": "INSTANCE0.PLCHEARTBEAT",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 32,
+      "path": "INSTANCE0.DRUMLEVEL_X100",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 33,
+      "path": "INSTANCE0.FEEDWATERFLOW_X1000",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 34,
+      "path": "INSTANCE0.STEAMFLOW_X1000",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 35,
+      "path": "INSTANCE0.LEVELSP_X100",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 36,
+      "path": "INSTANCE0.MANUALVALVE_X10",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 37,
+      "path": "INSTANCE0.FEEDWATERVALVE_X10",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 38,
+      "path": "INSTANCE0.AUTOMODE_X10",
+      "type": "INT",
+      "size": 2
+    },
+    {
+      "arrayIdx": 0,
+      "elemIdx": 39,
+      "path": "INSTANCE0.STATUSWORD",
+      "type": "INT",
+      "size": 2
+    }
+  ]
+}

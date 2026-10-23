@@ -1,0 +1,2390 @@
+﻿BOILER DCS - CRITICAL SOURCE REVIEW
+Generated: 2026-10-23 00.49.11
+Python project: C:\Users\thebe\Downloads\BOILER DCS
+OpenPLC project: D:\PLC\Project 3
+
+
+==============================================================================
+FILE: D:\PLC\Project 3\project.json
+==============================================================================
+SIZE: 601 bytes
+MODIFIED: 2026-10-22 15.49.59
+SHA256: 271688818742C4F6848491654BDAA3F624A88E35805039967C8037164F3938F6
+--- SOURCE CONTENT ---
+{
+  "meta": {
+    "name": "DCS_Boiler_Project",
+    "type": "plc-project"
+  },
+  "data": {
+    "dataTypes": [],
+    "globalVariableLists": [],
+    "pous": [],
+    "configuration": {
+      "resource": {
+        "tasks": [
+          {
+            "name": "task0",
+            "triggering": "Cyclic",
+            "interval": "T#20ms",
+            "priority": 1
+          }
+        ],
+        "instances": [
+          {
+            "name": "instance0",
+            "task": "task0",
+            "program": "main"
+          }
+        ],
+        "globalVariables": []
+      }
+    },
+    "libraries": []
+  }
+}
+
+==============================================================================
+FILE: D:\PLC\Project 3\devices\configuration.json
+==============================================================================
+SIZE: 290 bytes
+MODIFIED: 2026-10-22 15.49.59
+SHA256: 0DD0592CD7ADA31C4FBA8FAF8BB5BDFEFEA5E59E3276B2BBC9E43739C805169E
+--- SOURCE CONTENT ---
+{
+  "deviceBoard": "OpenPLC Runtime v4",
+  "communicationPort": "",
+  "runtimeIpAddress": "192.168.1.18",
+  "vendorScreenData": {},
+  "vendorScreenDataByBoard": {
+    "OpenPLC Simulator": {},
+    "OpenPLC Runtime v4": {}
+  },
+  "selectedPlatformOptions": {},
+  "vppPackagePinsByBoard": {}
+}
+
+==============================================================================
+FILE: D:\PLC\Project 3\devices\servers\Kalki.json
+==============================================================================
+SIZE: 190 bytes
+MODIFIED: 2026-10-22 15.49.59
+SHA256: 52CFA0FDA4AFF95AC879C0CE158CBD7B1990360BEAF8283B6EFCEE201D67BEAC
+--- SOURCE CONTENT ---
+{
+  "name": "Kalki",
+  "protocol": "modbus-tcp",
+  "modbusSlaveConfig": {
+    "enabled": true,
+    "transports": [
+      "tcp"
+    ],
+    "networkInterface": "0.0.0.0",
+    "port": 502
+  }
+}
+
+==============================================================================
+FILE: D:\PLC\Project 3\pous\programs\main.st
+==============================================================================
+SIZE: 4891 bytes
+MODIFIED: 2026-10-22 15.49.59
+SHA256: 376956D0F000DACD0F2E380577D725964FD812239A6BDE0226619930E6F11BDC
+--- SOURCE CONTENT ---
+PROGRAM main
+VAR
+    (* ---- Modbus-mapped registers ---- *)
+    PLCHeartbeat        : INT AT %MW100 := 0;
+    DrumLevel_x100      : INT AT %MW101 := 5000;   (* % x100, input  *)
+    FeedwaterFlow_x1000 : INT AT %MW102 := 1000;   (* pu x1000, input *)
+    SteamFlow_x1000     : INT AT %MW103 := 1000;   (* pu x1000, input *)
+    LevelSP_x100        : INT AT %MW104 := 5000;   (* % x100, operator *)
+    ManualValve_x10     : INT AT %MW105 := 500;    (* % x10, operator  *)
+    FeedwaterValve_x10  : INT AT %MW106 := 500;    (* % x10, output    *)
+    AutoMode_x10        : INT AT %MW107 := 0;      (* >0 = auto        *)
+    StatusWord          : INT AT %MW108 := 0;      (* 1 auto, 2 input fault,
+                                                      4 low lvl, 8 high lvl,
+                                                      16 valve saturated *)
+
+    (* ---- Tuning (match CycleTime_s to the OpenPLC task interval) ---- *)
+    CycleTime_s  : REAL := 0.02;
+    LevelKp      : REAL := 0.025;   (* pu flow per % level          *)
+    LevelKi      : REAL := 0.001;   (* pu flow per (% level * s)    *)
+    FlowKp       : REAL := 30.0;    (* % valve per pu flow          *)
+    FlowKi       : REAL := 10.0;    (* % valve per (pu flow * s)    *)
+    TrimLimit_pu : REAL := 0.5;
+    DemandMax_pu : REAL := 2.0;
+    SPMin_pct    : REAL := 20.0;
+    SPMax_pct    : REAL := 80.0;
+    AlarmLow_pct : REAL := 30.0;
+    AlarmHigh_pct: REAL := 70.0;
+
+    (* ---- Process values ---- *)
+    DrumLevel_pct     : REAL := 50.0;
+    LevelSetpoint_pct : REAL := 50.0;
+    LevelError        : REAL := 0.0;
+    FeedwaterFlow_pu  : REAL := 1.0;
+    SteamFlow_pu      : REAL := 1.0;
+
+    (* ---- Controller states ---- *)
+    LevelIntegral      : REAL := 0.0;
+    LevelTrialIntegral : REAL := 0.0;
+    LevelTrim_pu       : REAL := 0.0;
+    FlowDemand_pu      : REAL := 1.0;
+    FlowError_pu       : REAL := 0.0;
+    FlowIntegral       : REAL := 0.0;
+    FlowTrialIntegral  : REAL := 0.0;
+    ValveUnsat         : REAL := 50.0;
+    ValvePercent       : REAL := 50.0;
+    ManualPercent      : REAL := 50.0;
+    ManualCmd_x10      : INT  := 500;
+
+    ValveSatHigh : BOOL := FALSE;
+    ValveSatLow  : BOOL := FALSE;
+    InputsValid  : BOOL := TRUE;
+    AutoActive   : BOOL := FALSE;
+END_VAR
+
+(* Calculate drum-level error in percentage points *)
+LevelError :=
+    INT_TO_REAL(LevelSP_x100 - DrumLevel_x100) / 100.0;
+
+IF AutoMode_x10 > 0 THEN
+
+    (* PI integral update for a 20 ms cyclic task *)
+    IntegralTerm :=
+        IntegralTerm + Ki * LevelError * CycleTime_s;
+
+    (* Limit the integral contribution *)
+    IF IntegralTerm > 50.0 THEN
+        IntegralTerm := 50.0;
+    END_IF;
+
+    IF IntegralTerm < -50.0 THEN
+        IntegralTerm := -50.0;
+    END_IF;
+
+    (* Calculate and limit the valve command *)
+    ValvePercent := 50.0 + Kp * LevelError + IntegralTerm;
+
+    IF ValvePercent > 100.0 THEN
+        ValvePercent := 100.0;
+    END_IF;
+
+    IF ValvePercent < 0.0 THEN
+        ValvePercent := 0.0;
+    END_IF;
+
+    FeedwaterValve_x10 := REAL_TO_INT(ValvePercent * 10.0);
+
+ELSE
+
+    (* Manual mode: track the integral for a smoother mode transfer *)
+    IF ManualValve_x10 > 1000 THEN
+        ManualValve_x10 := 1000;
+    END_IF;
+
+    IF ManualValve_x10 < 0 THEN
+        ManualValve_x10 := 0;
+    END_IF;
+
+    FeedwaterValve_x10 := ManualValve_x10;
+
+    IntegralTerm :=
+        INT_TO_REAL(ManualValve_x10) / 10.0
+        - 50.0
+        - Kp * LevelError;
+
+END_IF;
+
+(* Increment a diagnostic heartbeat *)
+IF PLCHeartbeat >= 30000 THEN
+    PLCHeartbeat := 0;
+ELSE
+    PLCHeartbeat := PLCHeartbeat + 1;
+END_IF;
+
+END_PROGRAM := 50.0;
+    END_IF;
+
+    IF FlowIntegral_pct < -50.0 THEN
+        FlowIntegral_pct := -50.0;
+    END_IF;
+
+    ValveUnclamped_pct :=
+        50.0 + FlowKp * FlowError_pu + FlowIntegral_pct;
+
+    ValvePercent := ValveUnclamped_pct;
+
+    IF ValvePercent > 100.0 THEN
+        ValvePercent := 100.0;
+    END_IF;
+
+    IF ValvePercent < 0.0 THEN
+        ValvePercent := 0.0;
+    END_IF;
+
+    FeedwaterValve_x10 := REAL_TO_INT(ValvePercent * 10.0);
+
+ELSE
+
+    (* Manual mode: clamp the operator command *)
+    IF ManualValve_x10 > 1000 THEN
+        ManualValve_x10 := 1000;
+    END_IF;
+
+    IF ManualValve_x10 < 0 THEN
+        ManualValve_x10 := 0;
+    END_IF;
+
+    ValvePercent := INT_TO_REAL(ManualValve_x10) / 10.0;
+    FeedwaterValve_x10 := ManualValve_x10;
+
+    (* Track controller states for a smoother mode transfer *)
+    FeedwaterSP_pu := SteamFlow_pu;
+    LevelCorrection_pu := FeedwaterFlow_pu - SteamFlow_pu;
+
+    LevelIntegral_pu :=
+        LevelCorrection_pu - LevelKp * LevelError_pct;
+
+    FlowError_pu := FeedwaterSP_pu - FeedwaterFlow_pu;
+
+    FlowIntegral_pct :=
+        ValvePercent - 50.0 - FlowKp * FlowError_pu;
+
+END_IF;
+
+(* Diagnostic heartbeat *)
+IF PLCHeartbeat >= 30000 THEN
+    PLCHeartbeat := 0;
+ELSE
+    PLCHeartbeat := PLCHeartbeat + 1;
+END_IF;
+
+END_PROGRAM
+
+==============================================================================
+FILE: D:\PLC\Project 3\pous\programs\main_three_element_candidate.st
+==============================================================================
+SIZE: 3758 bytes
+MODIFIED: 2026-10-21 19.51.45
+SHA256: C7F4014A45933F8A3D7C67D4287206581BB6CAFD8F54C35F506C1BB2C7FEF632
+--- SOURCE CONTENT ---
+PROGRAM main
+VAR
+    (* Existing Modbus register mapping *)
+    PLCHeartbeat : INT AT %MW100 := 0;
+    DrumLevel_x100 : INT AT %MW101 := 5000;
+    FeedwaterFlow_x1000 : INT AT %MW102 := 1000;
+    SteamFlow_x1000 : INT AT %MW103 := 1000;
+    LevelSP_x100 : INT AT %MW104 := 5000;
+    ManualValve_x10 : INT AT %MW105 := 500;
+    FeedwaterValve_x10 : INT AT %MW106 := 500;
+    AutoMode_x10 : INT AT %MW107 := 0;
+
+    (* Scaled process measurements *)
+    DrumLevel_pct : REAL := 50.0;
+    LevelSP_pct : REAL := 50.0;
+    FeedwaterFlow_pu : REAL := 1.0;
+    SteamFlow_pu : REAL := 1.0;
+
+    (* Outer drum-level controller *)
+    LevelError_pct : REAL := 0.0;
+    LevelKp : REAL := 0.02;
+    LevelKi : REAL := 0.001;
+    LevelIntegral_pu : REAL := 0.0;
+    LevelCorrection_pu : REAL := 0.0;
+    FeedwaterSP_pu : REAL := 1.0;
+
+    (* Inner feedwater-flow controller *)
+    FlowError_pu : REAL := 0.0;
+    FlowKp : REAL := 50.0;
+    FlowKi : REAL := 8.0;
+    FlowIntegral_pct : REAL := 0.0;
+
+    (* Output and scan timing *)
+    CycleTime_s : REAL := 0.02;
+    ValvePercent : REAL := 50.0;
+    ValveUnclamped_pct : REAL := 50.0;
+END_VAR
+
+(* Convert integer register values to engineering units *)
+DrumLevel_pct := INT_TO_REAL(DrumLevel_x100) / 100.0;
+LevelSP_pct := INT_TO_REAL(LevelSP_x100) / 100.0;
+FeedwaterFlow_pu := INT_TO_REAL(FeedwaterFlow_x1000) / 1000.0;
+SteamFlow_pu := INT_TO_REAL(SteamFlow_x1000) / 1000.0;
+
+LevelError_pct := LevelSP_pct - DrumLevel_pct;
+
+IF AutoMode_x10 > 0 THEN
+
+    (* OUTER LOOP: drum-level feedback.
+       Its output is a correction to steam-flow feedforward. *)
+    LevelIntegral_pu :=
+        LevelIntegral_pu + LevelKi * LevelError_pct * CycleTime_s;
+
+    IF LevelIntegral_pu > 0.5 THEN
+        LevelIntegral_pu := 0.5;
+    END_IF;
+
+    IF LevelIntegral_pu < -0.5 THEN
+        LevelIntegral_pu := -0.5;
+    END_IF;
+
+    LevelCorrection_pu :=
+        LevelKp * LevelError_pct + LevelIntegral_pu;
+
+    (* Three-element feedwater setpoint:
+       steam flow + level correction *)
+    FeedwaterSP_pu := SteamFlow_pu + LevelCorrection_pu;
+
+    IF FeedwaterSP_pu > 1.5 THEN
+        FeedwaterSP_pu := 1.5;
+    END_IF;
+
+    IF FeedwaterSP_pu < 0.0 THEN
+        FeedwaterSP_pu := 0.0;
+    END_IF;
+
+    (* INNER LOOP: feedwater-flow feedback *)
+    FlowError_pu := FeedwaterSP_pu - FeedwaterFlow_pu;
+
+    FlowIntegral_pct :=
+        FlowIntegral_pct + FlowKi * FlowError_pu * CycleTime_s;
+
+    IF FlowIntegral_pct > 50.0 THEN
+        FlowIntegral_pct := 50.0;
+    END_IF;
+
+    IF FlowIntegral_pct < -50.0 THEN
+        FlowIntegral_pct := -50.0;
+    END_IF;
+
+    ValveUnclamped_pct :=
+        50.0 + FlowKp * FlowError_pu + FlowIntegral_pct;
+
+    ValvePercent := ValveUnclamped_pct;
+
+    IF ValvePercent > 100.0 THEN
+        ValvePercent := 100.0;
+    END_IF;
+
+    IF ValvePercent < 0.0 THEN
+        ValvePercent := 0.0;
+    END_IF;
+
+    FeedwaterValve_x10 := REAL_TO_INT(ValvePercent * 10.0);
+
+ELSE
+
+    (* Manual mode: clamp the operator command *)
+    IF ManualValve_x10 > 1000 THEN
+        ManualValve_x10 := 1000;
+    END_IF;
+
+    IF ManualValve_x10 < 0 THEN
+        ManualValve_x10 := 0;
+    END_IF;
+
+    ValvePercent := INT_TO_REAL(ManualValve_x10) / 10.0;
+    FeedwaterValve_x10 := ManualValve_x10;
+
+    (* Track controller states for a smoother mode transfer *)
+    FeedwaterSP_pu := SteamFlow_pu;
+    LevelCorrection_pu := FeedwaterFlow_pu - SteamFlow_pu;
+
+    LevelIntegral_pu :=
+        LevelCorrection_pu - LevelKp * LevelError_pct;
+
+    FlowError_pu := FeedwaterSP_pu - FeedwaterFlow_pu;
+
+    FlowIntegral_pct :=
+        ValvePercent - 50.0 - FlowKp * FlowError_pu;
+
+END_IF;
+
+(* Diagnostic heartbeat *)
+IF PLCHeartbeat >= 30000 THEN
+    PLCHeartbeat := 0;
+ELSE
+    PLCHeartbeat := PLCHeartbeat + 1;
+END_IF;
+
+END_PROGRAM
+
+
+==============================================================================
+FILE: D:\PLC\Project 3\pous\programs\main_single_element_backup.st
+==============================================================================
+SIZE: 1886 bytes
+MODIFIED: 2026-10-21 19.17.49
+SHA256: 0F3C650FE9E47BC8272DBC8E80AB20A4FE28365AF7AA832A4666FDB154F70C2C
+--- SOURCE CONTENT ---
+PROGRAM main
+VAR
+    DrumLevel_x100 : INT AT %MW101 := 5000;
+    FeedwaterFlow_x1000 : INT AT %MW102 := 1000;
+    SteamFlow_x1000 : INT AT %MW103 := 1000;
+    LevelSP_x100 : INT AT %MW104 := 5000;
+    AutoMode_x10 : INT AT %MW107 := 0;
+    ManualValve_x10 : INT AT %MW105 := 500;
+    FeedwaterValve_x10 : INT AT %MW106 := 500;
+    LevelError : REAL := 0.0;
+    Kp : REAL := 1.5;
+    Ki : REAL := 0.2;
+    CycleTime_s : REAL := 0.02;
+    IntegralTerm : REAL := 0.0;
+    ValvePercent : REAL := 50.0;
+    PLCHeartbeat : INT AT %MW100 := 0;
+END_VAR
+
+(* Calculate drum-level error in percentage points *)
+LevelError :=
+    INT_TO_REAL(LevelSP_x100 - DrumLevel_x100) / 100.0;
+
+IF AutoMode_x10 > 0 THEN
+
+    (* PI integral update for a 20 ms cyclic task *)
+    IntegralTerm :=
+        IntegralTerm + Ki * LevelError * CycleTime_s;
+
+    (* Limit the integral contribution *)
+    IF IntegralTerm > 50.0 THEN
+        IntegralTerm := 50.0;
+    END_IF;
+
+    IF IntegralTerm < -50.0 THEN
+        IntegralTerm := -50.0;
+    END_IF;
+
+    (* Calculate and limit the valve command *)
+    ValvePercent := 50.0 + Kp * LevelError + IntegralTerm;
+
+    IF ValvePercent > 100.0 THEN
+        ValvePercent := 100.0;
+    END_IF;
+
+    IF ValvePercent < 0.0 THEN
+        ValvePercent := 0.0;
+    END_IF;
+
+    FeedwaterValve_x10 := REAL_TO_INT(ValvePercent * 10.0);
+
+ELSE
+
+    (* Manual mode: track the integral for a smoother mode transfer *)
+    IF ManualValve_x10 > 1000 THEN
+        ManualValve_x10 := 1000;
+    END_IF;
+
+    IF ManualValve_x10 < 0 THEN
+        ManualValve_x10 := 0;
+    END_IF;
+
+    FeedwaterValve_x10 := ManualValve_x10;
+
+    IntegralTerm :=
+        INT_TO_REAL(ManualValve_x10) / 10.0
+        - 50.0
+        - Kp * LevelError;
+
+END_IF;
+
+(* Increment a diagnostic heartbeat *)
+IF PLCHeartbeat >= 30000 THEN
+    PLCHeartbeat := 0;
+ELSE
+    PLCHeartbeat := PLCHeartbeat + 1;
+END_IF;
+
+END_PROGRAM
+
+==============================================================================
+FILE: D:\PLC\Project 3\backup_before_recovery_20261022_154403\main.st
+==============================================================================
+SIZE: 6892 bytes
+MODIFIED: 2026-10-22 15.34.03
+SHA256: 86DBB9667839FB4C434AC3A993C7D0C10144312AC913268E013AA451AF776D49
+--- SOURCE CONTENT ---
+PROGRAM main
+VAR
+    (* ---- Modbus-mapped registers ---- *)
+    PLCHeartbeat        : INT AT %MW100 := 0;
+    DrumLevel_x100      : INT AT %MW101 := 5000;   (* % x100, input  *)
+    FeedwaterFlow_x1000 : INT AT %MW102 := 1000;   (* pu x1000, input *)
+    SteamFlow_x1000     : INT AT %MW103 := 1000;   (* pu x1000, input *)
+    LevelSP_x100        : INT AT %MW104 := 5000;   (* % x100, operator *)
+    ManualValve_x10     : INT AT %MW105 := 500;    (* % x10, operator  *)
+    FeedwaterValve_x10  : INT AT %MW106 := 500;    (* % x10, output    *)
+    AutoMode_x10        : INT AT %MW107 := 0;      (* >0 = auto        *)
+    StatusWord          : INT AT %MW108 := 0;      (* 1 auto, 2 input fault,
+                                                      4 low lvl, 8 high lvl,
+                                                      16 valve saturated *)
+
+    (* ---- Tuning (match CycleTime_s to the OpenPLC task interval) ---- *)
+    CycleTime_s  : REAL := 0.02;
+    LevelKp      : REAL := 0.025;   (* pu flow per % level          *)
+    LevelKi      : REAL := 0.001;   (* pu flow per (% level * s)    *)
+    FlowKp       : REAL := 30.0;    (* % valve per pu flow          *)
+    FlowKi       : REAL := 10.0;    (* % valve per (pu flow * s)    *)
+    TrimLimit_pu : REAL := 0.5;
+    DemandMax_pu : REAL := 2.0;
+    SPMin_pct    : REAL := 20.0;
+    SPMax_pct    : REAL := 80.0;
+    AlarmLow_pct : REAL := 30.0;
+    AlarmHigh_pct: REAL := 70.0;
+
+    (* ---- Process values ---- *)
+    DrumLevel_pct     : REAL := 50.0;
+    LevelSetpoint_pct : REAL := 50.0;
+    LevelError        : REAL := 0.0;
+    FeedwaterFlow_pu  : REAL := 1.0;
+    SteamFlow_pu      : REAL := 1.0;
+
+    (* ---- Controller states ---- *)
+    LevelIntegral      : REAL := 0.0;
+    LevelTrialIntegral : REAL := 0.0;
+    LevelTrim_pu       : REAL := 0.0;
+    FlowDemand_pu      : REAL := 1.0;
+    FlowError_pu       : REAL := 0.0;
+    FlowIntegral       : REAL := 0.0;
+    FlowTrialIntegral  : REAL := 0.0;
+    ValveUnsat         : REAL := 50.0;
+    ValvePercent       : REAL := 50.0;
+    ManualPercent      : REAL := 50.0;
+    ManualCmd_x10      : INT  := 500;
+
+    ValveSatHigh : BOOL := FALSE;
+    ValveSatLow  : BOOL := FALSE;
+    InputsValid  : BOOL := TRUE;
+    AutoActive   : BOOL := FALSE;
+END_VAR
+
+(* Convert integer register values to engineering units *)
+DrumLevel_pct := INT_TO_REAL(DrumLevel_x100) / 100.0;
+LevelSP_pct := INT_TO_REAL(LevelSP_x100) / 100.0;
+FeedwaterFlow_pu := INT_TO_REAL(FeedwaterFlow_x1000) / 1000.0;
+SteamFlow_pu := INT_TO_REAL(SteamFlow_x1000) / 1000.0;
+
+LevelError_pct := LevelSP_pct - DrumLevel_pct;
+
+IF AutoMode_x10 > 0 THEN
+
+    (* OUTER LOOP: drum-level feedback.
+       Its output is a correction to steam-flow feedforward. *)
+    LevelIntegral_pu :=
+        LevelIntegral_pu + LevelKi * LevelError_pct * CycleTime_s;
+
+    IF LevelIntegral_pu > 0.5 THEN
+        LevelIntegral_pu := 0.5;
+    END_IF;
+
+    IF LevelIntegral_pu < -0.5 THEN
+        LevelIntegral_pu := -0.5;
+    END_IF;
+
+    LevelCorrection_pu :=
+        LevelKp * LevelError_pct + LevelIntegral_pu;
+
+    (* Three-element feedwater setpoint:
+       steam flow + level correction *)
+    FeedwaterSP_pu := SteamFlow_pu + LevelCorrection_pu;
+
+    IF FeedwaterSP_pu > 1.5 THEN
+        FeedwaterSP_pu := 1.5;
+    END_IF;
+
+    IF FeedwaterSP_pu < 0.0 THEN
+        FeedwaterSP_pu := 0.0;
+    END_IF;
+
+    (* INNER LOOP: feedwater-flow feedback *)
+    FlowError_pu := FeedwaterSP_pu - FeedwaterFlow_pu;
+
+    FlowIntegral_pct :=
+        FlowIntegral_pct + FlowKi * FlowError_pu * CycleTime_s;
+
+    IF FlowIntegral_pct > 50.0 THEN
+        FlowIntegral_pct := 50.0;
+    END_IF;
+
+    IF FlowIntegral_pct < -50.0 THEN
+        FlowIntegral_pct := -50.0;
+    END_IF;
+
+    ValveUnclamped_pct :=
+        50.0 + FlowKp * FlowError_pu + FlowIntegral_pct;
+
+    ValvePercent := ValveUnclamped_pct;
+
+    IF ValvePercent > 100.0 THEN
+        ValvePercent := 100.0;
+    END_IF;
+
+    IF ValvePercent < 0.0 THEN
+        ValvePercent := 0.0;
+    END_IF;
+
+    FeedwaterValve_x10 := REAL_TO_INT(ValvePercent * 10.0);
+
+ELSE
+
+    (* Manual mode: clamp the operator command *)
+    IF ManualValve_x10 > 1000 THEN
+        ManualValve_x10 := 1000;
+    END_IF;
+
+    IF ManualValve_x10 < 0 THEN
+        ManualValve_x10 := 0;
+    END_IF;
+
+    ValvePercent := INT_TO_REAL(ManualValve_x10) / 10.0;
+    FeedwaterValve_x10 := ManualValve_x10;
+
+    (* Track controller states for a smoother mode transfer *)
+    FeedwaterSP_pu := SteamFlow_pu;
+    LevelCorrection_pu := FeedwaterFlow_pu - SteamFlow_pu;
+
+    LevelIntegral_pu :=
+        LevelCorrection_pu - LevelKp * LevelError_pct;
+
+    FlowError_pu := FeedwaterSP_pu - FeedwaterFlow_pu;
+
+    FlowIntegral_pct :=
+        ValvePercent - 50.0 - FlowKp * FlowError_pu;
+
+END_IF;
+
+(* Diagnostic heartbeat *)
+IF PLCHeartbeat >= 30000 THEN
+    PLCHeartbeat := 0;
+ELSE
+    PLCHeartbeat := PLCHeartbeat + 1;
+END_IF;
+
+END_PROGRAM FlowError_pu + FlowTrialIntegral;
+        END_IF;
+        FlowIntegral := FlowTrialIntegral;
+
+        ValvePercent := ValveUnsat;
+        IF ValvePercent > 100.0 THEN ValvePercent := 100.0; END_IF;
+        IF ValvePercent < 0.0   THEN ValvePercent := 0.0;   END_IF;
+
+        ValveSatHigh := ValveUnsat >= 100.0;
+        ValveSatLow  := ValveUnsat <= 0.0;
+        AutoActive   := TRUE;
+
+    ELSE
+        (* ===== MANUAL: both integrators track for bumpless transfer ===== *)
+        ManualCmd_x10 := ManualValve_x10;
+        IF ManualCmd_x10 > 1000 THEN ManualCmd_x10 := 1000; END_IF;
+        IF ManualCmd_x10 < 0    THEN ManualCmd_x10 := 0;    END_IF;
+
+        ManualPercent := INT_TO_REAL(ManualCmd_x10) / 10.0;
+        ValvePercent  := ManualPercent;
+
+        FlowIntegral := ManualPercent - 50.0;
+        IF FlowIntegral >  50.0 THEN FlowIntegral :=  50.0; END_IF;
+        IF FlowIntegral < -50.0 THEN FlowIntegral := -50.0; END_IF;
+
+        LevelIntegral := (FeedwaterFlow_pu - SteamFlow_pu) - LevelKp * LevelError;
+        IF LevelIntegral >  TrimLimit_pu THEN LevelIntegral :=  TrimLimit_pu; END_IF;
+        IF LevelIntegral < -TrimLimit_pu THEN LevelIntegral := -TrimLimit_pu; END_IF;
+
+        ValveSatHigh := FALSE;
+        ValveSatLow  := FALSE;
+        AutoActive   := FALSE;
+    END_IF;
+
+    FeedwaterValve_x10 := REAL_TO_INT(ValvePercent * 10.0);
+
+    (* Alarms / status *)
+    IF AutoActive THEN StatusWord := StatusWord + 1; END_IF;
+    IF DrumLevel_pct < AlarmLow_pct  THEN StatusWord := StatusWord + 4; END_IF;
+    IF DrumLevel_pct > AlarmHigh_pct THEN StatusWord := StatusWord + 8; END_IF;
+    IF ValveSatHigh OR ValveSatLow   THEN StatusWord := StatusWord + 16; END_IF;
+
+ELSE
+    (* Bad input: hold last valve position, freeze integrators *)
+    StatusWord := 2;
+END_IF;
+
+(* ---------- PLC heartbeat ---------- *)
+IF PLCHeartbeat >= 30000 THEN
+    PLCHeartbeat := 0;
+ELSE
+    PLCHeartbeat := PLCHeartbeat + 1;
+END_IF;
+
+END_PROGRAM
+
+==============================================================================
+FILE: D:\PLC\Project 3\backup_before_recovery_20261022_154403\main_three_element_candidate.st
+==============================================================================
+SIZE: 3758 bytes
+MODIFIED: 2026-10-21 19.51.45
+SHA256: C7F4014A45933F8A3D7C67D4287206581BB6CAFD8F54C35F506C1BB2C7FEF632
+--- SOURCE CONTENT ---
+PROGRAM main
+VAR
+    (* Existing Modbus register mapping *)
+    PLCHeartbeat : INT AT %MW100 := 0;
+    DrumLevel_x100 : INT AT %MW101 := 5000;
+    FeedwaterFlow_x1000 : INT AT %MW102 := 1000;
+    SteamFlow_x1000 : INT AT %MW103 := 1000;
+    LevelSP_x100 : INT AT %MW104 := 5000;
+    ManualValve_x10 : INT AT %MW105 := 500;
+    FeedwaterValve_x10 : INT AT %MW106 := 500;
+    AutoMode_x10 : INT AT %MW107 := 0;
+
+    (* Scaled process measurements *)
+    DrumLevel_pct : REAL := 50.0;
+    LevelSP_pct : REAL := 50.0;
+    FeedwaterFlow_pu : REAL := 1.0;
+    SteamFlow_pu : REAL := 1.0;
+
+    (* Outer drum-level controller *)
+    LevelError_pct : REAL := 0.0;
+    LevelKp : REAL := 0.02;
+    LevelKi : REAL := 0.001;
+    LevelIntegral_pu : REAL := 0.0;
+    LevelCorrection_pu : REAL := 0.0;
+    FeedwaterSP_pu : REAL := 1.0;
+
+    (* Inner feedwater-flow controller *)
+    FlowError_pu : REAL := 0.0;
+    FlowKp : REAL := 50.0;
+    FlowKi : REAL := 8.0;
+    FlowIntegral_pct : REAL := 0.0;
+
+    (* Output and scan timing *)
+    CycleTime_s : REAL := 0.02;
+    ValvePercent : REAL := 50.0;
+    ValveUnclamped_pct : REAL := 50.0;
+END_VAR
+
+(* Convert integer register values to engineering units *)
+DrumLevel_pct := INT_TO_REAL(DrumLevel_x100) / 100.0;
+LevelSP_pct := INT_TO_REAL(LevelSP_x100) / 100.0;
+FeedwaterFlow_pu := INT_TO_REAL(FeedwaterFlow_x1000) / 1000.0;
+SteamFlow_pu := INT_TO_REAL(SteamFlow_x1000) / 1000.0;
+
+LevelError_pct := LevelSP_pct - DrumLevel_pct;
+
+IF AutoMode_x10 > 0 THEN
+
+    (* OUTER LOOP: drum-level feedback.
+       Its output is a correction to steam-flow feedforward. *)
+    LevelIntegral_pu :=
+        LevelIntegral_pu + LevelKi * LevelError_pct * CycleTime_s;
+
+    IF LevelIntegral_pu > 0.5 THEN
+        LevelIntegral_pu := 0.5;
+    END_IF;
+
+    IF LevelIntegral_pu < -0.5 THEN
+        LevelIntegral_pu := -0.5;
+    END_IF;
+
+    LevelCorrection_pu :=
+        LevelKp * LevelError_pct + LevelIntegral_pu;
+
+    (* Three-element feedwater setpoint:
+       steam flow + level correction *)
+    FeedwaterSP_pu := SteamFlow_pu + LevelCorrection_pu;
+
+    IF FeedwaterSP_pu > 1.5 THEN
+        FeedwaterSP_pu := 1.5;
+    END_IF;
+
+    IF FeedwaterSP_pu < 0.0 THEN
+        FeedwaterSP_pu := 0.0;
+    END_IF;
+
+    (* INNER LOOP: feedwater-flow feedback *)
+    FlowError_pu := FeedwaterSP_pu - FeedwaterFlow_pu;
+
+    FlowIntegral_pct :=
+        FlowIntegral_pct + FlowKi * FlowError_pu * CycleTime_s;
+
+    IF FlowIntegral_pct > 50.0 THEN
+        FlowIntegral_pct := 50.0;
+    END_IF;
+
+    IF FlowIntegral_pct < -50.0 THEN
+        FlowIntegral_pct := -50.0;
+    END_IF;
+
+    ValveUnclamped_pct :=
+        50.0 + FlowKp * FlowError_pu + FlowIntegral_pct;
+
+    ValvePercent := ValveUnclamped_pct;
+
+    IF ValvePercent > 100.0 THEN
+        ValvePercent := 100.0;
+    END_IF;
+
+    IF ValvePercent < 0.0 THEN
+        ValvePercent := 0.0;
+    END_IF;
+
+    FeedwaterValve_x10 := REAL_TO_INT(ValvePercent * 10.0);
+
+ELSE
+
+    (* Manual mode: clamp the operator command *)
+    IF ManualValve_x10 > 1000 THEN
+        ManualValve_x10 := 1000;
+    END_IF;
+
+    IF ManualValve_x10 < 0 THEN
+        ManualValve_x10 := 0;
+    END_IF;
+
+    ValvePercent := INT_TO_REAL(ManualValve_x10) / 10.0;
+    FeedwaterValve_x10 := ManualValve_x10;
+
+    (* Track controller states for a smoother mode transfer *)
+    FeedwaterSP_pu := SteamFlow_pu;
+    LevelCorrection_pu := FeedwaterFlow_pu - SteamFlow_pu;
+
+    LevelIntegral_pu :=
+        LevelCorrection_pu - LevelKp * LevelError_pct;
+
+    FlowError_pu := FeedwaterSP_pu - FeedwaterFlow_pu;
+
+    FlowIntegral_pct :=
+        ValvePercent - 50.0 - FlowKp * FlowError_pu;
+
+END_IF;
+
+(* Diagnostic heartbeat *)
+IF PLCHeartbeat >= 30000 THEN
+    PLCHeartbeat := 0;
+ELSE
+    PLCHeartbeat := PLCHeartbeat + 1;
+END_IF;
+
+END_PROGRAM
+
+
+==============================================================================
+FILE: D:\PLC\Project 3\backup_before_recovery_20261022_154403\program.st
+==============================================================================
+SIZE: 3893 bytes
+MODIFIED: 2026-10-22 15.34.04
+SHA256: 4066CF540250730564D6D35B5741DAE559EFF16F3C3904E523AB48D5455E7BA8
+--- SOURCE CONTENT ---
+PROGRAM main
+  VAR
+    DrumLevel_pct : REAL := 50.0;
+    LevelSP_pct : REAL := 50.0;
+    FeedwaterFlow_pu : REAL := 1.0;
+    SteamFlow_pu : REAL := 1.0;
+    LevelError_pct : REAL := 0.0;
+    LevelKp : REAL := 0.02;
+    LevelKi : REAL := 0.001;
+    LevelIntegral_pu : REAL := 0.0;
+    LevelCorrection_pu : REAL := 0.0;
+    FeedwaterSP_pu : REAL := 1.0;
+    FlowError_pu : REAL := 0.0;
+    FlowKp : REAL := 50.0;
+    FlowKi : REAL := 8.0;
+    FlowIntegral_pct : REAL := 0.0;
+    CycleTime_s : REAL := 0.02;
+    ValvePercent : REAL := 50.0;
+    ValveUnclamped_pct : REAL := 50.0;
+  END_VAR
+  VAR
+    PLCHeartbeat AT %MW100 : INT := 0;
+    DrumLevel_x100 AT %MW101 : INT := 5000;
+    FeedwaterFlow_x1000 AT %MW102 : INT := 1000;
+    SteamFlow_x1000 AT %MW103 : INT := 1000;
+    LevelSP_x100 AT %MW104 : INT := 5000;
+    ManualValve_x10 AT %MW105 : INT := 500;
+    FeedwaterValve_x10 AT %MW106 : INT := 500;
+    AutoMode_x10 AT %MW107 : INT := 0;
+  END_VAR
+
+  (* Convert integer register values to engineering units *)
+  DrumLevel_pct := INT_TO_REAL(DrumLevel_x100) / 100.0;
+  LevelSP_pct := INT_TO_REAL(LevelSP_x100) / 100.0;
+  FeedwaterFlow_pu := INT_TO_REAL(FeedwaterFlow_x1000) / 1000.0;
+  SteamFlow_pu := INT_TO_REAL(SteamFlow_x1000) / 1000.0;
+
+  LevelError_pct := LevelSP_pct - DrumLevel_pct;
+
+  IF AutoMode_x10 > 0 THEN
+
+      (* OUTER LOOP: drum-level feedback.
+         Its output is a correction to steam-flow feedforward. *)
+      LevelIntegral_pu :=
+          LevelIntegral_pu + LevelKi * LevelError_pct * CycleTime_s;
+
+      IF LevelIntegral_pu > 0.5 THEN
+          LevelIntegral_pu := 0.5;
+      END_IF;
+
+      IF LevelIntegral_pu < -0.5 THEN
+          LevelIntegral_pu := -0.5;
+      END_IF;
+
+      LevelCorrection_pu :=
+          LevelKp * LevelError_pct + LevelIntegral_pu;
+
+      (* Three-element feedwater setpoint:
+         steam flow + level correction *)
+      FeedwaterSP_pu := SteamFlow_pu + LevelCorrection_pu;
+
+      IF FeedwaterSP_pu > 1.5 THEN
+          FeedwaterSP_pu := 1.5;
+      END_IF;
+
+      IF FeedwaterSP_pu < 0.0 THEN
+          FeedwaterSP_pu := 0.0;
+      END_IF;
+
+      (* INNER LOOP: feedwater-flow feedback *)
+      FlowError_pu := FeedwaterSP_pu - FeedwaterFlow_pu;
+
+      FlowIntegral_pct :=
+          FlowIntegral_pct + FlowKi * FlowError_pu * CycleTime_s;
+
+      IF FlowIntegral_pct > 50.0 THEN
+          FlowIntegral_pct := 50.0;
+      END_IF;
+
+      IF FlowIntegral_pct < -50.0 THEN
+          FlowIntegral_pct := -50.0;
+      END_IF;
+
+      ValveUnclamped_pct :=
+          50.0 + FlowKp * FlowError_pu + FlowIntegral_pct;
+
+      ValvePercent := ValveUnclamped_pct;
+
+      IF ValvePercent > 100.0 THEN
+          ValvePercent := 100.0;
+      END_IF;
+
+      IF ValvePercent < 0.0 THEN
+          ValvePercent := 0.0;
+      END_IF;
+
+      FeedwaterValve_x10 := REAL_TO_INT(ValvePercent * 10.0);
+
+  ELSE
+
+      (* Manual mode: clamp the operator command *)
+      IF ManualValve_x10 > 1000 THEN
+          ManualValve_x10 := 1000;
+      END_IF;
+
+      IF ManualValve_x10 < 0 THEN
+          ManualValve_x10 := 0;
+      END_IF;
+
+      ValvePercent := INT_TO_REAL(ManualValve_x10) / 10.0;
+      FeedwaterValve_x10 := ManualValve_x10;
+
+      (* Track controller states for a smoother mode transfer *)
+      FeedwaterSP_pu := SteamFlow_pu;
+      LevelCorrection_pu := FeedwaterFlow_pu - SteamFlow_pu;
+
+      LevelIntegral_pu :=
+          LevelCorrection_pu - LevelKp * LevelError_pct;
+
+      FlowError_pu := FeedwaterSP_pu - FeedwaterFlow_pu;
+
+      FlowIntegral_pct :=
+          ValvePercent - 50.0 - FlowKp * FlowError_pu;
+
+  END_IF;
+
+  (* Diagnostic heartbeat *)
+  IF PLCHeartbeat >= 30000 THEN
+      PLCHeartbeat := 0;
+  ELSE
+      PLCHeartbeat := PLCHeartbeat + 1;
+  END_IF;
+END_PROGRAM
+
+
+CONFIGURATION Config0
+
+  RESOURCE Res0 ON PLC
+    TASK task0(INTERVAL := T#20ms,PRIORITY := 1);
+    PROGRAM instance0 WITH task0 : main;
+  END_RESOURCE
+END_CONFIGURATION
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\plc\BoilerDCS.st
+==============================================================================
+SIZE: 1000 bytes
+MODIFIED: 2026-10-21 01.08.24
+SHA256: 927F673F5147F1E3044D75E3CFE47F5CE22183943386EDDAFA41D23137AA7923
+--- SOURCE CONTENT ---
+(*
+    Boiler DCS Digital Twin
+    PLC interface variable declarations - draft
+
+    These declarations must be incorporated into the OpenPLC
+    project and mapped to the verified Modbus server variables.
+*)
+
+PROGRAM BoilerDCS
+VAR
+    (* Process measurements: scaled integer values *)
+    DrumLevel_x100       : INT := 5000;
+    DrumPressure_x1000   : INT := 1000;
+    FeedwaterFlow_x1000  : INT := 1000;
+    SteamFlow_x1000      : INT := 1000;
+    FuelFlow_x1000       : INT := 1000;
+    SteamDemand_x1000    : INT := 1000;
+
+    (* Controller outputs: 0 to 1000 represents 0 to 100.0% *)
+    FeedwaterValve_x10   : INT := 500;
+    FuelValve_x10        : INT := 500;
+    AirDamper_x10        : INT := 500;
+
+    (* Pump command: 0 = stop, 1 = pump A, 2 = pump B *)
+    PumpCommand          : INT := 0;
+
+    (* Communication diagnostics *)
+    PythonHeartbeat      : INT := 0;
+    PLCHeartbeat         : INT := 0;
+END_VAR
+
+(* Controller logic will be implemented in the next stage. *)
+
+END_PROGRAM
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\plc_interface\register_map.py
+==============================================================================
+SIZE: 3433 bytes
+MODIFIED: 2026-10-20 22.32.09
+SHA256: 8B9F0F07C09B867D5F75EB66CC178886FBE0CEFA5F2660D4FDE469378ED0F219
+--- SOURCE CONTENT ---
+"""Scaled 16-bit Modbus holding-register map for the boiler digital twin."""
+
+from math import isfinite
+
+
+REGISTER_MAP = {
+    "drum_level_pct": {"address": 0, "scale": 100.0},
+    "pressure_pu": {"address": 1, "scale": 10000.0},
+    "steam_flow_pu": {"address": 2, "scale": 1000.0},
+    "feedwater_flow_pu": {"address": 3, "scale": 1000.0},
+    "fuel_flow_pu": {"address": 4, "scale": 1000.0},
+    "heat_duty_pu": {"address": 5, "scale": 1000.0},
+    "feedwater_command_pu": {"address": 6, "scale": 1000.0},
+    "fuel_command_pu": {"address": 7, "scale": 1000.0},
+    "trip_latched": {"address": 8, "scale": 1.0},
+    "fuel_permissive": {"address": 9, "scale": 1.0},
+    "alarm_active": {"address": 10, "scale": 1.0},
+    "trip_cause_mask": {"address": 11, "scale": 1.0},
+    "simulation_status": {"address": 12, "scale": 1.0},
+}
+
+REGISTER_COUNT = max(
+    item["address"] for item in REGISTER_MAP.values()
+) + 1
+
+TRIP_CAUSE_BITS = {
+    "LOW_LOW_DRUM_LEVEL": 0,
+    "HIGH_HIGH_DRUM_LEVEL": 1,
+    "LOW_LOW_PRESSURE": 2,
+    "HIGH_HIGH_PRESSURE": 3,
+    "LEVEL_SIGNAL_OUT_OF_RANGE": 4,
+    "PRESSURE_SIGNAL_OUT_OF_RANGE": 5,
+    "SENSOR_INVALID": 6,
+    "COMMUNICATION_LOSS": 7,
+}
+
+
+def encode_value(name, value):
+    """Convert one named value to an unsigned 16-bit register value."""
+    if name not in REGISTER_MAP:
+        raise KeyError(f"Unknown register name: {name}")
+
+    if isinstance(value, bool):
+        numeric_value = int(value)
+    else:
+        try:
+            numeric_value = float(value)
+        except (TypeError, ValueError, OverflowError) as exc:
+            raise ValueError(f"Invalid value for {name}") from exc
+
+    if not isfinite(numeric_value):
+        raise ValueError(f"Non-finite value for {name}")
+
+    scaled = round(numeric_value * REGISTER_MAP[name]["scale"])
+
+    if not 0 <= scaled <= 65535:
+        raise ValueError(
+            f"Encoded value for {name} is outside unsigned 16-bit range: "
+            f"{scaled}"
+        )
+
+    return int(scaled)
+
+
+def decode_value(name, register_value):
+    """Convert one unsigned 16-bit register value to engineering units."""
+    if name not in REGISTER_MAP:
+        raise KeyError(f"Unknown register name: {name}")
+
+    if isinstance(register_value, bool) or not isinstance(register_value, int):
+        raise ValueError("Register value must be an integer")
+
+    if not 0 <= register_value <= 65535:
+        raise ValueError("Register value must be between 0 and 65535")
+
+    return register_value / REGISTER_MAP[name]["scale"]
+
+
+def encode_trip_causes(causes):
+    """Encode recognized trip causes into a 16-bit bitmask."""
+    mask = 0
+    for cause in causes:
+        if cause not in TRIP_CAUSE_BITS:
+            raise ValueError(f"Unknown trip cause: {cause}")
+        mask |= 1 << TRIP_CAUSE_BITS[cause]
+    return mask
+
+
+def build_register_image(values):
+    """Build a complete address-indexed holding-register image.
+
+    Every defined register must be provided. Unknown names are rejected.
+    """
+    unknown = set(values) - set(REGISTER_MAP)
+    missing = set(REGISTER_MAP) - set(values)
+
+    if unknown:
+        raise KeyError(f"Unknown register names: {sorted(unknown)}")
+    if missing:
+        raise KeyError(f"Missing register names: {sorted(missing)}")
+
+    registers = [0] * REGISTER_COUNT
+
+    for name, value in values.items():
+        registers[REGISTER_MAP[name]["address"]] = encode_value(name, value)
+
+    return registers
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\docs\MODBUS_REGISTER_MAP.md
+==============================================================================
+SIZE: 1447 bytes
+MODIFIED: 2026-10-21 01.08.06
+SHA256: 9581701A9103A3096DD62AAC1196A0B03041D6684771803FC5FAC61AC03ED572
+--- SOURCE CONTENT ---
+# Boiler DCS - Modbus TCP Register Map
+
+Status: Draft - addresses must be verified against OpenPLC.
+
+## Communication
+- Protocol: Modbus TCP
+- Host: 127.0.0.1
+- Port: 502
+- Register type: Holding registers
+- Scaling: Integer engineering representation
+- Register addressing: Zero-based addresses in the Python client
+
+## Proposed process measurements
+| Address | Tag | Description | Scale |
+|---:|---|---|---|
+| 0 | TEST_REGISTER | Communication test only | Raw integer |
+| 10 | DRUM_LEVEL | Drum level | 0.01 % per count |
+| 11 | DRUM_PRESSURE | Drum pressure | 0.001 pu per count |
+| 12 | FEEDWATER_FLOW | Feedwater flow | 0.001 pu per count |
+| 13 | STEAM_FLOW | Steam flow | 0.001 pu per count |
+| 14 | FUEL_FLOW | Fuel flow | 0.001 pu per count |
+| 15 | STEAM_DEMAND | Steam demand command | 0.001 pu per count |
+
+## Proposed controller outputs
+| Address | Tag | Description | Scale |
+|---:|---|---|---|
+| 30 | FEEDWATER_VALVE_CMD | Feedwater valve command | 0.1 % per count |
+| 31 | FUEL_VALVE_CMD | Fuel valve command | 0.1 % per count |
+| 32 | AIR_DAMPER_CMD | Combustion air damper command | 0.1 % per count |
+| 33 | PUMP_COMMAND | Pump command | Enumerated value |
+
+## Important
+These addresses are proposed, not verified PLC mappings.
+Do not use them for gateway communication until matching variables
+and addresses have been configured and tested in OpenPLC.
+The test register at address 0 must not be assumed to be a process tag.
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\run_openplc_disturbance.py
+==============================================================================
+SIZE: 7061 bytes
+MODIFIED: 2026-10-21 22.07.59
+SHA256: CD2D02FA0BE072010431E9971A08DCD6D1800FCD6ABF1DCA81F52D2688F02395
+--- SOURCE CONTENT ---
+
+import argparse
+import csv
+import time
+from pathlib import Path
+
+from pymodbus.client import ModbusTcpClient
+from model.boiler import BoilerModel
+
+ROOT = Path(__file__).resolve().parent
+LOG_PATH = ROOT / "runs" / "openplc_disturbance_trace.csv"
+
+REG_HEARTBEAT = 1124
+REG_LEVEL = 1125
+REG_FEEDWATER_FLOW = 1126
+REG_STEAM_FLOW = 1127
+REG_LEVEL_SP = 1128
+REG_FEEDWATER_VALVE = 1130
+REG_AUTO_MODE = 1131
+
+
+def checked(response, operation):
+    if response.isError():
+        raise RuntimeError(f"{operation} failed: {response}")
+    return response
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="OpenPLC bridge with automatic PI control and a "
+                    "simulated steam-demand disturbance."
+    )
+    parser.add_argument("--duration", type=float, default=30.0)
+    parser.add_argument("--disturbance-time", type=float, default=5.0)
+    parser.add_argument("--steam-demand", type=float, default=1.2)
+    args = parser.parse_args()
+
+    if args.duration <= 0:
+        parser.error("--duration must be positive.")
+    if not 0 < args.disturbance_time < args.duration:
+        parser.error("--disturbance-time must be between 0 and duration.")
+    if not 0 <= args.steam_demand <= 1.5:
+        parser.error("--steam-demand must be between 0 and 1.5 pu.")
+
+    boiler = BoilerModel()
+    client = ModbusTcpClient("127.0.0.1", port=502, timeout=3)
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    if not client.connect():
+        raise SystemExit("Cannot connect to OpenPLC at 127.0.0.1:502.")
+
+    previous_auto_mode = None
+
+    fields = [
+        "time_s",
+        "plc_heartbeat",
+        "auto_mode",
+        "steam_demand_pu",
+        "level_pct",
+        "feedwater_flow_pu",
+        "steam_flow_pu",
+        "valve_pct",
+        "feedwater_command_pu",
+        "level_setpoint_pct",
+    ]
+
+    start = time.monotonic()
+    next_cycle = start
+    count = 0
+
+    try:
+        # Save the original mode before enabling automatic control.
+        response = checked(
+            client.read_holding_registers(
+                address=REG_AUTO_MODE,
+                count=1,
+                device_id=1,
+            ),
+            "Read original automatic mode",
+        )
+        previous_auto_mode = response.registers[0]
+
+        checked(
+            client.write_register(
+                address=REG_AUTO_MODE,
+                value=1,
+                device_id=1,
+            ),
+            "Enable automatic mode",
+        )
+
+        print(f"Previous auto mode: {previous_auto_mode}")
+        print("Automatic mode enabled for disturbance test.")
+
+        # Confirm that the PLC accepted the mode command.
+        response = checked(
+            client.read_holding_registers(
+                address=REG_AUTO_MODE,
+                count=1,
+                device_id=1,
+            ),
+            "Verify automatic mode",
+        )
+        if response.registers[0] != 1:
+            raise RuntimeError(
+                "PLC did not confirm automatic mode. "
+                "Check the Modbus register mapping."
+            )
+
+        with LOG_PATH.open("w", newline="", encoding="utf-8") as file:
+            writer = csv.DictWriter(file, fieldnames=fields)
+            writer.writeheader()
+
+            while time.monotonic() - start < args.duration:
+                response = checked(
+                    client.read_holding_registers(
+                        address=REG_HEARTBEAT,
+                        count=7,
+                        device_id=1,
+                    ),
+                    "PLC register read",
+                )
+                values = response.registers
+
+                heartbeat = values[0]
+                level_sp_pct = values[4] / 100.0
+                valve_pct = values[6] / 10.0
+                feedwater_command = max(
+                    0.0, min(1.5, valve_pct / 50.0)
+                )
+
+                # Apply the steam-demand step at the specified simulation time.
+                demand = (
+                    1.0
+                    if boiler.state.time_s < args.disturbance_time
+                    else args.steam_demand
+                )
+
+                state = boiler.step(
+                    feedwater_command_pu=feedwater_command,
+                    steam_demand_pu=demand,
+                    fuel_command_pu=1.0,
+                )
+
+                measurements = [
+                    (REG_LEVEL, round(state.drum_level_pct * 100)),
+                    (
+                        REG_FEEDWATER_FLOW,
+                        round(state.feedwater_flow_pu * 1000),
+                    ),
+                    (REG_STEAM_FLOW, round(state.steam_flow_pu * 1000)),
+                ]
+
+                for address, value in measurements:
+                    checked(
+                        client.write_register(
+                            address=address,
+                            value=value,
+                            device_id=1,
+                        ),
+                        f"Write register {address}",
+                    )
+
+                writer.writerow({
+                    "time_s": round(state.time_s, 3),
+                    "plc_heartbeat": heartbeat,
+                    "auto_mode": 1,
+                    "steam_demand_pu": round(demand, 3),
+                    "level_pct": round(state.drum_level_pct, 3),
+                    "feedwater_flow_pu": round(
+                        state.feedwater_flow_pu, 4
+                    ),
+                    "steam_flow_pu": round(state.steam_flow_pu, 4),
+                    "valve_pct": round(valve_pct, 2),
+                    "feedwater_command_pu": round(
+                        feedwater_command, 4
+                    ),
+                    "level_setpoint_pct": round(level_sp_pct, 2),
+                })
+                file.flush()
+
+                if count % 10 == 0:
+                    print(
+                        f"t={state.time_s:6.2f}s | "
+                        f"demand={demand:.2f} pu | "
+                        f"level={state.drum_level_pct:.2f}% | "
+                        f"steam={state.steam_flow_pu:.3f} pu | "
+                        f"valve={valve_pct:.1f}%"
+                    )
+
+                count += 1
+                next_cycle += boiler.dt
+                time.sleep(max(0.0, next_cycle - time.monotonic()))
+
+    finally:
+        try:
+            # Restore the original mode even if the simulation fails.
+            if previous_auto_mode is not None and client.connected:
+                checked(
+                    client.write_register(
+                        address=REG_AUTO_MODE,
+                        value=previous_auto_mode,
+                        device_id=1,
+                    ),
+                    "Restore original automatic mode",
+                )
+                print(
+                    f"\nRestored automatic mode: {previous_auto_mode}"
+                )
+        finally:
+            client.close()
+
+    print(f"Cycles completed: {count}")
+    print(f"Trace saved to: {LOG_PATH}")
+
+
+if __name__ == "__main__":
+    main()
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\run_openplc_bridge.py
+==============================================================================
+SIZE: 4945 bytes
+MODIFIED: 2026-10-21 19.04.53
+SHA256: EB3AD81CB40B50BEC0BE3AE70C262B5D46BB988E9CF06B7E7275F5A99A54A904
+--- SOURCE CONTENT ---
+import argparse
+import csv
+import time
+from pathlib import Path
+
+from pymodbus.client import ModbusTcpClient
+from model.boiler import BoilerModel
+
+ROOT = Path(__file__).resolve().parent
+LOG_PATH = ROOT / "runs" / "openplc_bridge_trace.csv"
+
+# Verified OpenPLC holding-register addresses.
+REG_HEARTBEAT = 1124
+REG_LEVEL = 1125
+REG_FEEDWATER_FLOW = 1126
+REG_STEAM_FLOW = 1127
+REG_LEVEL_SP = 1128
+REG_MANUAL_VALVE = 1129
+REG_FEEDWATER_VALVE = 1130
+
+
+def check_response(response, operation):
+    if response.isError():
+        raise RuntimeError(f"{operation} failed: {response}")
+    return response
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Educational Python boiler to OpenPLC bridge."
+    )
+    parser.add_argument(
+        "--once",
+        action="store_true",
+        help="Perform one exchange cycle, then exit.",
+    )
+    parser.add_argument(
+        "--duration",
+        type=float,
+        default=10.0,
+        help="Continuous run duration in seconds; default 10.",
+    )
+    args = parser.parse_args()
+
+    if args.duration <= 0:
+        parser.error("--duration must be positive.")
+
+    boiler = BoilerModel()
+    client = ModbusTcpClient("127.0.0.1", port=502, timeout=3)
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    if not client.connect():
+        raise SystemExit("Cannot connect to OpenPLC at 127.0.0.1:502.")
+
+    fields = [
+        "time_s",
+        "plc_heartbeat",
+        "level_pct",
+        "feedwater_flow_pu",
+        "steam_flow_pu",
+        "valve_pct",
+        "feedwater_command_pu",
+        "level_setpoint_pct",
+    ]
+
+    start = time.monotonic()
+    next_cycle = start
+    count = 0
+
+    try:
+        with LOG_PATH.open("w", newline="", encoding="utf-8") as file:
+            writer = csv.DictWriter(file, fieldnames=fields)
+            writer.writeheader()
+
+            while True:
+                cycle_start = time.monotonic()
+
+                # Read the seven verified PLC registers.
+                response = check_response(
+                    client.read_holding_registers(
+                        address=REG_HEARTBEAT,
+                        count=7,
+                        device_id=1,
+                    ),
+                    "PLC register read",
+                )
+                values = response.registers
+
+                heartbeat = values[0]
+                level_sp_pct = values[4] / 100.0
+                valve_pct = values[6] / 10.0
+
+                # Provisional valve/flow characteristic:
+                # 50% valve position -> 1.0 pu feedwater command.
+                feedwater_command_pu = max(
+                    0.0, min(1.5, valve_pct / 50.0)
+                )
+
+                state = boiler.step(
+                    feedwater_command_pu=feedwater_command_pu,
+                    steam_demand_pu=1.0,
+                    fuel_command_pu=1.0,
+                )
+
+                # Write simulated measurements into mapped PLC inputs.
+                measurements = [
+                    (REG_LEVEL, round(state.drum_level_pct * 100)),
+                    (REG_FEEDWATER_FLOW, round(state.feedwater_flow_pu * 1000)),
+                    (REG_STEAM_FLOW, round(state.steam_flow_pu * 1000)),
+                ]
+
+                for address, value in measurements:
+                    check_response(
+                        client.write_register(
+                            address=address,
+                            value=value,
+                            device_id=1,
+                        ),
+                        f"Write register {address}",
+                    )
+
+                writer.writerow({
+                    "time_s": round(state.time_s, 3),
+                    "plc_heartbeat": heartbeat,
+                    "level_pct": round(state.drum_level_pct, 3),
+                    "feedwater_flow_pu": round(state.feedwater_flow_pu, 4),
+                    "steam_flow_pu": round(state.steam_flow_pu, 4),
+                    "valve_pct": round(valve_pct, 2),
+                    "feedwater_command_pu": round(feedwater_command_pu, 4),
+                    "level_setpoint_pct": round(level_sp_pct, 2),
+                })
+                file.flush()
+
+                print(
+                    f"t={state.time_s:6.2f}s | "
+                    f"heartbeat={heartbeat:5d} | "
+                    f"level={state.drum_level_pct:6.2f}% | "
+                    f"valve={valve_pct:5.1f}% | "
+                    f"feedwater={state.feedwater_flow_pu:.3f} pu"
+                )
+
+                count += 1
+
+                if args.once:
+                    break
+
+                if time.monotonic() - start >= args.duration:
+                    break
+
+                next_cycle += boiler.dt
+                time.sleep(max(0.0, next_cycle - time.monotonic()))
+
+    finally:
+        client.close()
+
+    print(f"\nCycles completed: {count}")
+    print(f"Trace saved to: {LOG_PATH}")
+
+
+if __name__ == "__main__":
+    main()
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\test_plc_auto_response_long.py
+==============================================================================
+SIZE: 2490 bytes
+MODIFIED: 2026-10-21 19.30.31
+SHA256: 3FD536AE420CD60F05FF862F23D53393AE8F1E25A115EA715BD778D7615DB0B7
+--- SOURCE CONTENT ---
+import time
+from pymodbus.client import ModbusTcpClient
+
+client = ModbusTcpClient("127.0.0.1", port=502, timeout=3)
+
+if not client.connect():
+    raise SystemExit("FAIL: Could not connect to OpenPLC.")
+
+try:
+    # Start from a known manual state.
+    for address, value in [
+        (1131, 0),     # Auto OFF
+        (1125, 5000),  # Level 50%
+        (1128, 5000),  # Setpoint 50%
+        (1129, 500),   # Manual valve 50%
+    ]:
+        result = client.write_register(
+            address=address, value=value, device_id=1
+        )
+        if result.isError():
+            raise RuntimeError(f"Setup write failed at HR {address}: {result}")
+
+    time.sleep(0.3)
+
+    # Apply a 1-percentage-point low-level error.
+    result = client.write_register(address=1125, value=4900, device_id=1)
+    if result.isError():
+        raise RuntimeError(f"Level write failed: {result}")
+
+    time.sleep(0.1)
+
+    result = client.write_register(address=1131, value=1, device_id=1)
+    if result.isError():
+        raise RuntimeError(f"Could not enable auto mode: {result}")
+
+    print("Auto response test: level=49%, setpoint=50%, duration=3 s")
+    outputs = []
+
+    for i in range(13):
+        time.sleep(0.25)
+        result = client.read_holding_registers(
+            address=1130, count=1, device_id=1
+        )
+        if result.isError():
+            raise RuntimeError(f"Output read failed: {result}")
+
+        output = result.registers[0]
+        outputs.append(output)
+        print(f"t={(i + 1) * 0.25:.2f} s | valve output={output / 10:.1f}%")
+
+    print(f"Initial sampled output: {outputs[0] / 10:.1f}%")
+    print(f"Final sampled output:   {outputs[-1] / 10:.1f}%")
+
+    if outputs[-1] > outputs[0]:
+        print("PASS: Output increased during sustained low-level error.")
+    else:
+        print("FAIL: No measurable increase; inspect scan timing and PLC logic.")
+
+finally:
+    # Always restore manual mode and nominal test values.
+    try:
+        client.write_register(address=1131, value=0, device_id=1)
+        client.write_register(address=1125, value=5000, device_id=1)
+        client.write_register(address=1128, value=5000, device_id=1)
+        client.write_register(address=1129, value=500, device_id=1)
+        time.sleep(0.2)
+
+        result = client.read_holding_registers(
+            address=1129, count=3, device_id=1
+        )
+        if not result.isError():
+            print("Restored manual, output, auto:", result.registers)
+    finally:
+        client.close()
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\verify_plc_state.py
+==============================================================================
+SIZE: 821 bytes
+MODIFIED: 2026-10-21 19.29.13
+SHA256: 16935A4EA6FD273E1AF0575E9977DEE85D14FD82C475F5E99814A050D35F0F89
+--- SOURCE CONTENT ---
+from pymodbus.client import ModbusTcpClient
+
+client = ModbusTcpClient("127.0.0.1", port=502, timeout=3)
+
+if not client.connect():
+    raise SystemExit("FAIL: Could not connect to OpenPLC.")
+
+try:
+    result = client.read_holding_registers(
+        address=1129,
+        count=3,
+        device_id=1,
+    )
+
+    if result.isError():
+        raise RuntimeError(f"Modbus read failed: {result}")
+
+    manual, output, auto = result.registers
+
+    print(f"Manual command (HR 1129): {manual}")
+    print(f"Valve output (HR 1130):   {output}")
+    print(f"Auto selector (HR 1131):  {auto}")
+
+    if manual == 500 and output == 500 and auto == 0:
+        print("PASS: Restored safe test state confirmed.")
+    else:
+        print("CHECK REQUIRED: Values differ from the expected restored state.")
+
+finally:
+    client.close()
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\control\three_element.py
+==============================================================================
+SIZE: 2585 bytes
+MODIFIED: 2026-10-21 02.25.25
+SHA256: 00C906BE1B5FA1472667692E4E52EB3F81F78942DE6CA400CABAD7AB5D4F510D
+--- SOURCE CONTENT ---
+
+"""Three-element boiler drum-level controller.
+
+Elements:
+1. Drum-level feedback: outer PI controller.
+2. Steam-flow feedforward: anticipates changes in steam demand.
+3. Feedwater-flow feedback: inner PI controller tracks required flow.
+"""
+
+from control.pid import PIDController
+
+
+class ThreeElementController:
+    """Three-element drum-level controller.
+
+    All flows use per-unit (pu) values. Drum level uses percent.
+    The returned value is the feedwater valve command in pu.
+    """
+
+    def __init__(
+        self,
+        setpoint_pct=50.0,
+        level_kp=0.025,
+        level_ki=0.001,
+        flow_kp=1.5,
+        flow_ki=0.8,
+    ):
+        self.setpoint_pct = float(setpoint_pct)
+
+        # Outer loop: level error produces a flow trim.
+        self.level_pid = PIDController(
+            kp=level_kp,
+            ki=level_ki,
+            kd=0.0,
+            output_min=-0.5,
+            output_max=0.5,
+        )
+
+        # Inner loop: feedwater flow error adjusts the valve command.
+        self.flow_pid = PIDController(
+            kp=flow_kp,
+            ki=flow_ki,
+            kd=0.0,
+            output_min=-1.5,
+            output_max=1.5,
+        )
+
+    def reset(self):
+        """Reset both controller loops."""
+        self.level_pid.reset()
+        self.flow_pid.reset()
+
+    def update(
+        self,
+        measured_level_pct,
+        measured_steam_flow_pu,
+        measured_feedwater_flow_pu,
+        dt,
+    ):
+        """Calculate the feedwater valve command."""
+
+        # Element 1: level controller produces a trim in pu.
+        level_trim_pu = self.level_pid.update(
+            setpoint=self.setpoint_pct,
+            measurement=measured_level_pct,
+            dt=dt,
+        )
+
+        # Element 2: steam-flow feedforward plus level trim.
+        desired_feedwater_flow_pu = (
+            float(measured_steam_flow_pu) + level_trim_pu
+        )
+
+        # The desired flow must stay within the plant's flow range.
+        desired_feedwater_flow_pu = max(
+            0.0, min(1.5, desired_feedwater_flow_pu)
+        )
+
+        # Element 3: inner flow loop tracks the desired feedwater flow.
+        flow_correction = self.flow_pid.update(
+            setpoint=desired_feedwater_flow_pu,
+            measurement=measured_feedwater_flow_pu,
+            dt=dt,
+        )
+
+        # Use measured flow as the nominal valve-command estimate.
+        command = float(measured_feedwater_flow_pu) + flow_correction
+
+        return max(0.0, min(1.5, command))
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\control\single_element.py
+==============================================================================
+SIZE: 1573 bytes
+MODIFIED: 2026-10-21 02.25.25
+SHA256: FFA60E91D4CD6FFEC477DFCAFCF01BA9F6B4B0E60AE863DF3138A995019F32D2
+--- SOURCE CONTENT ---
+
+"""Single-element boiler drum-level controller."""
+
+from control.pid import PIDController
+
+
+class SingleElementController:
+    """Use drum-level feedback to regulate feedwater flow.
+
+    The PI controller generates a correction around the nominal
+    feedwater command of 1.0 pu.
+
+    Inputs:
+        setpoint_pct: Desired drum level (%)
+        measured_level_pct: Measured drum level (%)
+        dt: Simulation time step (s)
+
+    Output:
+        Feedwater command in per-unit, limited to 0.0â€“1.5 pu.
+    """
+
+    def __init__(
+        self,
+        setpoint_pct=50.0,
+        kp=0.08,
+        ki=0.003,
+        nominal_feedwater_pu=1.0,
+    ):
+        self.setpoint_pct = float(setpoint_pct)
+        self.nominal_feedwater_pu = float(nominal_feedwater_pu)
+
+        # PID output represents a correction to nominal feedwater.
+        self.pid = PIDController(
+            kp=kp,
+            ki=ki,
+            kd=0.0,
+            output_min=-self.nominal_feedwater_pu,
+            output_max=1.5 - self.nominal_feedwater_pu,
+        )
+
+    def reset(self):
+        """Reset controller history for a fresh simulation."""
+        self.pid.reset()
+
+    def update(self, measured_level_pct, dt):
+        """Calculate the feedwater command from measured drum level."""
+        correction = self.pid.update(
+            setpoint=self.setpoint_pct,
+            measurement=measured_level_pct,
+            dt=dt,
+        )
+
+        command = self.nominal_feedwater_pu + correction
+        return max(0.0, min(1.5, command))
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\control\pid.py
+==============================================================================
+SIZE: 3037 bytes
+MODIFIED: 2026-10-21 02.25.23
+SHA256: 03D16FA3364D311355842CECF47CA684A056EC64EA34B817DAE1984EA8B4C12A
+--- SOURCE CONTENT ---
+
+"""PID controller with output saturation and conditional anti-windup."""
+
+from dataclasses import dataclass
+
+
+@dataclass
+class PIDController:
+    """Discrete-time PID controller.
+
+    The controller uses error = setpoint - measurement.
+    Output is constrained to [output_min, output_max].
+    Conditional integration limits integral windup.
+    """
+
+    kp: float
+    ki: float
+    kd: float = 0.0
+    output_min: float = 0.0
+    output_max: float = 1.5
+    derivative_tau: float = 0.0
+
+    def __post_init__(self):
+        if self.output_min >= self.output_max:
+            raise ValueError("output_min must be less than output_max")
+        if self.derivative_tau < 0:
+            raise ValueError("derivative_tau cannot be negative")
+
+        self.reset()
+
+    def reset(self, output: float = 0.0) -> None:
+        """Reset controller history."""
+        self.integral = 0.0
+        self.previous_error = None
+        self.filtered_derivative = 0.0
+        self.last_output = self._clamp(output)
+
+    def _clamp(self, value: float) -> float:
+        return max(self.output_min, min(self.output_max, value))
+
+    def update(self, setpoint: float, measurement: float, dt: float) -> float:
+        """Calculate a bounded controller output for one time step."""
+        if dt <= 0:
+            raise ValueError("dt must be greater than zero")
+
+        error = float(setpoint) - float(measurement)
+
+        if self.previous_error is None:
+            raw_derivative = 0.0
+        else:
+            raw_derivative = (error - self.previous_error) / dt
+
+        # Optional first-order filtering of the derivative term.
+        if self.derivative_tau > 0:
+            alpha = dt / (self.derivative_tau + dt)
+            self.filtered_derivative += alpha * (
+                raw_derivative - self.filtered_derivative
+            )
+        else:
+            self.filtered_derivative = raw_derivative
+
+        proportional = self.kp * error
+        derivative = self.kd * self.filtered_derivative
+
+        # Trial output before updating the integral term.
+        trial_integral = self.integral + error * dt
+        trial_unbounded = (
+            proportional + self.ki * trial_integral + derivative
+        )
+        trial_output = self._clamp(trial_unbounded)
+
+        # Integrate when unsaturated, or when the error pushes the
+        # saturated output back toward the permitted range.
+        pushing_further_high = (
+            trial_unbounded > self.output_max and error * self.ki > 0
+        )
+        pushing_further_low = (
+            trial_unbounded < self.output_min and error * self.ki < 0
+        )
+
+        if not (pushing_further_high or pushing_further_low):
+            self.integral = trial_integral
+
+        unbounded = (
+            proportional + self.ki * self.integral + derivative
+        )
+        output = self._clamp(unbounded)
+
+        self.previous_error = error
+        self.last_output = output
+        return output
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\model\boiler.py
+==============================================================================
+SIZE: 3061 bytes
+MODIFIED: 2026-10-20 14.59.00
+SHA256: A1FDBE6ECCC1F5DF172B519C19B3C767B3E8B0CE11C362C3F50617F7D7D77F13
+--- SOURCE CONTENT ---
+from dataclasses import dataclass
+from math import isfinite
+
+@dataclass
+class BoilerState:
+    time_s: float = 0.0
+    inventory_pu: float = 1.0
+    drum_level_pct: float = 50.0
+    pressure_pu: float = 1.0
+    heat_duty_pu: float = 1.0
+    feedwater_flow_pu: float = 1.0
+    steam_flow_pu: float = 1.0
+    fuel_flow_pu: float = 1.0
+    indicated_swell_pct: float = 0.0
+
+DEFAULT_CONFIG = {
+    "dt_s": 0.1, "inventory_gain": 0.01, "inventory_min": 0.0,
+    "inventory_max": 1.5, "valve_tau_s": 1.5, "steam_tau_s": 1.0,
+    "heat_tau_s": 12.0, "pressure_tau_s": 10.0, "swell_tau_s": 2.0,
+    "fuel_to_heat_gain": 1.0, "pressure_heat_gain": 0.2,
+    "pressure_steam_gain": 0.15, "swell_steam_gain": 8.0,
+    "swell_pressure_gain": 4.0, "inventory_to_level_gain": 50.0,
+    "blowdown_pu": 0.0,
+}
+
+class BoilerModel:
+    """Deterministic reduced-order model with 1 pu nominal equilibrium."""
+    def __init__(self, config=None):
+        self.config = dict(DEFAULT_CONFIG)
+        if config:
+            self.config.update(config)
+        self.dt = float(self.config["dt_s"])
+        if self.dt <= 0:
+            raise ValueError("dt_s must be positive")
+        self.state = BoilerState()
+
+    @staticmethod
+    def _approach(x, target, dt, tau):
+        return target if tau <= 0 else x + (target-x)*min(dt/tau, 1.0)
+
+    @staticmethod
+    def _clip(x, lo, hi):
+        return max(lo, min(hi, x))
+
+    def step(self, feedwater_command_pu=1.0, steam_demand_pu=1.0, fuel_command_pu=1.0):
+        c, s, dt = self.config, self.state, self.dt
+        fw = self._clip(float(feedwater_command_pu), 0.0, 1.5)
+        steam = self._clip(float(steam_demand_pu), 0.0, 1.5)
+        fuel = self._clip(float(fuel_command_pu), 0.0, 1.5)
+        s.feedwater_flow_pu = self._approach(s.feedwater_flow_pu, fw, dt, c["valve_tau_s"])
+        s.steam_flow_pu = self._approach(s.steam_flow_pu, steam, dt, c["steam_tau_s"])
+        s.fuel_flow_pu = self._approach(s.fuel_flow_pu, fuel, dt, c["valve_tau_s"])
+        rate = c["inventory_gain"] * (s.feedwater_flow_pu - s.steam_flow_pu - c["blowdown_pu"])
+        s.inventory_pu = self._clip(s.inventory_pu + rate*dt, c["inventory_min"], c["inventory_max"])
+        s.heat_duty_pu = self._approach(s.heat_duty_pu, s.fuel_flow_pu*c["fuel_to_heat_gain"], dt, c["heat_tau_s"])
+        p_target = 1.0 + c["pressure_heat_gain"]*(s.heat_duty_pu-1.0) - c["pressure_steam_gain"]*(s.steam_flow_pu-1.0)
+        s.pressure_pu = self._approach(s.pressure_pu, max(0.0, p_target), dt, c["pressure_tau_s"])
+        swell_target = c["swell_steam_gain"]*(s.steam_flow_pu-1.0) + c["swell_pressure_gain"]*(s.pressure_pu-1.0)
+        s.indicated_swell_pct = self._approach(s.indicated_swell_pct, swell_target, dt, c["swell_tau_s"])
+        s.drum_level_pct = self._clip(50.0 + (s.inventory_pu-1.0)*c["inventory_to_level_gain"] + s.indicated_swell_pct, 0.0, 100.0)
+        s.time_s += dt
+        for key, value in vars(s).items():
+            if not isfinite(value):
+                raise FloatingPointError(f"Non-finite state {key}={value}")
+        return s
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\safety\interlocks.py
+==============================================================================
+SIZE: 3798 bytes
+MODIFIED: 2026-10-20 22.20.10
+SHA256: 57F71E40748E6804350A3B0666BE653FC6C6A0EDCE4E1CA2AABDD6E2363BDA0B
+--- SOURCE CONTENT ---
+"""Educational boiler safety interlocks; not a certified safety system."""
+
+from dataclasses import dataclass
+from math import isfinite
+
+
+@dataclass(frozen=True)
+class SafetyConfig:
+    low_low_level_pct: float = 20.0
+    high_high_level_pct: float = 80.0
+    low_low_pressure_pu: float = 0.5
+    high_high_pressure_pu: float = 1.5
+
+
+@dataclass(frozen=True)
+class SafetyStatus:
+    trip_latched: bool
+    fuel_permissive: bool
+    fuel_command_pu: float
+    alarm_active: bool
+    trip_causes: tuple[str, ...]
+    reset_accepted: bool
+
+
+class SafetyInterlock:
+    """Latched protective logic for an educational boiler simulation."""
+
+    def __init__(self, config=None):
+        self.config = config if config is not None else SafetyConfig()
+        self._validate_config()
+        self.trip_latched = False
+        self.trip_causes = ()
+
+    def _validate_config(self):
+        c = self.config
+        values = (
+            c.low_low_level_pct,
+            c.high_high_level_pct,
+            c.low_low_pressure_pu,
+            c.high_high_pressure_pu,
+        )
+
+        if not all(isfinite(value) for value in values):
+            raise ValueError("Safety thresholds must be finite numbers")
+
+        if not (
+            0.0 <= c.low_low_level_pct < c.high_high_level_pct <= 100.0
+        ):
+            raise ValueError("Invalid drum-level trip thresholds")
+
+        if not (
+            0.0 <= c.low_low_pressure_pu < c.high_high_pressure_pu
+        ):
+            raise ValueError("Invalid pressure trip thresholds")
+
+    def evaluate(
+        self,
+        level_pct,
+        pressure_pu,
+        *,
+        sensors_valid=True,
+        communication_ok=True,
+        manual_reset=False,
+    ):
+        causes = []
+
+        if not sensors_valid:
+            causes.append("SENSOR_INVALID")
+
+        if not communication_ok:
+            causes.append("COMMUNICATION_LOSS")
+
+        if sensors_valid:
+            try:
+                level = float(level_pct)
+                pressure = float(pressure_pu)
+            except (TypeError, ValueError, OverflowError):
+                causes.append("SENSOR_INVALID")
+            else:
+                if not isfinite(level) or not isfinite(pressure):
+                    causes.append("SENSOR_INVALID")
+                else:
+                    if not 0.0 <= level <= 100.0:
+                        causes.append("LEVEL_SIGNAL_OUT_OF_RANGE")
+
+                    if pressure < 0.0:
+                        causes.append("PRESSURE_SIGNAL_OUT_OF_RANGE")
+
+                    if level <= self.config.low_low_level_pct:
+                        causes.append("LOW_LOW_DRUM_LEVEL")
+
+                    if level >= self.config.high_high_level_pct:
+                        causes.append("HIGH_HIGH_DRUM_LEVEL")
+
+                    if pressure <= self.config.low_low_pressure_pu:
+                        causes.append("LOW_LOW_PRESSURE")
+
+                    if pressure >= self.config.high_high_pressure_pu:
+                        causes.append("HIGH_HIGH_PRESSURE")
+
+        causes = tuple(dict.fromkeys(causes))
+
+        if causes:
+            self.trip_latched = True
+            self.trip_causes = tuple(
+                dict.fromkeys(self.trip_causes + causes)
+            )
+
+        reset_accepted = False
+
+        if self.trip_latched and manual_reset and not causes:
+            self.trip_latched = False
+            self.trip_causes = ()
+            reset_accepted = True
+
+        fuel_permissive = not self.trip_latched
+
+        return SafetyStatus(
+            trip_latched=self.trip_latched,
+            fuel_permissive=fuel_permissive,
+            fuel_command_pu=1.0 if fuel_permissive else 0.0,
+            alarm_active=self.trip_latched,
+            trip_causes=self.trip_causes,
+            reset_accepted=reset_accepted,
+        )
+
+
+==============================================================================
+FILE: C:\Users\thebe\Downloads\BOILER DCS\compare_controllers.py
+==============================================================================
+SIZE: 5410 bytes
+MODIFIED: 2026-10-20 21.37.51
+SHA256: 3AF3363718651BC8E4C58D5C83FB24B89C7740E3338282038A4F0F4B1C8D12EF
+--- SOURCE CONTENT ---
+"""Compare single-element and three-element boiler control."""
+
+import csv
+from pathlib import Path
+
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+from model.boiler import BoilerModel
+from control import SingleElementController, ThreeElementController
+
+ROOT = Path(__file__).resolve().parent
+RUNS = ROOT / "runs"
+PLOTS = RUNS / "plots"
+RUNS.mkdir(exist_ok=True)
+PLOTS.mkdir(exist_ok=True)
+
+DURATION_S = 60.0
+STEP_TIME_S = 10.0
+SETPOINT = 50.0
+
+
+def simulate(kind):
+    boiler = BoilerModel()
+    controller = (
+        SingleElementController(setpoint_pct=SETPOINT)
+        if kind == "single"
+        else ThreeElementController(setpoint_pct=SETPOINT)
+    )
+    rows = []
+    dt = boiler.dt
+
+    for _ in range(round(DURATION_S / dt)):
+        state = boiler.state
+        demand = 1.0 if state.time_s < STEP_TIME_S else 1.2
+
+        if kind == "single":
+            command = controller.update(state.drum_level_pct, dt)
+        else:
+            command = controller.update(
+                state.drum_level_pct,
+                state.steam_flow_pu,
+                state.feedwater_flow_pu,
+                dt,
+            )
+
+        boiler.step(
+            feedwater_command_pu=command,
+            steam_demand_pu=demand,
+            fuel_command_pu=1.0,
+        )
+
+        s = boiler.state
+        rows.append({
+            "time_s": s.time_s,
+            "steam_demand_pu": demand,
+            "level_setpoint_pct": SETPOINT,
+            "drum_level_pct": s.drum_level_pct,
+            "level_error_pct": SETPOINT - s.drum_level_pct,
+            "inventory_pu": s.inventory_pu,
+            "pressure_pu": s.pressure_pu,
+            "steam_flow_pu": s.steam_flow_pu,
+            "feedwater_flow_pu": s.feedwater_flow_pu,
+            "feedwater_command_pu": command,
+        })
+    return rows
+
+
+def save_csv(path, rows):
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=rows[0].keys())
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def metrics(rows):
+    dt = rows[1]["time_s"] - rows[0]["time_s"]
+    post = [r for r in rows if r["time_s"] >= STEP_TIME_S]
+    errors = [r["level_error_pct"] for r in post]
+
+    settling = None
+    for i, row in enumerate(post):
+        if all(abs(r["level_error_pct"]) <= 1.0 for r in post[i:]):
+            settling = row["time_s"] - STEP_TIME_S
+            break
+
+    return {
+        "IAE_pct_s": sum(abs(r["level_error_pct"]) for r in rows) * dt,
+        "maximum_absolute_level_error_pct": max(abs(e) for e in errors),
+        "positive_level_overshoot_pct": max(0.0, max(-e for e in errors)),
+        "final_level_pct": rows[-1]["drum_level_pct"],
+        "final_level_error_pct": rows[-1]["level_error_pct"],
+        "final_inventory_pu": rows[-1]["inventory_pu"],
+        "final_pressure_pu": rows[-1]["pressure_pu"],
+        "settling_time_after_step_s": settling,
+    }
+
+
+def plot_signal(single, three, column, ylabel, title, filename):
+    plt.figure(figsize=(10, 5))
+    for rows, label in ((single, "Single-element"),
+                        (three, "Three-element")):
+        plt.plot([r["time_s"] for r in rows],
+                 [r[column] for r in rows], label=label)
+
+    plt.axvline(STEP_TIME_S, linestyle="--", label="Demand step")
+    if column == "drum_level_pct":
+        plt.axhline(SETPOINT, linestyle=":", label="Level setpoint")
+    plt.xlabel("Time (s)")
+    plt.ylabel(ylabel)
+    plt.title(title)
+    plt.grid(True, alpha=0.3)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(PLOTS / filename, dpi=160)
+    plt.close()
+
+
+def main():
+    print("Running single-element simulation...")
+    single = simulate("single")
+    print("Running three-element simulation...")
+    three = simulate("three")
+
+    save_csv(RUNS / "single_element.csv", single)
+    save_csv(RUNS / "three_element.csv", three)
+
+    results = {
+        "single_element": metrics(single),
+        "three_element": metrics(three),
+    }
+
+    with (RUNS / "controller_comparison.csv").open(
+        "w", newline="", encoding="utf-8"
+    ) as f:
+        writer = csv.writer(f)
+        writer.writerow(["metric", "single_element", "three_element"])
+        for key in results["single_element"]:
+            writer.writerow([
+                key,
+                results["single_element"][key],
+                results["three_element"][key],
+            ])
+
+    plot_signal(single, three, "drum_level_pct", "Level (%)",
+                "Drum-Level Control Comparison", "controller_level.png")
+    plot_signal(single, three, "pressure_pu", "Pressure (pu)",
+                "Pressure Comparison", "controller_pressure.png")
+    plot_signal(single, three, "inventory_pu", "Inventory (pu)",
+                "Inventory Comparison", "controller_inventory.png")
+    plot_signal(single, three, "feedwater_flow_pu", "Flow (pu)",
+                "Feedwater Flow Comparison", "controller_feedwater.png")
+    plot_signal(single, three, "feedwater_command_pu", "Command (pu)",
+                "Feedwater Command Comparison", "controller_command.png")
+
+    print("\nCONTROLLER COMPARISON RESULTS")
+    for name, values in results.items():
+        print(f"\n{name}:")
+        for key, value in values.items():
+            print(f"  {key}: {value}")
+
+    print("\nCSV files:", RUNS)
+    print("Plots:", PLOTS)
+    print("Comparison completed.")
+
+
+if __name__ == "__main__":
+    main()
+

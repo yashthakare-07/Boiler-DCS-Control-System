@@ -1,0 +1,378 @@
+
+> fuxa-server@1.3.5-2958 start
+> node main.js
+
+2026-10-21T17:42:34.964Z [INF] 	FUXA V.1.3.5-2958
+2026-10-21T17:42:35.041Z [INF] 	FUXA init in  86ms.
+2026-10-21T17:42:35.046Z [INF] 	'FUXA Server' created
+2026-10-21T17:42:35.047Z [INF] 	'FUXA Server' start
+2026-10-21T17:42:35.048Z [INF] 	FUXA started!
+2026-10-21T17:42:35.054Z [INF] 	WebServer is running http://127.0.0.1:1881/
+2026-10-21T17:42:35.054Z [INF] 	'FUXA Server' restored 0/0 values
+[0mGET /api/settings [32m200[0m 2.772 ms - 2232[0m
+GET /api/settings 200 2232 - 2.772 ms
+[0mGET /api/settings [32m200[0m 0.681 ms - 2232[0m
+GET /api/settings 200 2232 - 0.681 ms
+[0mGET /api/project?views=lazy [32m200[0m 0.337 ms - 708[0m
+GET /api/project?views=lazy 200 708 - 0.337 ms
+2026-10-21T17:44:09.888Z [INF] 	socket.io client connected DUHYPMK4f5b-agQ0AAAC
+[0mGET /api/resources/widgets?type=widgets [32m200[0m 0.985 ms - 30[0m
+GET /api/resources/widgets?type=widgets 200 30 - 0.985 ms
+[0mGET /api/users?username=admin [36m304[0m 1.884 ms - -[0m
+GET /api/users?username=admin 304 - - 1.884 ms
+[0mPOST /api/users [32m200[0m 12.878 ms - -[0m
+POST /api/users 200 - - 12.878 ms
+2026-10-21T17:44:14.874Z [INF] 	'FUXA Server' stop
+2026-10-21T17:44:14.880Z [INF] 	'FUXA Server' created
+2026-10-21T17:44:14.881Z [INF] 	'FUXA Server' start
+2026-10-21T17:44:14.881Z [INF] 	runtime.update-project: restart!
+[0mPOST /api/settings [32m200[0m 10.063 ms - -[0m
+POST /api/settings 200 - - 10.063 ms
+2026-10-21T17:44:14.883Z [INF] 	'FUXA Server' restored 0/0 values
+[0mPOST /api/projectData [32m200[0m 7.521 ms - -[0m
+POST /api/projectData 200 - - 7.521 ms
+[0mPOST /api/projectData [32m200[0m 5.940 ms - -[0m
+POST /api/projectData 200 - - 5.940 ms
+[0mGET /api/plugins [32m200[0m 105.600 ms - 3027[0m
+GET /api/plugins 200 3027 - 105.600 ms
+2026-10-21T17:44:21.234Z [INF] 	'FUXA Server' stop
+2026-10-21T17:44:21.238Z [INF] 	'FUXA Server' created
+2026-10-21T17:44:21.239Z [INF] 	'FUXA Server' start
+2026-10-21T17:44:21.240Z [INF] 	runtime.update-project: restart!
+[0mPOST /api/settings [32m200[0m 7.956 ms - -[0m
+POST /api/settings 200 - - 7.956 ms
+2026-10-21T17:44:21.241Z [INF] 	'FUXA Server' restored 0/0 values
+[0mGET /api/plugins [36m304[0m 90.966 ms - -[0m
+GET /api/plugins 304 - - 90.966 ms
+[0mGET /api/settings [32m200[0m 0.567 ms - 2232[0m
+GET /api/settings 200 2232 - 0.567 ms
+[0mGET /api/settings [32m200[0m 0.564 ms - 2232[0m
+GET /api/settings 200 2232 - 0.564 ms
+[0mGET /api/project?views=lazy [32m200[0m 0.324 ms - 708[0m
+GET /api/project?views=lazy 200 708 - 0.324 ms
+2026-10-21T17:45:06.707Z [INF] 	socket.io client connected aYdyOvrZ3kpkSfnaAAAF
+[0mGET /api/settings [32m200[0m 0.729 ms - 2232[0m
+GET /api/settings 200 2232 - 0.729 ms
+[0mGET /api/settings [32m200[0m 0.618 ms - 2232[0m
+GET /api/settings 200 2232 - 0.618 ms
+[0mGET /api/settings [32m200[0m 0.904 ms - 2232[0m
+GET /api/settings 200 2232 - 0.904 ms
+2026-10-21T17:45:27.682Z [INF] 	socket.io client connected xznKiEliLhNse1mqAAAI
+[0mGET /api/project?views=lazy [36m304[0m 0.379 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.379 ms
+[0mGET /api/plugins [36m304[0m 111.989 ms - -[0m
+GET /api/plugins 304 - - 111.989 ms
+[0mPOST /api/heartbeat [32m200[0m 1.940 ms - -[0m
+POST /api/heartbeat 200 - - 1.940 ms
+[0mPOST /api/heartbeat [32m200[0m 0.779 ms - -[0m
+POST /api/heartbeat 200 - - 0.779 ms
+[0mPOST /api/device [32m200[0m 0.561 ms - -[0m
+POST /api/device 200 - - 0.561 ms
+2026-10-21T17:52:57.556Z [INF] 	'FUXA Server' stop
+2026-10-21T17:52:57.557Z [INF] 	'FUXA Server' start
+[0mPOST /api/projectData [32m200[0m 5.680 ms - -[0m
+POST /api/projectData 200 - - 5.680 ms
+2026-10-21T17:52:57.558Z [INF] 	'FUXA Server' restored 0/0 values
+2026-10-21T17:52:58.066Z [INF] 	'OpenPLC_Boiler' created
+2026-10-21T17:52:58.066Z [INF] 	'OpenPLC_Boiler' start
+[0mPOST /api/projectData [32m200[0m 508.561 ms - -[0m
+POST /api/projectData 200 - - 508.561 ms
+2026-10-21T17:52:58.069Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+2026-10-21T17:53:05.417Z [INF] 	'FUXA Server' stop
+2026-10-21T17:53:05.418Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/heartbeat [32m200[0m 1.289 ms - -[0m
+POST /api/heartbeat 200 - - 1.289 ms
+[0mGET /api/project?views=lazy [32m200[0m 0.403 ms - 1482[0m
+GET /api/project?views=lazy 200 1482 - 0.403 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.296 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.296 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.284 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.284 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.282 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.282 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.320 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.320 ms
+[0mPOST /api/heartbeat [32m200[0m 0.765 ms - -[0m
+POST /api/heartbeat 200 - - 0.765 ms
+2026-10-21T17:57:53.529Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 5.575 ms - -[0m
+POST /api/projectData 200 - - 5.575 ms
+2026-10-21T17:58:31.795Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 6.408 ms - -[0m
+POST /api/projectData 200 - - 6.408 ms
+[0mPOST /api/heartbeat [32m200[0m 0.473 ms - -[0m
+POST /api/heartbeat 200 - - 0.473 ms
+[0mPOST /api/heartbeat [32m200[0m 0.887 ms - -[0m
+POST /api/heartbeat 200 - - 0.887 ms
+[0mPOST /api/heartbeat [32m200[0m 0.817 ms - -[0m
+POST /api/heartbeat 200 - - 0.817 ms
+2026-10-21T18:04:31.214Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 5.435 ms - -[0m
+POST /api/projectData 200 - - 5.435 ms
+2026-10-21T18:05:12.958Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 8.055 ms - -[0m
+POST /api/projectData 200 - - 8.055 ms
+[0mPOST /api/heartbeat [32m200[0m 0.726 ms - -[0m
+POST /api/heartbeat 200 - - 0.726 ms
+2026-10-21T18:06:16.993Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 5.620 ms - -[0m
+POST /api/projectData 200 - - 5.620 ms
+2026-10-21T18:06:36.433Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 6.499 ms - -[0m
+POST /api/projectData 200 - - 6.499 ms
+2026-10-21T18:06:54.816Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 6.236 ms - -[0m
+POST /api/projectData 200 - - 6.236 ms
+2026-10-21T18:07:12.186Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 5.730 ms - -[0m
+POST /api/projectData 200 - - 5.730 ms
+2026-10-21T18:07:30.418Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 6.253 ms - -[0m
+POST /api/projectData 200 - - 6.253 ms
+[0mPOST /api/heartbeat [32m200[0m 1.026 ms - -[0m
+POST /api/heartbeat 200 - - 1.026 ms
+[0mGET /api/project?views=lazy [32m200[0m 0.315 ms - 3464[0m
+GET /api/project?views=lazy 200 3464 - 0.315 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.344 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.344 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.522 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.522 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.282 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.282 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.476 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.476 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.360 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.360 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.337 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.337 ms
+[0mPOST /api/settings [0m-[0m - ms - -[0m
+POST /api/settings - - - - ms
+[0mGET /api/settings [32m200[0m 0.467 ms - 2232[0m
+GET /api/settings 200 2232 - 0.467 ms
+[0mGET /api/settings [32m200[0m 0.482 ms - 2232[0m
+GET /api/settings 200 2232 - 0.482 ms
+[0mGET /api/settings [32m200[0m 0.503 ms - 2232[0m
+GET /api/settings 200 2232 - 0.503 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.338 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.338 ms
+2026-10-21T18:10:17.231Z [INF] 	socket.io client connected zvUXIwCWCNES4s0BAAAL
+[0mGET /api/plugins [36m304[0m 98.773 ms - -[0m
+GET /api/plugins 304 - - 98.773 ms
+2026-10-21T18:10:19.789Z [INF] 	'FUXA Server' stop
+2026-10-21T18:10:19.789Z [INF] 	'OpenPLC_Boiler' stop
+[0mGET /api/project?views=lazy [36m304[0m 0.613 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.613 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.309 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.309 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.507 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.507 ms
+[0mPOST /api/settings [0m-[0m - ms - -[0m
+POST /api/settings - - - - ms
+[0mGET /api/settings [32m200[0m 0.332 ms - 2232[0m
+GET /api/settings 200 2232 - 0.332 ms
+[0mGET /api/settings [32m200[0m 0.404 ms - 2232[0m
+GET /api/settings 200 2232 - 0.404 ms
+[0mGET /api/settings [32m200[0m 0.325 ms - 2232[0m
+GET /api/settings 200 2232 - 0.325 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.341 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.341 ms
+2026-10-21T18:10:44.197Z [INF] 	socket.io client connected 85qRJVtvFIQcKB2IAAAO
+[0mGET /api/plugins [36m304[0m 59.905 ms - -[0m
+GET /api/plugins 304 - - 59.905 ms
+2026-10-21T18:10:45.603Z [INF] 	'FUXA Server' stop
+2026-10-21T18:10:45.603Z [INF] 	'OpenPLC_Boiler' stop
+[0mGET /api/project?views=lazy [36m304[0m 0.319 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.319 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.266 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.266 ms
+2026-10-21T18:12:43.274Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 7.419 ms - -[0m
+POST /api/projectData 200 - - 7.419 ms
+2026-10-21T18:12:50.856Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 7.180 ms - -[0m
+POST /api/projectData 200 - - 7.180 ms
+2026-10-21T18:12:58.512Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 6.661 ms - -[0m
+POST /api/projectData 200 - - 6.661 ms
+2026-10-21T18:13:20.757Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 7.202 ms - -[0m
+POST /api/projectData 200 - - 7.202 ms
+[0mGET /api/project?views=lazy [32m200[0m 0.321 ms - 3464[0m
+GET /api/project?views=lazy 200 3464 - 0.321 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.274 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.274 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.314 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.314 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.323 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.323 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.322 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.322 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.310 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.310 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.305 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.305 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.328 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.328 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.396 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.396 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.280 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.280 ms
+[0mPOST /api/settings [0m-[0m - ms - -[0m
+POST /api/settings - - - - ms
+[0mGET /api/settings [32m200[0m 0.775 ms - 2232[0m
+GET /api/settings 200 2232 - 0.775 ms
+[0mGET /api/settings [32m200[0m 0.492 ms - 2232[0m
+GET /api/settings 200 2232 - 0.492 ms
+[0mGET /api/settings [32m200[0m 0.644 ms - 2232[0m
+GET /api/settings 200 2232 - 0.644 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.329 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.329 ms
+2026-10-21T18:13:48.951Z [INF] 	socket.io client connected t9bb1J6BfU7ojLGTAAAR
+[0mGET /api/plugins [36m304[0m 102.267 ms - -[0m
+GET /api/plugins 304 - - 102.267 ms
+2026-10-21T18:13:50.429Z [INF] 	'FUXA Server' stop
+2026-10-21T18:13:50.429Z [INF] 	'OpenPLC_Boiler' stop
+[0mGET /api/project?views=lazy [36m304[0m 0.514 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.514 ms
+[0mPOST /api/heartbeat [32m200[0m 0.492 ms - -[0m
+POST /api/heartbeat 200 - - 0.492 ms
+2026-10-21T18:15:34.885Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 6.181 ms - -[0m
+POST /api/projectData 200 - - 6.181 ms
+2026-10-21T18:15:41.744Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 4.909 ms - -[0m
+POST /api/projectData 200 - - 4.909 ms
+2026-10-21T18:15:47.202Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 6.321 ms - -[0m
+POST /api/projectData 200 - - 6.321 ms
+2026-10-21T18:15:51.824Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 6.805 ms - -[0m
+POST /api/projectData 200 - - 6.805 ms
+[0mGET /api/project?views=lazy [32m200[0m 0.350 ms - 3464[0m
+GET /api/project?views=lazy 200 3464 - 0.350 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.350 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.350 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.301 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.301 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.473 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.473 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.373 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.373 ms
+[0mPOST /api/settings [0m-[0m - ms - -[0m
+POST /api/settings - - - - ms
+[0mGET /api/settings [32m200[0m 0.442 ms - 2232[0m
+GET /api/settings 200 2232 - 0.442 ms
+[0mGET /api/settings [32m200[0m 0.334 ms - 2232[0m
+GET /api/settings 200 2232 - 0.334 ms
+[0mGET /api/settings [32m200[0m 0.295 ms - 2232[0m
+GET /api/settings 200 2232 - 0.295 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.405 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.405 ms
+2026-10-21T18:16:03.397Z [INF] 	socket.io client connected DO56SB2doXBWS8tfAAAU
+[0mGET /api/plugins [36m304[0m 64.240 ms - -[0m
+GET /api/plugins 304 - - 64.240 ms
+2026-10-21T18:16:04.913Z [INF] 	'FUXA Server' stop
+2026-10-21T18:16:04.913Z [INF] 	'OpenPLC_Boiler' stop
+[0mGET /api/project?views=lazy [36m304[0m 0.424 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.424 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.311 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.311 ms
+2026-10-21T18:17:36.015Z [INF] 	'OpenPLC_Boiler' stop
+[0mPOST /api/projectData [32m200[0m 5.961 ms - -[0m
+POST /api/projectData 200 - - 5.961 ms
+[0mPOST /api/heartbeat [32m200[0m 0.516 ms - -[0m
+POST /api/heartbeat 200 - - 0.516 ms
+[0mPOST /api/heartbeat [32m200[0m 0.506 ms - -[0m
+POST /api/heartbeat 200 - - 0.506 ms
+[0mPOST /api/heartbeat [32m200[0m 0.810 ms - -[0m
+POST /api/heartbeat 200 - - 0.810 ms
+[0mPOST /api/heartbeat [32m200[0m 0.449 ms - -[0m
+POST /api/heartbeat 200 - - 0.449 ms
+[0mPOST /api/heartbeat [32m200[0m 0.435 ms - -[0m
+POST /api/heartbeat 200 - - 0.435 ms
+[0mPOST /api/heartbeat [32m200[0m 1.004 ms - -[0m
+POST /api/heartbeat 200 - - 1.004 ms
+[0mPOST /api/heartbeat [32m200[0m 0.460 ms - -[0m
+POST /api/heartbeat 200 - - 0.460 ms
+[0mPOST /api/heartbeat [32m200[0m 0.400 ms - -[0m
+POST /api/heartbeat 200 - - 0.400 ms
+[0mGET /api/settings [32m200[0m 0.455 ms - 2232[0m
+GET /api/settings 200 2232 - 0.455 ms
+[0mGET /api/settings [32m200[0m 0.410 ms - 2232[0m
+GET /api/settings 200 2232 - 0.410 ms
+[0mGET /api/project?views=lazy [32m200[0m 0.373 ms - 3464[0m
+GET /api/project?views=lazy 200 3464 - 0.373 ms
+2026-10-21T18:38:14.332Z [INF] 	socket.io client connected gicZCRocxPPP7QDdAAAX
+[0mGET /api/resources/widgets?type=widgets [32m200[0m 0.622 ms - 30[0m
+GET /api/resources/widgets?type=widgets 200 30 - 0.622 ms
+[0mPOST /api/projectData [32m200[0m 7.158 ms - -[0m
+POST /api/projectData 200 - - 7.158 ms
+[0mPOST /api/projectData [32m200[0m 6.672 ms - -[0m
+POST /api/projectData 200 - - 6.672 ms
+[0mGET /api/plugins [32m200[0m 115.340 ms - 3027[0m
+GET /api/plugins 200 3027 - 115.340 ms
+2026-10-21T18:38:25.653Z [INF] 	'FUXA Server' stop
+2026-10-21T18:38:25.654Z [INF] 	'OpenPLC_Boiler' stop
+[0mGET /api/project?views=lazy [32m200[0m 1.075 ms - 3464[0m
+GET /api/project?views=lazy 200 3464 - 1.075 ms
+[0mPOST /api/heartbeat [32m200[0m 0.871 ms - -[0m
+POST /api/heartbeat 200 - - 0.871 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.317 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.317 ms
+[0mPOST /api/settings [0m-[0m - ms - -[0m
+POST /api/settings - - - - ms
+[0mPOST /api/heartbeat [32m200[0m 0.450 ms - -[0m
+POST /api/heartbeat 200 - - 0.450 ms
+[0mPOST /api/heartbeat [32m200[0m 0.905 ms - -[0m
+POST /api/heartbeat 200 - - 0.905 ms
+[0mPOST /api/settings [0m-[0m - ms - -[0m
+POST /api/settings - - - - ms
+[0mPOST /api/heartbeat [32m200[0m 0.957 ms - -[0m
+POST /api/heartbeat 200 - - 0.957 ms
+[0mGET /api/settings [32m200[0m 0.445 ms - 2232[0m
+GET /api/settings 200 2232 - 0.445 ms
+[0mGET /api/settings [32m200[0m 0.491 ms - 2232[0m
+GET /api/settings 200 2232 - 0.491 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.293 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.293 ms
+2026-10-21T18:50:54.944Z [INF] 	socket.io client connected nyl_xLTHZ3TRaTbqAAAa
+[0mGET /.well-known/appspecific/com.chrome.devtools.json [33m404[0m 1.575 ms - 187[0m
+GET /.well-known/appspecific/com.chrome.devtools.json 404 187 - 1.575 ms
+[0mGET /assets/lib/svg/svg.min.js.map [33m404[0m 0.432 ms - 168[0m
+GET /assets/lib/svg/svg.min.js.map 404 168 - 0.432 ms
+[0mGET /.well-known/appspecific/com.chrome.devtools.json [33m404[0m 0.484 ms - 187[0m
+GET /.well-known/appspecific/com.chrome.devtools.json 404 187 - 0.484 ms
+[0mGET /assets/lib/svg/svg.min.js.map [33m404[0m 0.403 ms - 168[0m
+GET /assets/lib/svg/svg.min.js.map 404 168 - 0.403 ms
+[0mGET /.well-known/appspecific/com.chrome.devtools.json [33m404[0m 0.470 ms - 187[0m
+GET /.well-known/appspecific/com.chrome.devtools.json 404 187 - 0.470 ms
+[0mGET /assets/lib/svg/svg.min.js.map [33m404[0m 0.596 ms - 168[0m
+GET /assets/lib/svg/svg.min.js.map 404 168 - 0.596 ms
+[0mGET /.well-known/appspecific/com.chrome.devtools.json [33m404[0m 0.399 ms - 187[0m
+GET /.well-known/appspecific/com.chrome.devtools.json 404 187 - 0.399 ms
+[0mGET /assets/lib/svg/svg.min.js.map [33m404[0m 0.397 ms - 168[0m
+GET /assets/lib/svg/svg.min.js.map 404 168 - 0.397 ms
+[0mGET /.well-known/appspecific/com.chrome.devtools.json [33m404[0m 0.669 ms - 187[0m
+GET /.well-known/appspecific/com.chrome.devtools.json 404 187 - 0.669 ms
+[0mGET /api/resources/widgets?type=widgets [32m200[0m 0.547 ms - 30[0m
+GET /api/resources/widgets?type=widgets 200 30 - 0.547 ms
+[0mPOST /api/projectData [32m200[0m 10.674 ms - -[0m
+POST /api/projectData 200 - - 10.674 ms
+[0mGET /.well-known/appspecific/com.chrome.devtools.json [33m404[0m 0.496 ms - 187[0m
+GET /.well-known/appspecific/com.chrome.devtools.json 404 187 - 0.496 ms
+[0mPOST /api/projectData [32m200[0m 5.786 ms - -[0m
+POST /api/projectData 200 - - 5.786 ms
+[0mGET /api/plugins [36m304[0m 108.732 ms - -[0m
+GET /api/plugins 304 - - 108.732 ms
+2026-10-21T18:52:18.543Z [INF] 	'FUXA Server' stop
+2026-10-21T18:52:18.544Z [INF] 	'OpenPLC_Boiler' stop
+[0mGET /api/project?views=lazy [32m200[0m 0.335 ms - 3464[0m
+GET /api/project?views=lazy 200 3464 - 0.335 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.336 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.336 ms
+[0mGET /api/project?views=lazy [36m304[0m 0.467 ms - -[0m
+GET /api/project?views=lazy 304 - - 0.467 ms
+[0mPOST /api/settings [0m-[0m - ms - -[0m
+POST /api/settings - - - - ms
+[0mPOST /api/heartbeat [32m200[0m 0.457 ms - -[0m
+POST /api/heartbeat 200 - - 0.457 ms

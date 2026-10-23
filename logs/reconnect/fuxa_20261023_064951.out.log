@@ -1,0 +1,190 @@
+
+> fuxa-server@1.3.5-2958 start
+> node main.js
+
+2026-10-23T01:19:56.794Z [INF] 	FUXA V.1.3.5-2958
+2026-10-23T01:19:56.882Z [INF] 	FUXA init in  97ms.
+2026-10-23T01:19:56.891Z [INF] 	'FUXA Server' created
+2026-10-23T01:19:56.933Z [INF] 	'OpenPLC_Boiler' created
+2026-10-23T01:19:56.935Z [INF] 	'FUXA Server' start
+2026-10-23T01:19:56.935Z [INF] 	'OpenPLC_Boiler' start
+2026-10-23T01:19:56.939Z [INF] 	FUXA started!
+2026-10-23T01:19:56.944Z [INF] 	WebServer is running http://127.0.0.1:1881/
+2026-10-23T01:19:56.946Z [INF] 	'FUXA Server' restored 0/0 values
+2026-10-23T01:19:56.947Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:19:58.953Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:20:02.097Z [INF] 	socket.io client connected -I1K52QvnpsReQuPAAAB
+2026-10-23T01:20:06.994Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[0mPOST /api/heartbeat [32m200[0m 364.686 ms - -[0m
+POST /api/heartbeat 200 - - 364.686 ms
+[0mGET /api/settings [32m200[0m 2.161 ms - 2232[0m
+GET /api/settings 200 2232 - 2.161 ms
+[0mGET /api/settings [32m200[0m 0.436 ms - 2232[0m
+GET /api/settings 200 2232 - 0.436 ms
+[0mGET /api/settings [32m200[0m 0.879 ms - 2232[0m
+GET /api/settings 200 2232 - 0.879 ms
+[0mGET /api/project [32m200[0m 1.565 ms - 17224[0m
+GET /api/project 200 17224 - 1.565 ms
+2026-10-23T01:24:33.090Z [INF] 	socket.io client connected qvW1k45qJyX7fTi9AAAE
+[0mGET /api/resources/widgets?type=widgets [32m200[0m 0.755 ms - 30[0m
+GET /api/resources/widgets?type=widgets 200 30 - 0.755 ms
+2026-10-23T01:29:07.820Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[0mPOST /api/heartbeat [32m200[0m 1.543 ms - -[0m
+POST /api/heartbeat 200 - - 1.543 ms
+[0mPOST /api/heartbeat [32m200[0m 1.069 ms - -[0m
+POST /api/heartbeat 200 - - 1.069 ms
+2026-10-23T01:37:38.711Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:37:40.736Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:37:48.732Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:37:50.747Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:37:58.737Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:38:00.747Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:38:08.753Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:38:10.791Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:38:18.767Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:38:20.785Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:38:28.776Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:38:30.799Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:38:38.776Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:38:40.800Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:38:48.782Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[0mPOST /api/projectData [32m200[0m 14.919 ms - -[0m
+POST /api/projectData 200 - - 14.919 ms
+[0mGET /api/settings [32m200[0m 1.326 ms - 2232[0m
+GET /api/settings 200 2232 - 1.326 ms
+[0mGET /api/settings [32m200[0m 0.835 ms - 2232[0m
+GET /api/settings 200 2232 - 0.835 ms
+[0mGET /api/settings [32m200[0m 1.032 ms - 2232[0m
+GET /api/settings 200 2232 - 1.032 ms
+[0mGET /api/project?views=lazy [32m200[0m 1.303 ms - 22602[0m
+GET /api/project?views=lazy 200 22602 - 1.303 ms
+2026-10-23T01:38:50.200Z [INF] 	socket.io client connected SShWKadh-ciROLeeAAAH
+[33m2026-10-23T01:38:50.795Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:38:58.793Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:39:00.817Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:39:08.806Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:39:10.922Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:39:18.815Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:39:20.833Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:39:28.830Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:39:30.866Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+[0mPOST /api/heartbeat [32m200[0m 0.449 ms - -[0m
+POST /api/heartbeat 200 - - 0.449 ms
+2026-10-23T01:39:38.835Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:39:40.874Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:39:48.871Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:39:50.886Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:39:58.885Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+2026-10-23T01:40:28.927Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:40:30.977Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:40:38.932Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:40:40.970Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:40:48.947Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:40:50.974Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:40:58.977Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:41:00.987Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:41:09.021Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:41:11.047Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:41:19.038Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:41:21.065Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:41:29.056Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:41:31.074Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:41:39.068Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:41:41.092Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:41:49.086Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:41:51.115Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:41:59.096Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:42:01.135Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:42:09.102Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:42:11.129Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:42:19.109Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:42:21.149Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:42:29.124Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:42:31.179Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:42:39.144Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:42:41.232Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+[0mGET /api/settings [32m200[0m 1.112 ms - 2232[0m
+GET /api/settings 200 2232 - 1.112 ms
+[0mGET /api/settings [32m200[0m 0.382 ms - 2232[0m
+GET /api/settings 200 2232 - 0.382 ms
+[0mGET /api/settings [32m200[0m 0.425 ms - 2232[0m
+GET /api/settings 200 2232 - 0.425 ms
+[0mGET /api/project [32m200[0m 0.709 ms - 22602[0m
+GET /api/project 200 22602 - 0.709 ms
+2026-10-23T01:42:48.009Z [INF] 	socket.io client connected qGhA1f68qy0EcgoUAAAK
+[0mGET /api/resources/widgets?type=widgets [32m200[0m 0.536 ms - 30[0m
+GET /api/resources/widgets?type=widgets 200 30 - 0.536 ms
+2026-10-23T01:42:49.145Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[0mGET /api/users?username=admin [36m304[0m 2.637 ms - -[0m
+GET /api/users?username=admin 304 - - 2.637 ms
+[0mPOST /api/users [32m200[0m 3.974 ms - -[0m
+POST /api/users 200 - - 3.974 ms
+2026-10-23T01:42:49.961Z [INF] 	'FUXA Server' stop
+2026-10-23T01:42:49.962Z [INF] 	'OpenPLC_Boiler' stop
+2026-10-23T01:42:51.175Z [INF] 	'FUXA Server' created
+2026-10-23T01:42:51.179Z [INF] 	'OpenPLC_Boiler' created
+2026-10-23T01:42:51.182Z [INF] 	'FUXA Server' start
+2026-10-23T01:42:51.183Z [INF] 	'OpenPLC_Boiler' start
+2026-10-23T01:42:51.186Z [INF] 	runtime.update-project: restart!
+[0mPOST /api/settings [32m200[0m 1228.274 ms - -[0m
+POST /api/settings 200 - - 1228.274 ms
+2026-10-23T01:42:51.190Z [INF] 	'FUXA Server' restored 0/0 values
+2026-10-23T01:42:51.190Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[0mPOST /api/projectData [32m200[0m 9.688 ms - -[0m
+POST /api/projectData 200 - - 9.688 ms
+[0mGET /api/settings [32m200[0m 1.673 ms - 2232[0m
+GET /api/settings 200 2232 - 1.673 ms
+[0mGET /api/settings [32m200[0m 0.965 ms - 2232[0m
+GET /api/settings 200 2232 - 0.965 ms
+[0mGET /api/settings [32m200[0m 0.835 ms - 2232[0m
+GET /api/settings 200 2232 - 0.835 ms
+2026-10-23T01:42:52.266Z [INF] 	socket.io client connected SgJmcvgCf7HQHK8QAAAN
+[0mGET /api/project?views=lazy [32m200[0m 1.272 ms - 22602[0m
+GET /api/project?views=lazy 200 22602 - 1.272 ms
+[33m2026-10-23T01:42:53.202Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:43:01.194Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:43:03.226Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:43:11.198Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:43:13.234Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:43:21.209Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:43:23.244Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:43:31.215Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:43:33.253Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:43:41.216Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:43:43.319Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:43:51.249Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:43:53.287Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:44:01.368Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:44:03.395Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:44:11.376Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:44:13.414Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:44:21.390Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:44:23.476Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:44:31.414Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:44:33.474Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+[0mPOST /api/heartbeat [32m200[0m 1.454 ms - -[0m
+POST /api/heartbeat 200 - - 1.454 ms
+2026-10-23T01:44:41.446Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:44:43.467Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:44:51.639Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:44:53.544Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:45:01.537Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:45:03.539Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:45:11.545Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:45:13.561Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:45:21.552Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:45:23.580Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:45:31.559Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:45:33.599Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:45:41.578Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:45:43.591Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:45:51.583Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:45:53.610Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:46:01.593Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:46:03.620Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:46:11.604Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:46:13.630Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:46:21.613Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:46:23.631Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:46:31.640Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:46:33.672Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m

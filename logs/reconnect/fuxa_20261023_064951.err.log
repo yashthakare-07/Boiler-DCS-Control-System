@@ -1,0 +1,2593 @@
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:19:58.957Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:19:59.457Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:19:59.462Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:19:59.971Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:20:00.480Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:20:00.988Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:20:01.488Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:28:59.292Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:28:59.809Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:29:00.319Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:29:00.830Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:29:01.335Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:29:01.839Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:29:02.348Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:32.128Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:32.627Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:33.146Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:33.645Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:37:40.743Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:37:41.228Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:41.242Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:41.750Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:42.275Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:37:42.753Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:42.774Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:43.286Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:37:50.748Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:37:51.237Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:51.248Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:51.756Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:52.270Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:37:52.782Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:52.783Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:37:53.292Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:38:00.750Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:01.245Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:01.259Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:01.767Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:02.275Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:02.773Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:02.775Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:03.280Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+(node:11912) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 connect listeners added to [Socket]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+[31m2026-10-23T01:38:10.792Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:11.277Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:11.302Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:11.826Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:12.340Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:12.803Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:12.841Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:13.350Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:38:20.788Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:21.278Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:21.296Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:21.804Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:22.327Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:22.797Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:22.825Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:23.344Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:38:30.802Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:31.281Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:31.311Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:31.822Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:32.326Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:32.813Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:32.835Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:33.349Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+(node:11912) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 close listeners added to [Socket]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+[31m2026-10-23T01:38:40.804Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:41.303Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:41.305Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:41.819Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:42.337Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:42.807Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:42.837Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:43.338Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+(node:11912) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 data listeners added to [Socket]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(node:11912) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 error listeners added to [Socket]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(node:11912) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 timeout listeners added to [Socket]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+[31m2026-10-23T01:38:50.798Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:51.288Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:51.295Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:51.808Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:52.311Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:38:52.819Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:52.821Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:38:53.330Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:39:00.820Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:01.309Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:01.323Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:01.840Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:02.345Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:02.830Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:02.845Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:03.355Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:10.927Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:11.322Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:11.430Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:11.937Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:12.447Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:12.947Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:13.455Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:39:20.823Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+(node:11912) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 drain listeners added to [Socket]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+[31m2026-10-23T01:39:20.837Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:21.331Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:21.342Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:21.856Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:22.358Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:22.842Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:22.870Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:23.372Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:39:30.868Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:31.335Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:31.370Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:31.879Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:32.386Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:32.880Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:32.899Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:33.421Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:39:40.878Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:41.355Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:41.378Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:41.887Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:42.388Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:42.887Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:42.889Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:43.395Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:50.891Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:39:51.388Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:51.389Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:51.905Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:52.416Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:52.932Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:39:53.434Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:22.806Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:23.303Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:23.822Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:40:30.981Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:40:31.483Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:31.488Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:31.995Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:32.508Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:40:32.993Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:33.006Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:33.517Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:40:40.973Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:40:41.457Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:41.472Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:41.977Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:42.487Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:40:42.977Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:42.985Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:43.485Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:40:50.975Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:40:51.459Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:51.491Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:52.002Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:52.510Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:40:52.976Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:53.018Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:40:53.528Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:41:00.990Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:01.487Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:01.488Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:01.998Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:02.498Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:02.998Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:02.999Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:03.506Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:41:11.048Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:11.530Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:11.556Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:12.067Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:12.572Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:13.057Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:13.076Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:13.587Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:21.069Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:21.556Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:21.576Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:22.095Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:22.596Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:23.096Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:23.598Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:41:31.055Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+[31m2026-10-23T01:41:31.076Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:31.557Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:31.577Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:32.087Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:32.586Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:33.087Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:33.088Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:33.597Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:41:41.093Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:41.587Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:41.595Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:42.098Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:42.606Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:43.098Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:43.105Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:43.619Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:41:51.118Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:51.597Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:51.625Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:52.136Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:52.637Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:41:53.123Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:53.136Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:41:53.648Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:42:01.138Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:01.617Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:01.646Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:02.147Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:02.655Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:03.146Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:03.155Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:03.672Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:42:11.134Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:11.611Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:11.635Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:12.138Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:12.647Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:13.137Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:13.156Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:13.672Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:21.152Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:21.616Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:21.657Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:22.175Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:22.684Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:23.206Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:23.715Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:42:31.131Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+[31m2026-10-23T01:42:31.181Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:31.655Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:31.701Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:32.209Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:32.724Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:33.208Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:33.233Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:33.756Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:41.236Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:41.655Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:41.740Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:42.251Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:42.762Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:43.265Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:43.769Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:42:51.155Z [ERR] 	'OpenPLC_Boiler' try to disconnect failed![0m
+[31m2026-10-23T01:42:51.160Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:51.664Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:42:53.203Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:53.693Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:53.707Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:54.217Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:54.718Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:42:55.220Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:55.222Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:42:55.741Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:43:03.226Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:03.757Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:03.758Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:04.266Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:04.781Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:05.231Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:05.287Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:05.802Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:43:13.236Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:13.751Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:13.753Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:14.266Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:14.775Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:15.244Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:15.275Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:15.784Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:43:23.245Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:23.782Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:23.819Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:24.320Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:24.839Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:25.249Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:25.343Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:25.856Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:43:33.254Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:33.722Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:33.769Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:34.319Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:34.814Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:35.270Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:35.326Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:35.834Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:43.320Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:43.731Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:43.826Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:44.333Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:44.838Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:45.338Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:45.839Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:43:53.257Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+[31m2026-10-23T01:43:53.288Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:53.761Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:53.793Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:54.305Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:54.817Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:43:55.302Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:55.318Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:43:55.837Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:44:03.398Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:03.875Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:03.900Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:04.411Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:04.920Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:05.401Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:05.428Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:05.941Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:44:13.417Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:13.954Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:13.956Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:14.464Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:14.975Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:15.420Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:15.484Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:15.992Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:23.477Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:23.903Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:23.979Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:24.491Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:25.000Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:25.504Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:26.005Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:44:33.429Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:33.477Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:33.923Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:33.985Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:34.495Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:35.005Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:35.521Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:36.024Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:44:43.438Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+[31m2026-10-23T01:44:43.470Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:44.015Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:44.018Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:44.521Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:45.023Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:45.474Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:45.532Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:46.032Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:44:53.548Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:54.037Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:54.050Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:54.552Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:55.055Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:44:55.560Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:55.561Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:44:56.064Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:45:03.540Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:04.048Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:04.051Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:04.570Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:05.074Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:05.547Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:05.580Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:06.084Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:13.562Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:14.052Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:14.070Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:14.582Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:15.082Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:15.603Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:16.112Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:45:23.555Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+[31m2026-10-23T01:45:23.581Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:24.065Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:24.081Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:24.583Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:25.085Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:25.586Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:25.587Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:26.090Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:33.601Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:34.080Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:34.101Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:34.608Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:35.117Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:35.622Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:36.134Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:45:43.584Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+[31m2026-10-23T01:45:43.592Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:44.086Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:44.102Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:44.613Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:45.126Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:45.614Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:45.633Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:46.153Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:45:53.613Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:54.102Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:54.111Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:54.612Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:55.119Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:45:55.617Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:55.618Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:45:56.122Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:46:03.622Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:46:04.112Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:04.121Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:04.632Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:05.133Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:46:05.632Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:05.633Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:06.142Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:13.633Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:46:14.112Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:14.130Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:14.632Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:15.130Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:15.642Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:16.144Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:46:23.618Z [ERR] 	Error: TCP Connection Timed Out
+    at Socket.<anonymous> (C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:163:28)
+    at Socket.emit (node:events:526:24)
+    at Socket._onTimeout (node:net:886:8)
+    at Timeout.onStreamTimeout [as _onTimeout] (node:internal/stream_base_commons:242:10)
+    at listOnTimeout (node:internal/timers:687:11)
+    at process.processTimers (node:internal/timers:618:7)[0m
+[31m2026-10-23T01:46:23.634Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:46:24.123Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:24.142Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:24.641Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:25.144Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:46:25.641Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:25.677Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:26.192Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+[31m2026-10-23T01:46:33.676Z [ERR] 	Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+    at _write (node:internal/streams/writable:491:11)
+    at Writable.write (node:internal/streams/writable:512:10)
+    at C:\Users\thebe\Downloads\FUXA-master\FUXA-master\server\node_modules\modbus-serial\ports\tcpport.js:254:38
+    at <anonymous>
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)[0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:46:34.154Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:34.174Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:34.687Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:35.198Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+TransactionTimedOutError {
+  name: 'TransactionTimedOutError',
+  message: 'Timed out',
+  errno: 'ETIMEDOUT'
+}
+[31m2026-10-23T01:46:35.691Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:35.706Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+PortNotOpenError {
+  name: 'PortNotOpenError',
+  message: 'Port Not Open',
+  errno: 'ECONNREFUSED'
+}
+[31m2026-10-23T01:46:36.210Z [ERR] 	'OpenPLC_Boiler' _readMemory error! [object Object][0m
+^C^C

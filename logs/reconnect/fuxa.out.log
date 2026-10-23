@@ -1,0 +1,17 @@
+
+> fuxa-server@1.3.5-2958 start
+> node main.js
+
+2026-10-23T01:15:25.741Z [INF] 	FUXA V.1.3.5-2958
+2026-10-23T01:15:27.431Z [INF] 	FUXA init in  1822ms.
+2026-10-23T01:15:27.442Z [INF] 	'FUXA Server' created
+2026-10-23T01:15:27.970Z [INF] 	'OpenPLC_Boiler' created
+2026-10-23T01:15:27.971Z [INF] 	'FUXA Server' start
+2026-10-23T01:15:27.972Z [INF] 	'OpenPLC_Boiler' start
+2026-10-23T01:15:27.975Z [INF] 	FUXA started!
+2026-10-23T01:15:27.981Z [INF] 	WebServer is running http://127.0.0.1:1881/
+2026-10-23T01:15:27.983Z [INF] 	'FUXA Server' restored 0/0 values
+2026-10-23T01:15:27.984Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
+[33m2026-10-23T01:15:30.005Z [WAR] 	'OpenPLC_Boiler' working (connection || polling) overload! 3[39m
+2026-10-23T01:15:30.086Z [INF] 	socket.io client connected fH2LNZDUOYmaQpSbAAAB
+2026-10-23T01:15:37.992Z [INF] 	'OpenPLC_Boiler' restored 0/0 values
