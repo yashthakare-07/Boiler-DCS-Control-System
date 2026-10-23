@@ -1,16 +1,29 @@
-# Boiler and Steam Utility Plant DCS Digital Twin
+# Boiler & Steam Utility Plant: DCS Digital Twin
 
-A software-in-the-loop digital twin for studying boiler process dynamics, PLC-based control, industrial communication, SCADA/HMI integration, and disturbance-response analysis using open-source tooling.
+A software-in-the-loop digital twin of a boiler and steam utility plant. A Python process model is closed in a loop with real PLC logic (OpenPLC, IEC 61131-3 Structured Text) over **Modbus TCP**, with a **FUXA SCADA/HMI** as the operator station. It implements the control structures used in industrial boiler plants: **three-element drum-level control**, **cascade pressure/combustion control**, and **simulated protective interlocks**.
 
-**Scope:** This is an educational software simulation and control-system demonstrator. It is not a thermodynamically validated boiler model, a certified safety instrumented system, or a controller for real plant equipment.
+> **Scope.** This is an educational simulation and control-system demonstrator. The process model is synthetic (not thermodynamically validated), the trip logic is not a certified SIS, and nothing here is intended for real plant equipment. See [Limitations](#limitations).
 
-## Project overview
+## At a glance
 
-The project couples a Python-based boiler process model to PLC logic running in OpenPLC Runtime. A Python bridge exchanges process measurements and control outputs over Modbus TCP. FUXA is used as the operator-facing SCADA/HMI layer, and CSV traces plus Python tests support analysis of the simulated response.
+| | |
+|---|---|
+| **Domain** | Process control / DCS for boiler and steam utilities |
+| **Control** | Single-element and three-element drum-level control; cascade pressure control with fuel-valve and air-damper outputs |
+| **PLC layer** | OpenPLC Runtime, Structured Text, Modbus TCP holding-register interface (HR1124–HR1139) |
+| **Operator layer** | FUXA SCADA/HMI with process displays and trends |
+| **Integration** | Python bridge (`pymodbus`) with CSV tracing, reconnect handling, duplicate-instance protection |
+| **Verification** | 54 unit tests (recorded run), bounded live-PLC disturbance tests, controller comparison by IAE |
+| **Stack** | Python, NumPy/SciPy, OpenPLC, FUXA, Modbus TCP, Windows/PowerShell, VS Code |
 
-The model represents drum water inventory and indicated level, swell/shrink effects, feedwater and steam flow, pressure, steam demand, fuel flow, and fuel/air command outputs.
+<!-- ADD HERE: screenshots/ folder with (1) FUXA HMI overview, (2) disturbance-response trend plot, (3) controller comparison plot.
+Example: ![FUXA HMI](docs/images/fuxa_overview.png) -->
 
-### Architecture
+## Why this project
+
+In a real boiler, the drum-level and steam-pressure loops are strongly coupled and hard to control. This project builds those loops the way a DCS engineer would: the process model, the PLC controllers, the communication layer and the operator HMI are separate components that talk over an industrial protocol. The same PLC program could, in principle, be pointed at different process simulators or a hardware-in-the-loop rig.
+
+## Architecture
 
 ```text
 FUXA SCADA/HMI
@@ -21,177 +34,130 @@ OpenPLC Runtime <----> Python–PLC bridge <----> Python boiler process model
       +---- PLC values          +---- CSV traces / validation scripts
 ```
 
-The bridge advances the process simulation using PLC control outputs and writes simulated measurements back to the PLC register interface. FUXA reads values exposed by the PLC. The model, PLC, bridge, HMI, and analysis scripts are separate components.
+- **Process model** (`model/`): drum water inventory and indicated level, **swell/shrink** effects, feedwater and steam flow, pressure, steam demand, fuel flow.
+- **PLC** (`plc/`): control logic in Structured Text, running in OpenPLC Runtime.
+- **Bridge** (`run_openplc_bridge.py`): advances the process each cycle using PLC outputs and writes simulated measurements back to PLC registers. Logs CSV traces, reconnects on Modbus loss and refuses to start a second instance.
+- **HMI**: FUXA reads values exposed by the PLC; it never talks to the Python model directly, as in a real DCS.
+- **Safety** (`safety/`): simulated trip/status handling with trip-reset command.
 
-## Main capabilities
+## Control strategies
 
-- **Process simulation:** water-inventory and drum-level dynamics, swell/shrink effects, flow variables, pressure, steam demand, and combustion-related variables.
-- **Drum-level control concepts:** single-element feedback and three-element control using drum level, steam flow, and feedwater flow.
-- **Pressure/combustion control:** cascade pressure-control concepts with fuel-valve and air-damper command outputs.
-- **PLC integration:** OpenPLC Runtime with a documented Modbus TCP holding-register interface.
-- **Process/PLC bridge:** continuous Python–PLC data exchange, CSV tracing, reconnect handling, and duplicate-instance protection.
-- **SCADA/HMI:** FUXA-based process displays and trends using values exposed by the PLC.
-- **Verification and analysis:** Python unit tests, bounded live PLC checks, controller-comparison scripts, and trace-analysis utilities.
-- **Simulated safety behavior:** software-level trip/status handling for demonstration only.
+**Drum level: three-element control.** Drum level is hard to control because of *swell and shrink*: a sudden steam-demand increase makes the indicated level rise briefly (steam bubbles expand) before it falls, so a level-only controller reacts the wrong way first. Three-element control combines **drum level** (feedback), **steam flow** (feedforward) and **feedwater flow** (inner loop), so feedwater tracks steam demand while level trims the mismatch. A single-element (level-only) controller is implemented for comparison.
 
-## Technology stack
+**Pressure and combustion: cascade control.** The pressure controller sets the fuel demand, and the fuel-valve and air-damper outputs follow it. This is the cascade structure used for steam pressure control in firing systems.
 
-| Component | Technology |
-|---|---|
-| Process model and analysis | Python, NumPy/SciPy where used by the relevant modules |
-| PLC programming/runtime | OpenPLC Editor and OpenPLC Runtime |
-| PLC language | Structured Text (IEC 61131-3 style) |
-| Communication | Modbus TCP |
-| Integration bridge | Python and `pymodbus` |
-| Operator station | FUXA SCADA/HMI |
-| Verification | Python `unittest` |
-| Recorded evidence | CSV traces, text logs, and analysis scripts |
-| Development tools | Windows, PowerShell, and Visual Studio Code |
+**Interlocks (simulated).** Software-level trip and status logic with an operator reset (HR1139), for demonstration only.
 
-## Repository layout
+## Results
 
-The repository has evolved beyond the initial standalone simulator. Key source and documentation paths include:
+All results below come from specific recorded runs. They are evidence for those scenarios, not general guarantees.
 
-```text
-.
-├── model/                         # Boiler process model
-├── control/                       # PID, single-element, three-element,
-│                                  # and cascade-pressure control modules
-├── plc/                           # PLC Structured Text source
-├── plc_interface/                 # Register map and PLC adapter
-├── safety/                        # Simulated safety-related logic
-├── tests/                          # Model, controller, interface, and safety tests
-├── docs/
-│   ├── BUILD_PLAN.md
-│   └── MODBUS_REGISTER_MAP.md
-├── runs/                          # Recorded test traces, outputs, and snapshots
-├── run_simulation.py              # Standalone simulation entry point
-├── run_openplc_bridge.py          # Continuous Python–PLC bridge
-├── run_openplc_disturbance.py     # Disturbance test runner
-├── run_openplc_cascade_safety_validation.py
-├── run_closed_loop_test.py        # Live closed-loop diagnostic
-├── compare_controllers.py
-├── evaluate_controllers.py
-├── evaluate_pressure_control.py
-├── analyze_disturbance_trace.py
-└── README.md
-```
+| Test | Scenario | Result |
+|---|---|---|
+| Offline controller comparison | Single-element vs three-element drum-level control, Python model | IAE **51.08 → 43.85 %·s** (about **14.1% lower** with three-element) |
+| Live PLC disturbance | 30 s run, steam demand step **1.00 → 1.20 pu** at t = 5 s | Pressure dipped to about **0.995 pu**, recovered to about **1.005 pu**; no trip asserted |
+| Bridge stability | Nominal manual-mode run, about 331 s | **3,301 cycles, 0 Modbus reconnects**, level held at 50.00% |
+| Live closed-loop level | 120 s run, 50% setpoint | Level stayed within **48.56–51.10%**, final value **48.80%**, with a small residual offset at the end of the window (see [Known issues](#known-issues)) |
+| Unit tests | `python -m unittest discover -s tests -v` | **54 passing** in the recorded run (re-run to verify on your machine) |
 
-The repository also contains recovery snapshots, diagnostic logs, and backup artifacts from development. These are not required for every run and may contain machine-specific runtime details.
+## Quick start
 
-## Requirements
-
-- Python 3.10 or newer for the documented standalone simulation workflow.
-- A project-local virtual environment is recommended.
-- OpenPLC Runtime and FUXA are required for the PLC-integrated workflow.
-- The Python–PLC bridge and live integration checks require a reachable OpenPLC Modbus TCP endpoint.
-- Additional Python packages may be required by the PLC bridge, model, plotting, or analysis scripts. The exact dependency list should be checked before setting up a fresh environment; a complete pinned requirements file is not established in this README.
-
-The project was developed in a Windows/PowerShell environment. Recorded runtime IP addresses and ports are deployment-specific and should not be treated as permanent settings.
-
-## Running the standalone simulation
-
-From the repository root, create/activate your Python environment and run:
+### 1. Standalone simulation (no PLC needed)
 
 ```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
 python run_simulation.py
 ```
 
-The initial standalone workflow documents output files such as:
+Outputs: `runs/nominal.csv`, `runs/steam_demand_step.csv`, `runs/summary.txt`.
 
-- `runs/nominal.csv`
-- `runs/steam_demand_step.csv`
-- `runs/summary.txt`
-
-Exact outputs depend on the current version of the script. This standalone simulation does not require a live PLC connection.
-
-## Running the Python test suite
-
-From the repository root:
+### 2. Tests
 
 ```powershell
 python -m unittest discover -s tests -v
 ```
 
-A previously recorded project run reported **54 passing tests**. This is historical evidence for the test set and code state at that time, not a guarantee that all tests pass on every checkout or machine. Re-run the command to verify the current environment.
+### 3. PLC-integrated workflow
 
-## PLC-integrated workflow
+Requires OpenPLC Runtime (with the Modbus TCP server enabled) and FUXA.
 
-The PLC-integrated workflow requires the PLC program to be deployed and running in OpenPLC Runtime, with the configured Modbus TCP interface enabled.
+1. Deploy the Structured Text program from `plc/` to OpenPLC Runtime and start it.
+2. Confirm the Modbus TCP endpoint is reachable (`scan_modbus_registers.py` can check this).
+3. Start the bridge: `python run_openplc_bridge.py` (stop with `Ctrl+C`).
+4. Open FUXA and confirm the displayed values match the PLC registers.
+5. In a separate step, with the bridge in the required state, run a bounded test, for example `python run_openplc_disturbance.py`.
 
-At a high level:
+> **Do not run live tests that write PLC input registers while the bridge is also writing them.** Competing writes invalidate the test. `run_closed_loop_test.py` and `run_openplc_cascade_safety_validation.py` change demand, mode and other registers; they are not offline tests.
 
-1. Start OpenPLC Runtime and confirm its Modbus TCP endpoint is reachable.
-2. Confirm that the deployed PLC program exposes the expected register map.
-3. Start the Python–PLC bridge using the local configuration.
-4. Open the FUXA HMI and verify that the displayed engineering values correspond to the PLC register values.
-5. Run a bounded disturbance-validation script only when its required PLC mode, bridge state, and register ownership conditions are satisfied.
-6. Inspect the generated CSV trace and console output before drawing conclusions about response performance.
+## Modbus register map
 
-The bridge is intended to run continuously until stopped with `Ctrl+C` or until it exits on an error. Do not run a live test that writes to the same PLC input registers concurrently with the bridge: competing writes can invalidate a test. Follow the script-specific preconditions and cleanup behavior.
+Holding registers **HR1124–HR1139**. Full details in [`docs/MODBUS_REGISTER_MAP.md`](docs/MODBUS_REGISTER_MAP.md).
 
-**Live-test caution:** Scripts with names such as `run_closed_loop_test.py` and `run_openplc_cascade_safety_validation.py` interact with the PLC and may change demand, mode, or other registers. Do not treat them as offline-only tests.
-
-## Modbus register interface
-
-The documented holding-register map uses HR1124–HR1139. The meanings and scaling documented for this project are:
-
-| Register | Signal | Scaling / interpretation |
+| Register | Signal | Scaling |
 |---|---|---|
 | HR1124 | Heartbeat | Counter |
-| HR1125 | Drum level | Percentage × 100 |
+| HR1125 | Drum level | % × 100 |
 | HR1126 | Feedwater flow | pu × 1000 |
 | HR1127 | Steam flow | pu × 1000 |
-| HR1128 | Drum-level setpoint | Percentage × 100 |
-| HR1129 | Manual valve command | Percentage × 10 |
-| HR1130 | Feedwater valve output | Percentage × 10 |
+| HR1128 | Drum-level setpoint | % × 100 |
+| HR1129 | Manual valve command | % × 10 |
+| HR1130 | Feedwater valve output | % × 10 |
 | HR1131 | Automatic-mode selector | Integer state |
-| HR1132 | Control/status word | Status/bit field |
+| HR1132 | Control/status word | Bit field |
 | HR1133 | Pressure | pu × 1000 |
 | HR1134 | Fuel flow | pu × 1000 |
 | HR1135 | Steam demand | pu × 1000 |
-| HR1136 | Fuel-valve output | Percentage × 10 |
-| HR1137 | Air-damper output | Percentage × 10 |
+| HR1136 | Fuel-valve output | % × 10 |
+| HR1137 | Air-damper output | % × 10 |
 | HR1138 | Pressure setpoint | pu × 1000 |
 | HR1139 | Trip-reset command | Integer command |
 
-For example, raw value `5000` at HR1125 corresponds to `50.00%`, and raw value `1000` at HR1126 corresponds to `1.000 pu`. Consult [docs/MODBUS_REGISTER_MAP.md](docs/MODBUS_REGISTER_MAP.md) and the deployed PLC program before relying on the map; register addressing and deployment configuration must agree.
+Example: raw `5000` at HR1125 is `50.00 %`; raw `1000` at HR1126 is `1.000 pu`.
 
-## Recorded validation evidence
+## Repository layout
 
-The development notes contain the following results for specific test scenarios.
+```text
+.
+├── model/                  # Boiler process model
+├── control/                # PID, single-element, three-element, cascade-pressure controllers
+├── plc/                    # PLC Structured Text source
+├── plc_interface/          # Register map and PLC adapter
+├── safety/                 # Simulated protective logic
+├── tests/                  # Model, controller, interface and safety tests
+├── docs/                   # BUILD_PLAN.md, MODBUS_REGISTER_MAP.md
+├── runs/                   # Recorded traces and outputs
+├── run_simulation.py       # Standalone simulation
+├── run_openplc_bridge.py   # Continuous Python–PLC bridge
+├── run_openplc_disturbance.py
+├── run_openplc_cascade_safety_validation.py
+├── run_closed_loop_test.py
+├── compare_controllers.py / evaluate_controllers.py / evaluate_pressure_control.py
+└── analyze_disturbance_trace.py
+```
 
-### Offline controller comparison
+Diagnostic scripts (`test_*.py`, `scan_*.py`, `verify_plc_state.py`) are development and bring-up utilities for the live PLC and Modbus link. Backup and recovery snapshots are development artifacts and are not needed to run the project.
 
-In one Python-model scenario, the three-element strategy recorded an integrated absolute error (IAE) of **43.8526 %·s**, compared with **51.0829 %·s** for the single-element strategy. This is approximately a **14.1% lower IAE** in that scenario. The result is model-specific and depends on the model and controller tuning; it is not a universal guarantee or proof that the live PLC achieves the same improvement.
+## Known issues
 
-### Bounded PLC/process-coupling disturbance test
+- **Residual level offset in the live closed-loop run.** Level ended at 48.80% against a 50% setpoint after 120 s. Planned work: review integral action and anti-windup in the level loop, then re-run with a longer window.
+- **Controller comparison is one scenario.** The 14.1% IAE improvement was measured in one model scenario with one tuning set; it has not been repeated across disturbance sizes.
+- **No pinned dependency file yet.** Check imports before setting up a fresh environment.
 
-A recorded 30-second validation stepped steam demand from **1.00 pu to 1.20 pu** at 5 seconds. In that run, the logged pressure dipped to approximately **0.995 pu** and recovered to approximately **1.005 pu**. The trace reported no asserted trip during that scenario. These observations apply only to the recorded test and do not verify every operating or trip condition.
+## Limitations
 
-### Closed-loop diagnostic limitation
+- The process model is synthetic and not a validated thermodynamic model of a real boiler.
+- The trip and interlock logic is simulated software, not a certified safety instrumented system, and makes no SIL or compliance claim.
+- Offline tests, live PLC tests, communication checks and HMI checks each establish different things; a pass in one does not validate the others.
+- Use for learning, experimentation and software-level engineering demonstration only.
 
-A separate 120-second live closed-loop diagnostic recorded a peak drum-level indication of **51.102%**, a minimum of **48.557%**, and a final value of **48.796%** against a 50% setpoint. It therefore did **not** demonstrate complete level recovery to setpoint by the end of that test window.
+## Roadmap
 
-### Bridge connectivity check
-
-One nominal manual-mode bridge run lasted approximately **331 seconds**, completed **3,301 cycles**, and reported **zero Modbus reconnects**. The drum-level sample remained at 50.00% during that nominal run. This supports connectivity under the tested nominal conditions; it does not demonstrate automatic disturbance rejection.
-
-These results are included to make the current evidence and limitations explicit. They are not a substitute for reproducing the tests against the current code and runtime configuration.
-
-## Safety and model limitations
-
-- The process model is synthetic and is not a validated thermodynamic model of a real boiler.
-- The safety/trip behavior is simulated software logic, not a certified safety instrumented system.
-- The project has not established a safety-integrity certification, compliance claim, physical shutdown capability, or approval for use on real equipment.
-- Offline unit tests, controller simulations, live PLC tests, communication checks, and HMI checks establish different things. A pass in one category does not imply that every other category has been validated.
-- Use this repository for learning, experimentation, and software-level engineering demonstration only.
-
-## Further documentation
-
-- [Build plan](docs/BUILD_PLAN.md)
-- [Modbus register map](docs/MODBUS_REGISTER_MAP.md)
+- Add integral anti-windup and re-tune the level loop to remove the residual offset
+- Run controller comparison across several steam-demand disturbance magnitudes
+- Add `requirements.txt`, CI for the unit tests and a demo video
+- Add alarm management (high/low alarms with acknowledgement) in FUXA
 
 ## License
 
-No license is asserted by this README. Unless a license file is added to the repository, reuse and redistribution permissions should not be assumed.
+No license has been added yet. Until one is added, reuse and redistribution permissions should not be assumed.
